@@ -41,7 +41,7 @@ archive/年/月/A股开盘前早报_YYYY-MM-DD_HHMM.html
 
 https://cursor.com/automations/cbeb1ef9-b59d-11f1-bb68-864e54d14197
 
-完整规范在仓库内，**在原十段早报功能上增量修订**，不是另写一套。修改报告要求时先改文件，再把短版贴回自动任务 Prompt：
+完整规范在仓库内，**正文是原自动任务 Prompt，第八条才是排版增量**。修改要求时先改文件，再把 `prompts/automation-dashboard-prompt.md` 整段贴回自动任务 Prompt：
 
 - 完整规范：[`prompts/ashare-preopen-briefing.md`](prompts/ashare-preopen-briefing.md)
 - 仪表盘粘贴文本：[`prompts/automation-dashboard-prompt.md`](prompts/automation-dashboard-prompt.md)
