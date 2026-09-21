@@ -35,6 +35,19 @@ GitHub 仓库里点文件 →「分享」，发出去的是 **源码页**，其�
 archive/年/月/A股开盘前早报_YYYY-MM-DD_HHMM.html
 ```
 
+## 自动任务提示词
+
+定时生成由 Cursor 自动任务 **「A股开盘前多源晨报」** 执行：
+
+https://cursor.com/automations/cbeb1ef9-b59d-11f1-bb68-864e54d14197
+
+完整规范在仓库内，修改报告要求时先改文件，再把短版贴回自动任务 Prompt：
+
+- 完整规范：[`prompts/ashare-preopen-briefing.md`](prompts/ashare-preopen-briefing.md)
+- 仪表盘粘贴文本：[`prompts/automation-dashboard-prompt.md`](prompts/automation-dashboard-prompt.md)
+
+当前接口读不到自动任务 Prompt 正文，保存仪表盘仍需在上述链接里手动替换一次。
+
 新增报告后运行：
 
 ```bash
