@@ -16,7 +16,7 @@ GitHub 仓库里点文件 →「分享」，发出去的是 **源码页**，其�
 1. 把仓库设为 **Public**（别人才能打开；Private 即使自己能看，对方通常打不开）
 2. 启用 Pages：Settings → Pages → Source 选 **GitHub Actions**，合并后等部署成功
 3. 复制上面的 `latest.html` 或 `r/日期_时间.html` 链接
-4. 粘贴到微信 / 浏览器 / 备忘录 → 点开即为排版报告
+4. 粘贴到微信 / 知识星球 / 浏览器 / 备忘录 → 点开即为排版报告
 
 不要分享：
 
@@ -41,12 +41,14 @@ archive/年/月/A股开盘前早报_YYYY-MM-DD_HHMM.html
 
 https://cursor.com/automations/cbeb1ef9-b59d-11f1-bb68-864e54d14197
 
-完整规范在仓库内，**正文是原自动任务 Prompt，第八条才是排版增量**。修改要求时先改文件，再把 `prompts/automation-dashboard-prompt.md` 整段贴回自动任务 Prompt：
+完整规范在仓库内，**正文是原自动任务 Prompt，第八条才是排版增量，第九条是知识星球分享文案**。修改要求时先改文件，再把 `prompts/automation-dashboard-prompt.md` 整段贴回自动任务 Prompt：
 
 - 完整规范：[`prompts/ashare-preopen-briefing.md`](prompts/ashare-preopen-briefing.md)
 - 仪表盘粘贴文本：[`prompts/automation-dashboard-prompt.md`](prompts/automation-dashboard-prompt.md)
 
 当前接口读不到自动任务 Prompt 正文，保存仪表盘仍需在上述链接里手动替换一次。
+
+自动任务对话必须额外输出一份**知识星球分享文案**（标题 + 正文，纯文本可复制）。星球里贴 Pages 链接，不要贴源码页。规则见提示词第九条。
 
 新增报告后运行：
 
