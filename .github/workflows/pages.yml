@@ -3,6 +3,10 @@ name: Deploy GitHub Pages
 on:
   push:
     branches: [main]
+  schedule:
+    # 每天 00:30 UTC（= 北京时间 08:30，对齐“开盘前早报”）自动重建索引并部署。
+    # 注意：定时触发只在默认分支（main）上生效，且部署的是 main 当前 archive/ 里的内容。
+    - cron: "30 0 * * *"
   workflow_dispatch:
 
 permissions:
