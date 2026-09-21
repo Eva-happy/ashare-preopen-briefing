@@ -1,0 +1,11 @@
+{
+  "version": "0.3.1",
+  "date": "2026-09-21",
+  "slug": "xingqiu-upload-html",
+  "notes": "星球文案不再写链接，改为配合用户上传的 HTML 文件",
+  "immutable": true,
+  "files": [
+    "ashare-preopen-briefing.md",
+    "automation-dashboard-prompt.md"
+  ]
+}

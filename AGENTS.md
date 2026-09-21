@@ -18,4 +18,4 @@ python3 scripts/snapshot_prompt.py --version 0.4.0 --slug short-name --notes "�
 
 生成后运行 `python3 scripts/build_index.py`。
 
-对话交付顺序：① 不超过 500 字摘要 ② 知识星球分享文案（纯文本代码块，标题+正文，链接只用 GitHub Pages）③ 仓库相对路径 ④ 附件 + 完整 HTML。休市日不生成完整报告，但仍要给短版星球文案。
+对话交付顺序：① 不超过 500 字摘要 ② 知识星球分享文案（纯文本代码块，标题+正文，不要写链接；用户自己上传 HTML 文件）③ 仓库相对路径 ④ 附件 + 完整 HTML。休市日不生成完整报告，但仍要给短版星球文案。
