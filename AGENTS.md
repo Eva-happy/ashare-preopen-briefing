@@ -8,6 +8,12 @@
 
 该文件正文是自动任务原 Prompt（一至七条：交易日判断、iFinD、报告九段结构、29 个固定板块、HTML/附件/GitHub 交付）。第八条才是后来加上的排版与映射增量，第九条是知识星球分享文案，均不得覆盖原文。
 
+提示词版本见 `prompts/VERSION`。冻结的用户原文在 `prompts/archive/v0.2.0_2026-09-21_user-original-1-to-7/`，**禁止修改 archive/**。改提示词后运行：
+
+```bash
+python3 scripts/snapshot_prompt.py --version 0.4.0 --slug short-name --notes "改了什么"
+```
+
 仪表盘应粘贴的完整文本：`prompts/automation-dashboard-prompt.md`
 
 生成后运行 `python3 scripts/build_index.py`。

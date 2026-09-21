@@ -1,0 +1,11 @@
+{
+  "version": "0.3.0",
+  "date": "2026-09-21",
+  "slug": "plus-zhishi-xingqiu",
+  "notes": "叠加第九条知识星球分享文案",
+  "immutable": true,
+  "files": [
+    "ashare-preopen-briefing.md",
+    "automation-dashboard-prompt.md"
+  ]
+}

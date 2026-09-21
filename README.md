@@ -41,7 +41,9 @@ archive/年/月/A股开盘前早报_YYYY-MM-DD_HHMM.html
 
 https://cursor.com/automations/cbeb1ef9-b59d-11f1-bb68-864e54d14197
 
-完整规范在仓库内，**正文是原自动任务 Prompt，第八条才是排版增量，第九条是知识星球分享文案**。修改要求时先改文件，再把 `prompts/automation-dashboard-prompt.md` 整段贴回自动任务 Prompt：
+完整规范在仓库内，**正文是原自动任务 Prompt，第八条才是排版增量，第九条是知识星球分享文案**。当前版本见 [`prompts/VERSION`](prompts/VERSION)，变更见 [`prompts/CHANGELOG.md`](prompts/CHANGELOG.md)，旧版冻结在 [`prompts/archive/`](prompts/archive/)。用法见 [`prompts/README.md`](prompts/README.md)。
+
+修改要求时先改当前文件，再运行 `python3 scripts/snapshot_prompt.py` 追加归档（不会覆盖旧目录），最后把 `prompts/automation-dashboard-prompt.md` 整段贴回自动任务 Prompt：
 
 - 完整规范：[`prompts/ashare-preopen-briefing.md`](prompts/ashare-preopen-briefing.md)
 - 仪表盘粘贴文本：[`prompts/automation-dashboard-prompt.md`](prompts/automation-dashboard-prompt.md)

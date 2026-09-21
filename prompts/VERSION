@@ -1,0 +1,6 @@
+version: 0.3.0
+date: 2026-09-21
+canonical: prompts/ashare-preopen-briefing.md
+dashboard: prompts/automation-dashboard-prompt.md
+frozen_original: prompts/archive/v0.2.0_2026-09-21_user-original-1-to-7/
+latest_snapshot: prompts/archive/v0.3.0_2026-09-21_plus-zhishi-xingqiu/
