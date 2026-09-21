@@ -33,6 +33,9 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        with:
+          # Auto-enable Pages if needed (first deploy used to fail before Settings → Pages was set).
+          enablement: true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
