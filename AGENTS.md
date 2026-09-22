@@ -19,3 +19,11 @@ python3 scripts/snapshot_prompt.py --version 0.4.0 --slug short-name --notes "�
 生成后运行 `python3 scripts/build_index.py`。报告必须进入 `main`。若只能开拉取请求，同一轮合并进 `main`；`.github/workflows/merge-briefing.yml` 会兜底合并当日早报拉取请求。
 
 对话交付顺序：① 不超过 500 字摘要 ② 知识星球分享文案（纯文本代码块，标题+正文，不要写链接；用户自己上传 HTML 文件）③ 仓库相对路径 ④ 附件 + 完整 HTML。休市日不生成完整报告，但仍要给短版星球文案。
+
+## 生成或改收盘报告时
+
+必须先阅读并严格执行 `prompts/ashare-close-briefing.md`。不要把它和早报提示词混成一份，也不要贴进「A股开盘前多源晨报」。
+
+收盘提示词与早报对齐：同样是一至七条九段 + 第八条排版 + 第九条知识星球文案。数据截止北京时间 15:10。第五条写**当日**复盘，第六条检索窗是当日 08:30 至 15:10，并对照同日早报里指向当天的判断。
+
+文件名：`archive/年/月/A股收盘报告_YYYY-MM-DD_1510.html`。仪表盘粘贴：`prompts/close-automation-dashboard-prompt.md`。版本见 `prompts/close-VERSION`。生成后同样运行 `python3 scripts/build_index.py`。`latest.html` 仍跳最新早报，收盘走 `latest-close.html`。建议日程 `20 7 * * 1-5`（北京时间工作日 15:20），模型用 GPT。

@@ -7,7 +7,8 @@ A股开盘前早报（HTML）。目标：复制一条链接，在微信等 App �
 GitHub 仓库里点文件 →「分享」，发出去的是 **源码页**，其他 App 打开仍是代码。  
 要「像网页一样打开」，必须分享 **GitHub Pages 链接**（下面这种）：
 
-- 最新一期：https://eva-happy.github.io/ashare-preopen-briefing/latest.html
+- 最新早报：https://eva-happy.github.io/ashare-preopen-briefing/latest.html
+- 最新收盘报告：https://eva-happy.github.io/ashare-preopen-briefing/latest-close.html
 - 索引首页：https://eva-happy.github.io/ashare-preopen-briefing/
 - 某一期（英文短链，方便复制）：https://eva-happy.github.io/ashare-preopen-briefing/r/2026-09-21_0830.html
 
@@ -33,7 +34,18 @@ GitHub 仓库里点文件 →「分享」，发出去的是 **源码页**，其�
 
 ```text
 archive/年/月/A股开盘前早报_YYYY-MM-DD_HHMM.html
+archive/年/月/A股收盘报告_YYYY-MM-DD_1510.html
 ```
+
+## 收盘报告
+
+收盘报告与开盘前早报是**两条分开的自动任务**。结构对齐「A股开盘前多源晨报」的一至九条（九段结构、同一套 29 个板块、排版、知识星球文案），并额外对照同日早报。
+
+- 完整规范：[`prompts/ashare-close-briefing.md`](prompts/ashare-close-briefing.md)
+- 仪表盘粘贴文本：[`prompts/close-automation-dashboard-prompt.md`](prompts/close-automation-dashboard-prompt.md)
+- 版本：[`prompts/close-VERSION`](prompts/close-VERSION)
+
+建议新建自动任务，名称「A股收盘报告」，日程 `20 7 * * 1-5`（北京时间工作日 15:20），模型用 GPT，接上同花顺 iFinD。不要把收盘提示词贴进「A股开盘前多源晨报」。`latest.html` 仍然只打开最新早报；收盘报告用 `latest-close.html`。
 
 ## 自动任务提示词
 
@@ -62,8 +74,8 @@ python3 scripts/build_index.py
 
 会自动：
 
-- 更新 `index.html`（列表 + 每期分享链接）
-- 更新 `latest.html`（跳转最新一期）
+- 更新 `index.html`（列表 + 每期分享链接，区分早报和收盘报告）
+- 更新 `latest.html`（只跳最新早报）和 `latest-close.html`（只跳最新收盘报告）
 - 生成英文短链副本 `r/YYYY-MM-DD_HHMM.html`（方便分享，避免中文文件名在 App 里乱码）
 
 ## 早报自动进入 main
@@ -72,8 +84,8 @@ GitHub Pages 只发布 `main`。定时任务如果只开草稿拉取请求，短
 
 `.github/workflows/merge-briefing.yml` 会在拉取请求出现时检查：
 
-- 标题含北京时间当天日期，以及「早报」或 `preopen briefing`
-- 改动只在 `archive/*.html`、`r/*.html`、`index.html`、`latest.html`
+- 标题含北京时间当天日期，以及「早报」「收盘」或对应的英文 briefing 字样
+- 改动只在 `archive/*.html`、`r/*.html`、`index.html`、`latest.html`、`latest-close.html`
 
 符合就标为可合并、Squash 合并进 `main`，再触发「Deploy GitHub Pages」。其他拉取请求不会动。
 
