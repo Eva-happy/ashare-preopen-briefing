@@ -22,8 +22,12 @@ python3 scripts/snapshot_prompt.py --version 0.4.0 --slug short-name --notes "�
 
 对话交付顺序：① 不超过 500 字摘要 ② 知识星球分享文案（纯文本代码块，标题+正文，不要写链接；用户自己上传 HTML 文件）③ 仓库相对路径 ④ 一个完整 html 代码块，从 `<!doctype html>` 到 `</html>`，供一键复制，禁止用附件或「已写入仓库」代替 ⑤ 附件。休市日不生成完整报告，但仍要给短版星球文案。
 
-## 收盘对照
+## 生成或改收盘报告时
 
-收盘报告用来验证同日早报，不替代早报。先读 `prompts/ashare-close-briefing.md`。文件名为 `archive/年/月/A股收盘对照_YYYY-MM-DD_1510.html`。数据截止北京时间 15:10。只给早报里指向当天的判断打兑现、部分兑现、未兑现、证伪或无法验证；早报对前一交易日的复盘不要改判成预测。
+必须先阅读并严格执行 `prompts/ashare-close-briefing.md`。不要把它和早报提示词混成一份，也不要贴进「A股开盘前多源晨报」。
 
-生成后同样运行 `python3 scripts/build_index.py`。`latest.html` 仍跳最新早报，收盘对照走 `latest-close.html`。仪表盘粘贴文本：`prompts/close-automation-dashboard-prompt.md`。建议日程 `20 7 * * 1-5`（北京时间工作日 15:20），模型用 GPT，与早报任务分开。
+收盘提示词与早报对齐：同样是一至七条九段 + 第八条排版 + 第九条知识星球文案。数据截止北京时间 15:10。第五条写**当日**复盘，第六条检索窗是当日 08:30 至 15:10，并对照同日早报里指向当天的判断。
+
+文件名：`archive/年/月/A股收盘报告_YYYY-MM-DD_1510.html`。仪表盘粘贴：`prompts/close-automation-dashboard-prompt.md`。版本见 `prompts/close-VERSION`。生成后同样运行 `python3 scripts/build_index.py`。`latest.html` 仍跳最新早报，收盘走 `latest-close.html`。建议日程 `20 7 * * 1-5`（北京时间工作日 15:20），模型用 GPT。
+
+本机 Windows 归档目录是 `D:\Eva-personal\A股开盘前早报归档`，早盘和收盘分开放。工具在 `local-archive/`。双击 `生成收盘报告.bat` 会把最新收盘 HTML 存进 `收盘\`。

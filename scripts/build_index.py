@@ -82,7 +82,7 @@ def sync_share_copies(reports: list[dict]) -> None:
         shutil.copy2(r["path"], target)
 
 
-KIND_LABEL = {"open": "开盘前早报", "close": "收盘对照"}
+KIND_LABEL = {"open": "开盘前早报", "close": "收盘报告"}
 
 
 def render_index(reports: list[dict]) -> str:
@@ -96,7 +96,11 @@ def render_index(reports: list[dict]) -> str:
         if latest_close and r["share_rel"] == latest_close["share_rel"]:
             badges.append('<span class="badge badge-close">最新收盘</span>')
         badge = "".join(badges)
-        when = f"收盘 {r['time']}" if r["kind"] == "close" and r["time"] else (f"截止 {r['time']}" if r["time"] else "")
+        when = (
+            f"收盘 {r['time']}"
+            if r["kind"] == "close" and r["time"]
+            else (f"截止 {r['time']}" if r["time"] else "")
+        )
         meta_bits = [x for x in [r["date"], when, f"更新 {r['mtime']}"] if x]
         meta = " ｜ ".join(meta_bits)
         label = KIND_LABEL[r["kind"]]
@@ -118,14 +122,15 @@ def render_index(reports: list[dict]) -> str:
         else '      <p class="empty">暂无报告。生成后放入 <code>archive/年/月/</code> 再运行 <code>python3 scripts/build_index.py</code>。</p>'
     )
     latest_url = f"{SITE}/latest.html"
+    latest_close_url = f"{SITE}/latest-close.html"
     return f"""<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="color-scheme" content="light">
-  <meta name="description" content="A股开盘前早报与收盘对照索引。复制 Pages 链接即可在微信等 App 中以网页方式打开。">
-  <title>A股早报与收盘对照｜报告索引</title>
+  <meta name="description" content="A股开盘前早报与收盘报告索引。复制 Pages 链接即可在微信等 App 中以网页方式打开。">
+  <title>A股早报与收盘报告｜报告索引</title>
   <style>
     :root{{--ink:#172033;--muted:#667085;--line:#e5e9f0;--bg:#f5f7fb;--card:#fff;--blue:#1d4ed8}}
     *{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}}
@@ -152,22 +157,22 @@ def render_index(reports: list[dict]) -> str:
 <body>
 <main class="wrap">
   <header class="hero">
-    <p>A股开盘前研究 · 收盘对照</p>
+    <p>A股开盘前研究 · 收盘报告</p>
     <h1>报告索引</h1>
-    <p>网页版早报和收盘对照。复制下方链接，即可分享到微信等 App 直接打开（不是源码）。</p>
+    <p>网页版早报和收盘报告。复制下方链接，即可分享到微信等 App 直接打开（不是源码）。</p>
   </header>
 
   <section class="share-box" aria-label="如何分享">
     <h2>如何分享到其他 App</h2>
     <ol>
       <li>不要用 GitHub 文件页的「分享」——那是源码链接，微信里会显示代码。</li>
-      <li>复制本站链接（推荐最新一期）：<br><code>{html.escape(latest_url)}</code></li>
+      <li>复制本站链接：早报 <code>{html.escape(latest_url)}</code>；收盘报告 <code>{html.escape(latest_close_url)}</code></li>
       <li>粘贴到微信 / 备忘录 / 浏览器，对方点开就是排版好的 HTML 报告。</li>
     </ol>
     <div class="warn">仓库需设为 <b>Public</b> 并启用 GitHub Pages，别人才能打开这些链接。</div>
   </section>
 
-  <p class="hint">最新早报：<a href="latest.html">latest.html</a>。最新收盘对照：<a href="latest-close.html">latest-close.html</a>。</p>
+  <p class="hint">最新早报：<a href="latest.html">latest.html</a>。最新收盘报告：<a href="latest-close.html">latest-close.html</a>。</p>
   <section class="list" aria-label="报告列表">
 {cards_html}
   </section>
@@ -221,7 +226,11 @@ def main() -> None:
         encoding="utf-8",
     )
     (ROOT / "latest-close.html").write_text(
-        render_latest(latest_close, empty="暂无收盘对照。请先生成 archive 下的 HTML 收盘对照。", jumping="跳转到最新收盘对照"),
+        render_latest(
+            latest_close,
+            empty="暂无收盘报告。请先生成 archive 下的 HTML 收盘报告。",
+            jumping="跳转到最新收盘报告",
+        ),
         encoding="utf-8",
     )
     print(f"indexed {len(reports)} report(s); share copies in r/")

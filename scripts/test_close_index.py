@@ -24,18 +24,21 @@ def main() -> None:
     assert ("2026-09-22", "open") in kinds, kinds
     assert sum(1 for r in reports if r["kind"] == "close" and r["date"] == "2026-09-21") == 1
 
-    close = next(r for r in reports if r["kind"] == "close")
-    text = close["path"].read_text(encoding="utf-8")
+    close21 = next(r for r in reports if r["kind"] == "close" and r["date"] == "2026-09-21")
+    text = close21["path"].read_text(encoding="utf-8")
     assert text.count("<tr><td>科技</td>") + text.count("<tr><td>油气</td>") + text.count("<tr><td>煤炭</td>") + text.count("<tr><td>电力电网</td>") + text.count("<tr><td>农业</td>") + text.count("<tr><td>医药</td>") + text.count("<tr><td>计算机</td>") + text.count("<tr><td>化工</td>") + text.count("<tr><td>金融</td>") == 29, "sector rows must be 29"
 
     html_index = build_index.render_index(reports)
     assert "收盘对照" in html_index
+    assert "收盘报告" in html_index
     assert "最新早报" in html_index
     assert "最新收盘" in html_index
     assert "latest-close.html" in html_index
 
     latest_open = next(r for r in reports if r["kind"] == "open")
     assert latest_open["date"] == "2026-09-22"
+    latest_close = next(r for r in reports if r["kind"] == "close")
+    assert latest_close["date"] == "2026-09-22"
     page = build_index.render_latest(latest_open, empty="暂无早报", jumping="跳转到最新早报")
     assert "2026-09-22_0830.html" in page
     assert "2026-09-21_1510.html" not in page

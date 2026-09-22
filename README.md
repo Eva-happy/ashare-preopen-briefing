@@ -8,7 +8,7 @@ GitHub 仓库里点文件 →「分享」，发出去的是 **源码页**，其�
 要「像网页一样打开」，必须分享 **GitHub Pages 链接**（下面这种）：
 
 - 最新早报：https://eva-happy.github.io/ashare-preopen-briefing/latest.html
-- 最新收盘对照：https://eva-happy.github.io/ashare-preopen-briefing/latest-close.html
+- 最新收盘报告：https://eva-happy.github.io/ashare-preopen-briefing/latest-close.html
 - 索引首页：https://eva-happy.github.io/ashare-preopen-briefing/
 - 某一期（英文短链，方便复制）：https://eva-happy.github.io/ashare-preopen-briefing/r/2026-09-21_0830.html
 
@@ -34,13 +34,30 @@ GitHub 仓库里点文件 →「分享」，发出去的是 **源码页**，其�
 
 ```text
 archive/年/月/A股开盘前早报_YYYY-MM-DD_HHMM.html
+archive/年/月/A股收盘报告_YYYY-MM-DD_1510.html
 ```
 
-## 收盘对照
+## 收盘报告
 
-收盘报告和同日早报放在一起看：验证早报里指向当天的判断，并跟踪催化走到收盘时的进展。规范在 [`prompts/ashare-close-briefing.md`](prompts/ashare-close-briefing.md)，自动任务粘贴文本在 [`prompts/close-automation-dashboard-prompt.md`](prompts/close-automation-dashboard-prompt.md)。
+收盘报告与开盘前早报是**两条分开的自动任务**。结构对齐「A股开盘前多源晨报」的一至九条（九段结构、同一套 29 个板块、排版、知识星球文案），并额外对照同日早报。
 
-建议另建一条定时任务，日程 `20 7 * * 1-5`（北京时间工作日 15:20），模型用 GPT。`latest.html` 仍然只打开最新早报；收盘对照用 `latest-close.html`。
+- 完整规范：[`prompts/ashare-close-briefing.md`](prompts/ashare-close-briefing.md)
+- 仪表盘粘贴文本：[`prompts/close-automation-dashboard-prompt.md`](prompts/close-automation-dashboard-prompt.md)
+- 版本：[`prompts/close-VERSION`](prompts/close-VERSION)
+
+建议新建自动任务，名称「A股收盘报告」，日程 `20 7 * * 1-5`（北京时间工作日 15:20），模型用 GPT，接上同花顺 iFinD。不要把收盘提示词贴进「A股开盘前多源晨报」。`latest.html` 仍然只打开最新早报；收盘报告用 `latest-close.html`。
+
+## 本机归档（早盘 / 收盘）
+
+Windows 本机目录：`D:\Eva-personal\A股开盘前早报归档`
+
+仓库里的工具箱：[`local-archive/`](local-archive/)。在仓库中双击 `local-archive/安装到本机归档目录.bat`，会：
+
+- 创建 `早盘\` 和 `收盘\`
+- 把已有早报 HTML 放进 `早盘\`
+- 复制三个 BAT：`整理归档.bat`、`生成早盘报告.bat`、`生成收盘报告.bat`
+
+之后在本机目录双击「生成收盘报告.bat」，会从 GitHub Pages 下载完整收盘 HTML 并打开。需要 Python 3。收盘自动任务 15:20 跑完并进入 `main` 之前，这个 BAT 不会编造报告。
 
 ## 换账号后怎么接着做
 
@@ -75,8 +92,8 @@ python3 scripts/build_index.py
 
 会自动：
 
-- 更新 `index.html`（列表 + 每期分享链接，区分早报和收盘对照）
-- 更新 `latest.html`（只跳最新早报）和 `latest-close.html`（只跳最新收盘对照）
+- 更新 `index.html`（列表 + 每期分享链接，区分早报和收盘报告）
+- 更新 `latest.html`（只跳最新早报）和 `latest-close.html`（只跳最新收盘报告）
 - 生成英文短链副本 `r/YYYY-MM-DD_HHMM.html`（方便分享，避免中文文件名在 App 里乱码）
 
 ## 早报自动进入 main

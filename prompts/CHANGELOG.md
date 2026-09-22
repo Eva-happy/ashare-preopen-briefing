@@ -1,6 +1,7 @@
 # 提示词变更记录
 
 版本号写在 `prompts/VERSION`。当前工作副本是 `ashare-preopen-briefing.md` 与 `automation-dashboard-prompt.md`。  
+收盘报告另有 `prompts/close-VERSION`、`prompts/ashare-close-briefing.md`、`prompts/close-automation-dashboard-prompt.md`。  
 `prompts/archive/` 里的目录一律只读；Git 提交是另一层备份。
 
 接口读不到 Cursor 自动任务里正在运行的 Prompt 正文。仓库能保证的是：**凡提交过的提示词都还在**；仪表盘以你最后一次粘贴为准。
@@ -9,6 +10,15 @@
 
 - 归档：`prompts/archive/v0.3.3_2026-09-22_chat-full-html/`
 - 对话必须贴出完整 HTML 源码代码块，供一键复制，不能只用附件或仓库路径代替
+
+## 收盘 0.2.0 — 2026-09-22
+
+- 归档：`prompts/archive/close-v0.2.0_2026-09-22_align-preopen/`
+- 自动任务名称：「A股收盘报告」
+- 与「A股开盘前多源晨报」对齐：一至七条九段结构、同一套 29 个固定板块、第八条排版、第九条知识星球文案
+- 收盘特有：截止 15:10；第五条改为当日复盘；第六条检索窗 08:30–15:10；第八条改为下一交易日日历；并对照同日早报
+- 仪表盘粘贴：`prompts/close-automation-dashboard-prompt.md`
+- 本机归档工具：`local-archive/`，安装到 `D:\Eva-personal\A股开盘前早报归档`，早盘/收盘分开放；`生成收盘报告.bat` 下载 HTML
 
 ## 0.3.2 — 2026-09-22
 

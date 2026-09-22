@@ -1,5 +1,6 @@
-version: 0.1.0
+version: 0.2.0
 date: 2026-09-22
 canonical: prompts/ashare-close-briefing.md
 dashboard: prompts/close-automation-dashboard-prompt.md
-compares_with: prompts/ashare-preopen-briefing.md
+aligns_with: prompts/ashare-preopen-briefing.md
+automation_name: A股收盘报告
