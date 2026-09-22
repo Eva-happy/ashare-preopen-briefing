@@ -46,11 +46,10 @@ def test_fetch_from_repo(tmp: Path) -> None:
     assert path.name.startswith("A股开盘前早报_")
     text = path.read_text(encoding="utf-8")
     assert "A股开盘前早报" in text
-    try:
-        la.fetch_kind(dest, "close", from_repo=ROOT)
-        raise AssertionError("expected missing close report")
-    except FileNotFoundError as exc:
-        assert "收盘" in str(exc)
+    close = la.fetch_kind(dest, "close", from_repo=ROOT)
+    assert close.parent.name == "收盘"
+    assert "收盘报告" in close.name
+    assert "收盘" in close.read_text(encoding="utf-8")
 
 
 def test_install(tmp: Path) -> None:
@@ -62,9 +61,12 @@ def test_install(tmp: Path) -> None:
     assert (dest / "整理归档.bat").exists()
     assert (dest / "tools" / "local_archive.py").exists()
     opens = list((dest / "早盘").glob("*.html"))
+    closes = list((dest / "收盘").glob("*.html"))
     assert len(opens) >= 2
+    assert len(closes) >= 1
     assert (dest / "本地索引.html").exists()
     assert "A股开盘前早报" in opens[0].read_text(encoding="utf-8")
+    assert "收盘" in closes[0].read_text(encoding="utf-8")
 
 
 def test_kind_helpers() -> None:

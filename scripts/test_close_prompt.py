@@ -109,15 +109,29 @@ def test_index_kind_and_latest() -> None:
         reverse=True,
     )
     assert reports
-    assert all(r["kind"] == "open" for r in reports)
+    opens = [r for r in reports if r["kind"] == "open"]
+    closes = [r for r in reports if r["kind"] == "close"]
+    assert opens, "archive 里应有早报"
+    assert closes, "archive 里应有收盘报告"
     html_index = build_index.render_index(reports)
     assert "latest-close.html" in html_index
     assert "收盘报告" in html_index
-    latest_open = next(r for r in reports if r["kind"] == "open")
+    assert "最新收盘" in html_index
+    assert "最新早报" in html_index
+    latest_open = opens[0]
+    latest_close = closes[0]
     page = build_index.render_latest(latest_open, empty="暂无早报", jumping="跳转到最新早报")
     assert latest_open["share_name"] in page
+    close_page = build_index.render_latest(latest_close, empty="暂无收盘报告", jumping="跳转到最新收盘报告")
+    assert latest_close["share_name"] in close_page
     empty_close = build_index.render_latest(None, empty="暂无收盘报告", jumping="跳转到最新收盘报告")
     assert "暂无收盘报告" in empty_close
+
+    latest_html = (ROOT / "latest.html").read_text(encoding="utf-8")
+    latest_close_html = (ROOT / "latest-close.html").read_text(encoding="utf-8")
+    assert "2026-09-22_0830.html" in latest_html
+    assert "2026-09-22_1510.html" in latest_close_html
+    assert "<<<<<<<" not in (ROOT / "index.html").read_text(encoding="utf-8")
 
 
 def test_merge_eligibility() -> None:

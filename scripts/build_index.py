@@ -122,6 +122,7 @@ def render_index(reports: list[dict]) -> str:
         else '      <p class="empty">暂无报告。生成后放入 <code>archive/年/月/</code> 再运行 <code>python3 scripts/build_index.py</code>。</p>'
     )
     latest_url = f"{SITE}/latest.html"
+    latest_close_url = f"{SITE}/latest-close.html"
     return f"""<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -165,7 +166,7 @@ def render_index(reports: list[dict]) -> str:
     <h2>如何分享到其他 App</h2>
     <ol>
       <li>不要用 GitHub 文件页的「分享」——那是源码链接，微信里会显示代码。</li>
-      <li>复制本站链接（推荐最新一期）：<br><code>{html.escape(latest_url)}</code></li>
+      <li>复制本站链接：早报 <code>{html.escape(latest_url)}</code>；收盘报告 <code>{html.escape(latest_close_url)}</code></li>
       <li>粘贴到微信 / 备忘录 / 浏览器，对方点开就是排版好的 HTML 报告。</li>
     </ol>
     <div class="warn">仓库需设为 <b>Public</b> 并启用 GitHub Pages，别人才能打开这些链接。</div>
