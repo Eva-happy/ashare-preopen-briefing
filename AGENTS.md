@@ -8,7 +8,7 @@
 
 必须先阅读并严格执行 `prompts/ashare-preopen-briefing.md`。
 
-该文件正文是自动任务原 Prompt（一至七条：交易日判断、iFinD、报告九段结构、29 个固定板块、HTML/附件/GitHub 交付）。第八条才是后来加上的排版与映射增量，第九条是知识星球分享文案，均不得覆盖原文。
+该文件正文是自动任务原 Prompt（一至七条：交易日判断、iFinD、报告九段结构、29 个固定板块、HTML/附件/GitHub 交付）。第八条是排版与映射增量，第九条是知识星球分享文案，第十条是供收盘核验的当日判断基线，均不得覆盖原文。生成或修改收盘报告时还必须读取 `prompts/ashare-close-briefing.md`。
 
 提示词版本见 `prompts/VERSION`。冻结的用户原文在 `prompts/archive/v0.2.0_2026-09-21_user-original-1-to-7/`，**禁止修改 archive/**。改提示词后运行：
 
