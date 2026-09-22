@@ -2,6 +2,8 @@
 
 本仓库是 A 股开盘前早报（HTML）站点。
 
+换 Cursor 账号或新会话要延续定时任务时，先读 `prompts/CONTINUITY.md`（日程、模型、iFinD、交付顺序、哪些东西在 Git 里、哪些要在新账号重建）。
+
 ## 生成或改早报时
 
 必须先阅读并严格执行 `prompts/ashare-preopen-briefing.md`。
