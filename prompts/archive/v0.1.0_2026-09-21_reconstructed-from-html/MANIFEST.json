@@ -1,0 +1,12 @@
+{
+  "version": "0.1.0",
+  "date": "2026-09-21",
+  "slug": "reconstructed-from-html",
+  "notes": "从首份 HTML 反推，不是用户仪表盘原文",
+  "immutable": true,
+  "files": [
+    "ashare-preopen-briefing.md",
+    "automation-dashboard-prompt.md"
+  ],
+  "git": "0384f8b"
+}

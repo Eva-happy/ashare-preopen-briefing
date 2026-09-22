@@ -16,7 +16,7 @@ GitHub 仓库里点文件 →「分享」，发出去的是 **源码页**，其�
 1. 把仓库设为 **Public**（别人才能打开；Private 即使自己能看，对方通常打不开）
 2. 启用 Pages：Settings → Pages → Source 选 **GitHub Actions**，合并后等部署成功
 3. 复制上面的 `latest.html` 或 `r/日期_时间.html` 链接
-4. 粘贴到微信 / 浏览器 / 备忘录 → 点开即为排版报告
+4. 粘贴到微信 / 浏览器 / 备忘录 → 点开即为排版报告。知识星球请上传 HTML 文件，不要把链接当帖文。
 
 不要分享：
 
@@ -34,6 +34,25 @@ GitHub 仓库里点文件 →「分享」，发出去的是 **源码页**，其�
 ```text
 archive/年/月/A股开盘前早报_YYYY-MM-DD_HHMM.html
 ```
+
+## 自动任务提示词
+
+定时生成由 Cursor 自动任务 **「A股开盘前多源晨报」** 执行：
+
+https://cursor.com/automations/cbeb1ef9-b59d-11f1-bb68-864e54d14197
+
+完整规范在仓库内，**正文是原自动任务 Prompt，第八条才是排版增量，第九条是知识星球分享文案**。当前版本见 [`prompts/VERSION`](prompts/VERSION)，变更见 [`prompts/CHANGELOG.md`](prompts/CHANGELOG.md)，旧版冻结在 [`prompts/archive/`](prompts/archive/)。用法见 [`prompts/README.md`](prompts/README.md)。
+
+修改要求时先改当前文件，再运行 `python3 scripts/snapshot_prompt.py` 追加归档（不会覆盖旧目录），最后把 `prompts/automation-dashboard-prompt.md` 整段贴回自动任务 Prompt：
+
+- 完整规范：[`prompts/ashare-preopen-briefing.md`](prompts/ashare-preopen-briefing.md)
+- 仪表盘粘贴文本：[`prompts/automation-dashboard-prompt.md`](prompts/automation-dashboard-prompt.md)
+
+当前接口读不到自动任务 Prompt 正文，保存仪表盘仍需在上述链接里手动替换一次。
+
+自动任务对话必须额外输出一份**知识星球分享文案**（标题 + 正文，纯文本可复制）。星球里上传 HTML 文件，文案不要写链接。规则见提示词第九条。
+
+早报若只开了拉取请求，Pages 不会更新。`.github/workflows/merge-briefing.yml` 会把「标题含当天日期和早报、且只改报告文件」的拉取请求合并进 `main`，并触发 Pages 部署。
 
 新增报告后运行：
 

@@ -6,14 +6,82 @@
   <meta name="color-scheme" content="light">
   <title>A股开盘前早报｜2026-09-21 08:30</title>
   <style>
-    :root{--ink:#172033;--muted:#667085;--line:#e5e9f0;--bg:#f5f7fb;--card:#fff;--up:#c62828;--down:#087f5b;--warn:#b45309;--blue:#1d4ed8}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
-    a{color:var(--blue);overflow-wrap:anywhere}.wrap{width:min(1180px,100%);margin:auto;padding:18px}.hero{background:linear-gradient(135deg,#172554,#1e3a8a);color:#fff;padding:28px;border-radius:18px;box-shadow:0 12px 30px #17255422}
-    h1{font-size:clamp(25px,5vw,42px);line-height:1.15;margin:0 0 12px}h2{font-size:23px;margin:28px 0 10px}h3{font-size:18px;margin:18px 0 8px}.meta{opacity:.86}.chips,.grid{display:grid;gap:12px}.chips{grid-template-columns:repeat(4,1fr);margin-top:20px}.chip,.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}.chip{color:var(--ink)}.chip b{display:block;font-size:21px}.grid{grid-template-columns:repeat(2,1fr)}nav{position:sticky;top:0;z-index:3;margin:14px 0;padding:10px 14px;background:#ffffffeb;border:1px solid var(--line);border-radius:12px;backdrop-filter:blur(8px);overflow:auto;white-space:nowrap}nav a{margin-right:16px;text-decoration:none}
-    .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:#fff}table{width:100%;border-collapse:collapse;min-width:760px}th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}th{background:#eef2ff;position:sticky;top:0}tr:last-child td{border-bottom:0}.up{color:var(--up);font-weight:700}.down{color:var(--down);font-weight:700}.tag{display:inline-block;padding:1px 7px;border-radius:999px;font-size:12px;font-weight:700}.good{background:#fee2e2;color:#991b1b}.bad{background:#d1fae5;color:#065f46}.neutral{background:#e5e7eb;color:#374151}.warning{background:#fef3c7;color:#92400e}.note{color:var(--muted);font-size:13px}.callout{border-left:4px solid var(--warn);padding:10px 14px;background:#fffbeb;border-radius:8px}.category{border-top:4px solid #93c5fd}.category strong{color:#1e40af}details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:700}.sources li{margin:6px 0}.footer{margin:28px 0 8px;padding:20px;background:#172554;color:#fff;border-radius:14px;text-align:center}
-    @media(max-width:720px){.wrap{padding:10px}.hero{padding:20px}.chips,.grid{grid-template-columns:1fr 1fr}.chip{padding:12px}th,td{padding:8px;font-size:13px}}
-    @media(max-width:430px){.chips,.grid{grid-template-columns:1fr}h2{font-size:20px}}
-    @media print{body{background:#fff}.wrap{max-width:none}.hero,.card,details,.table-wrap{box-shadow:none;break-inside:avoid}nav,button{display:none}a{color:#111;text-decoration:none}.hero,.footer{background:#fff!important;color:#111;border:1px solid #aaa}}
+    :root{
+      --ink:#172033;--muted:#667085;--line:#e8edf5;--bg:#f3f6fb;--card:#fff;
+      --up:#c62828;--down:#087f5b;--warn:#b45309;--blue:#1d4ed8;
+      --orange:#d97706;--teal:#0f766e;--indigo:#3730a3;--sky:#2563eb;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+    a{color:var(--blue);overflow-wrap:anywhere}
+    .wrap{width:min(1180px,100%);margin:auto;padding:18px}
+    .hero{background:linear-gradient(135deg,#172554,#1e3a8a);color:#fff;padding:28px;border-radius:20px;box-shadow:0 12px 30px #17255422}
+    h1{font-size:clamp(25px,5vw,42px);line-height:1.15;margin:0 0 12px}
+    h2{font-size:22px;margin:0 0 16px;letter-spacing:.02em}
+    h3{font-size:16px;margin:0 0 10px}
+    .meta{opacity:.86}
+    .hero-chips,.kpi-grid,.grid{display:grid;gap:12px}
+    .hero-chips{grid-template-columns:repeat(4,1fr);margin-top:20px}
+    .hero-chip{background:#ffffff;color:var(--ink);border-radius:14px;padding:14px 16px}
+    .hero-chip span{color:var(--muted);font-size:13px}
+    .hero-chip b{display:block;font-size:21px;margin:4px 0 2px}
+    .hero-chip small{color:#667085}
+    nav{position:sticky;top:0;z-index:3;margin:14px 0;padding:10px 14px;background:#ffffffeb;border:1px solid var(--line);border-radius:12px;backdrop-filter:blur(8px);overflow:auto;white-space:nowrap}
+    nav a{margin-right:16px;text-decoration:none}
+    .panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px 26px 22px;margin:16px 0 0;box-shadow:0 8px 24px #1725540c;scroll-margin-top:64px}
+    .kpi-grid{grid-template-columns:repeat(4,1fr)}
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .kpi,.mini-card,.category{background:#fff;border:1px solid #edf1f7;border-radius:14px;padding:14px 16px;box-shadow:0 1px 2px #17203308}
+    .kpi .label{font-size:13px;font-weight:700}
+    .kpi .value{display:block;font-size:22px;font-weight:800;line-height:1.25;margin:6px 0 6px}
+    .kpi p,.mini-card p,.insight p{margin:0;color:#4b5563;font-size:13px;line-height:1.6}
+    .c-orange .label,.c-orange .value{color:var(--orange)}
+    .c-teal .label,.c-teal .value{color:var(--teal)}
+    .c-indigo .label,.c-indigo .value{color:var(--indigo)}
+    .c-sky .label,.c-sky .value{color:var(--sky)}
+    .subhead{margin:18px 0 10px;font-size:16px;font-weight:800}
+    .rank{list-style:none;margin:0;padding:0;counter-reset:rk}
+    .rank li{display:grid;grid-template-columns:28px auto 1fr;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px solid #f1f4f8}
+    .rank li:first-child{border-top:0;padding-top:2px}
+    .rank li::before{counter-increment:rk;content:counter(rk) ".";color:#94a3b8;font-weight:800;padding-top:1px}
+    .insight{margin-top:14px;border-left:4px solid #93c5fd;background:#f8fbff;border-radius:10px;padding:12px 14px}
+    .insight.warn{border-left-color:var(--warn);background:#fffbeb}
+    .insight b.ttl{display:block;margin-bottom:4px;color:#1e3a8a}
+    .insight.warn b.ttl{color:#92400e}
+    .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:#fff;margin-top:4px}
+    table{width:100%;border-collapse:collapse;min-width:760px}
+    th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+    th{background:#eef2ff;position:sticky;top:0}
+    tr:last-child td{border-bottom:0}
+    .up{color:var(--up);font-weight:700}
+    .down{color:var(--down);font-weight:700}
+    .tag{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap}
+    .good{background:#fee2e2;color:#991b1b}
+    .bad{background:#d1fae5;color:#065f46}
+    .neutral{background:#e5e7eb;color:#374151}
+    .warning{background:#fef3c7;color:#92400e}
+    .empty{background:#f1f5f9;color:#64748b}
+    .note{color:var(--muted);font-size:13px;margin:10px 0 0}
+    .muted{color:var(--muted)}
+    .category{border-top:4px solid #93c5fd}
+    .category strong{color:#1e40af}
+    .stat-row{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+    .pill{background:#eef2ff;color:#1e3a8a;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:700}
+    details{background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:10px 0}
+    summary{cursor:pointer;font-weight:700}
+    .sources li{margin:6px 0}
+    .footer{margin:28px 0 8px;padding:20px;background:#172554;color:#fff;border-radius:14px;text-align:center}
+    .none{color:#64748b;font-weight:700}
+    @media(max-width:900px){.kpi-grid,.hero-chips{grid-template-columns:1fr 1fr}}
+    @media(max-width:720px){
+      .wrap{padding:10px}.hero,.panel{padding:18px 16px}
+      .grid{grid-template-columns:1fr}
+      th,td{padding:8px;font-size:13px}
+      .rank li{grid-template-columns:22px auto 1fr}
+    }
+    @media(max-width:430px){.hero-chips,.kpi-grid{grid-template-columns:1fr}h2{font-size:20px}}
+    @media print{body{background:#fff}.wrap{max-width:none}.hero,.panel,.table-wrap{box-shadow:none;break-inside:avoid}nav,button{display:none}a{color:#111;text-decoration:none}.hero,.footer{background:#fff!important;color:#111;border:1px solid #aaa}}
   </style>
 </head>
 <body>
@@ -22,11 +90,11 @@
     <p style="margin:0 0 8px">A股开盘前研究</p>
     <h1>A股开盘前早报</h1>
     <div class="meta">报告日：2026-09-21（周一，正常交易日）｜数据截止：08:30（Asia/Shanghai）｜生成校验：2026-09-21</div>
-    <div class="chips">
-      <div class="chip"><span>风险温度</span><b>58 / 100</b><small>中性偏暖</small></div>
-      <div class="chip"><span>风格线索</span><b>科技成长</b><small>半导体 / 存储占优</small></div>
-      <div class="chip"><span>上日成交</span><b>2.077 万亿元</b><small>放量约 2540 亿元</small></div>
-      <div class="chip"><span>隔夜组合</span><b>美股分化</b><small>纳指 +0.39%，美债偏紧</small></div>
+    <div class="hero-chips">
+      <div class="hero-chip"><span>风险温度</span><b>58 / 100</b><small>中性偏暖</small></div>
+      <div class="hero-chip"><span>风格线索</span><b>科技成长</b><small>半导体 / 存储占优</small></div>
+      <div class="hero-chip"><span>上日成交</span><b>2.077 万亿元</b><small>放量约 2540 亿元</small></div>
+      <div class="hero-chip"><span>隔夜组合</span><b>美股分化</b><small>纳指 +0.39%，美债偏紧</small></div>
     </div>
   </header>
 
@@ -34,180 +102,281 @@
     <a href="#summary">核心摘要</a><a href="#global">隔夜外盘</a><a href="#macro">宏观</a><a href="#liquidity">政策流动性</a><a href="#review">A股复盘</a><a href="#events">公告</a><a href="#matrix">催化矩阵</a><a href="#sectors">固定板块</a><a href="#calendar">日历</a><a href="#risks">风险与来源</a>
   </nav>
 
-  <section id="summary">
+  <section class="panel" id="summary">
     <h2>一、核心摘要</h2>
-    <div class="grid">
-      <article class="card"><h3>开盘判断</h3><p>风险温度为<strong>中性偏暖</strong>。前一交易日A股放量普涨，科技链强势；隔夜纳指继续上涨、中概股收高，利于科技情绪延续。但美国10年期国债收益率约5.01%、美元指数偏强，抬高成长估值折现压力，开盘后需观察高位科技的承接而非追涨。</p></article>
-      <article class="card"><h3>可能的风格方向</h3><p><strong>科技成长 &gt; 医药/农业补涨 &gt; 高股息资源。</strong>存储、光刻机、先进封装与半导体在9月18日领先，长鑫科技第五代DRAM平台量产形成增量催化；油气、煤炭前日偏弱，且隔夜原油下跌，短线相对承压。</p></article>
+    <div class="kpi-grid">
+      <article class="kpi c-orange">
+        <span class="label">风险温度</span>
+        <span class="value">中性偏暖</span>
+        <p>纳指与中概收高、VIX回落支撑风险偏好；美债约5.01%、美元偏强抬升折现率，开盘宜观察高位科技承接。</p>
+      </article>
+      <article class="kpi c-teal">
+        <span class="label">风格倾向</span>
+        <span class="value">科技成长占优</span>
+        <p>上交易日半导体、存储、光刻机、先进封装同步走强；隔夜芯片链延续，成长仍优于高股息资源。</p>
+      </article>
+      <article class="kpi c-indigo">
+        <span class="label">政策催化</span>
+        <span class="value">医药 + 智造</span>
+        <p>医药工业“十五五”规划发布；制造业大会强调人工智能+制造、开源基座与垂类模型。</p>
+      </article>
+      <article class="kpi c-sky">
+        <span class="label">流动性</span>
+        <span class="value">等待当日信号</span>
+        <p>LPR已于9月20日持平公布。08:30时当日OMO、人民币中间价尚未发布，禁止以后值回填。</p>
+      </article>
     </div>
-    <ul>
-      <li><span class="tag good">催化</span> 长鑫科技公告第五代工艺平台量产并展示大容量LPDDR5X；利好存储芯片、半导体设备材料，但公司提示尚未规模销售。</li>
-      <li><span class="tag good">催化</span> 9月18日半导体链放量领涨，科创50涨2.89%，市场宽度明显改善。</li>
-      <li><span class="tag good">催化</span> 9月LPR于9月20日公布并维持1年期3.0%、5年期以上3.5%，政策定价稳定。</li>
-      <li><span class="tag bad">风险</span> 美国10年期国债收益率约5.01%，利率高位对高估值成长构成约束；DXY约100.21，美元偏强。</li>
-      <li><span class="tag bad">风险</span> 8月社融1.6577万亿元，低于约2.12万亿元市场预期，实体信贷需求仍偏弱。</li>
-    </ul>
+    <h3 class="subhead">最重要催化与风险</h3>
+    <ol class="rank">
+      <li><span class="tag good">利多</span><div><b>医药工业“十五五”规划</b>提出2030年规上医药工业营收超3.5万亿元、创新药产业规模年均增速超20%，利好创新药、CRO、生物制品、医药商业及AI制药。</div></li>
+      <li><span class="tag good">利多</span><div><b>世界制造业大会</b>释放“人工智能+制造、智能工厂、开源基座与垂类模型”方向，映射软件开发、IT服务、半导体和智能制造。</div></li>
+      <li><span class="tag good">利多</span><div>长鑫科技公告第五代DRAM平台量产并展示大容量LPDDR5X；叠加9月18日A股放量普涨，沪深两市成交2.0771万亿元、4234只上涨，科技板块形成较强短线动量。</div></li>
+      <li><span class="tag bad">利空</span><div>美国10年期国债收益率约5.01%，利率高位对高估值成长构成约束；DXY约100.21，美元偏强。</div></li>
+      <li><span class="tag warning">分化</span><div>8月PMI与CPI符合或好于预期，但新增社融1.6577万亿元低于市场一致预期约2.12万亿元，内需与信用扩张仍需验证。</div></li>
+    </ol>
+    <div class="insight">
+      <b class="ttl">开盘判断</b>
+      <p>可能的风格顺序为<strong>科技成长 &gt; 医药/农业补涨 &gt; 高股息资源</strong>。存储、光刻机、先进封装与半导体在9月18日领先，长鑫量产与隔夜芯片链构成增量催化；油气、煤炭前日偏弱，且隔夜原油下跌，短线相对承压。开盘后重点看高位科技的量价承接，而不是追涨。</p>
+    </div>
   </section>
 
-  <section id="global">
-    <h2>二、隔夜外盘</h2>
-    <p class="note">以下均为截至北京时间2026-09-21 08:30前的最新完成交易日收盘值，不是盘中实时价。美股及商品对应2026-09-18；获取时间为本报告采集时，数据边界冻结于08:30。</p>
+  <section class="panel" id="global">
+    <h2>二、隔夜外盘与跨资产</h2>
+    <p class="note" style="margin-top:0">以下均为截至北京时间2026-09-21 08:30前的最新完成交易日收盘值，不是盘中实时价。美股及商品对应2026-09-18；获取时间为本报告采集时，数据边界冻结于08:30。</p>
+    <div class="kpi-grid" style="margin:14px 0">
+      <article class="kpi c-teal"><span class="label">股指</span><span class="value">美股分化</span><p>纳指 +0.39%、标普 +0.17%、道指 -0.18%；金龙 +0.76%、A50 +0.81%，科技与中资资产偏强。</p></article>
+      <article class="kpi c-orange"><span class="label">利率外汇</span><span class="value">美债偏紧</span><p>10年期美债约5.01%、较前日约+5~6bp；DXY约100.21点。在岸/离岸人民币08:30快照未取得。</p></article>
+      <article class="kpi c-indigo"><span class="label">商品</span><span class="value">油跌金稳</span><p>WTI约95.47美元/桶、约-6.32%；黄金约4,416美元/盎司、约+0.37%；铜约6.64美元/磅、约+0.8%。</p></article>
+      <article class="kpi c-sky"><span class="label">波动率</span><span class="value">VIX 14.81</span><p>收跌4.08%，显示隔夜风险偏好回暖，与股指分化、利率上行并存，属于“情绪好、贴现率紧”的组合。</p></article>
+    </div>
     <div class="table-wrap"><table>
-      <thead><tr><th>资产</th><th>收盘值</th><th>涨跌</th><th>市场日期</th><th>单位/口径</th><th>来源</th></tr></thead>
+      <thead><tr><th>资产</th><th>收盘值</th><th>涨跌</th><th>市场日期</th><th>来源</th></tr></thead>
       <tbody>
-        <tr><td>标普500</td><td>7,650.50</td><td class="up">+0.17%</td><td>09-18</td><td>点，收盘</td><td>iFinD；<a href="https://stockmarketwatch.com/digest/2026-09-18">交叉核验</a></td></tr>
-        <tr><td>纳斯达克综指</td><td>26,522.55</td><td class="up">+0.39%</td><td>09-18</td><td>点，收盘</td><td>iFinD；<a href="https://stockmarketwatch.com/digest/2026-09-18">交叉核验</a></td></tr>
-        <tr><td>道琼斯工业指数</td><td>51,682.64</td><td class="down">-0.18%</td><td>09-18</td><td>点，收盘</td><td>iFinD；<a href="https://armenpress.am/en/article/1260844">交叉核验</a></td></tr>
-        <tr><td>纳斯达克中国金龙指数</td><td>5,787.39</td><td class="up">+0.76%</td><td>09-18</td><td>点，收盘</td><td><a href="https://www.dzcjw.com/meigu/2026/0919/220583.html">公开行情</a></td></tr>
-        <tr><td>富时中国A50指数</td><td>14,592.37</td><td class="up">+0.81%</td><td>09-18</td><td>点，指数收盘；期指口径不同</td><td>同花顺iFinD</td></tr>
-        <tr><td>美元指数 DXY</td><td>约100.21</td><td>周涨约1.10%</td><td>09-18</td><td>点，周收盘；日涨跌未取得</td><td><a href="https://komeytetteh.com/weekly/week-in-markets-september-18-2026">Komey Tetteh</a></td></tr>
-        <tr><td>美元兑人民币</td><td>未取得</td><td>未取得</td><td>—</td><td>在岸/离岸可靠08:30快照均未取得</td><td>iFinD查询为空</td></tr>
-        <tr><td>美国10年期国债收益率</td><td>约5.01%</td><td class="down">约+5~6bp</td><td>09-18</td><td>收益率，收盘附近</td><td><a href="https://komeytetteh.com/weekly/week-in-markets-september-18-2026">市场周报</a></td></tr>
-        <tr><td>VIX</td><td>14.81</td><td class="up">-4.08%</td><td>09-18</td><td>点，收盘</td><td>iFinD；<a href="https://stockmarketwatch.com/digest/2026-09-18">交叉核验</a></td></tr>
-        <tr><td>COMEX黄金</td><td>约4,416</td><td class="up">约+0.37%</td><td>09-18</td><td>美元/盎司，收盘附近</td><td><a href="https://macro.hotpixelgroup.com/">HPG Macro</a></td></tr>
-        <tr><td>COMEX铜</td><td>约6.64</td><td class="up">约+0.8%</td><td>09-18</td><td>美元/磅，收盘附近</td><td><a href="https://buttondown.com/fairvalue/archive/fair-value-friday-september-18-2026/">Fair Value</a></td></tr>
-        <tr><td>WTI原油</td><td>约95.47</td><td class="down">约-6.32%</td><td>09-18</td><td>美元/桶；不同资讯快照存在差异</td><td><a href="https://macro.hotpixelgroup.com/">HPG Macro</a></td></tr>
-        <tr><td>布伦特原油</td><td>未取得</td><td class="down">约-1.54%</td><td>09-18</td><td>收盘涨跌；价格未取得</td><td><a href="https://hyperdash.com/news/us-stocks-edge-to-records-as-oil-slides-and-yields-climb-on-fed-geopolitical-cues">Hyperdash</a></td></tr>
+        <tr><td>标普500</td><td>7,650.50 点</td><td class="up">+0.17%</td><td>09-18</td><td>iFinD；<a href="https://stockmarketwatch.com/digest/2026-09-18">交叉核验</a></td></tr>
+        <tr><td>纳斯达克综指</td><td>26,522.55 点</td><td class="up">+0.39%</td><td>09-18</td><td>iFinD；<a href="https://stockmarketwatch.com/digest/2026-09-18">交叉核验</a></td></tr>
+        <tr><td>道琼斯工业指数</td><td>51,682.64 点</td><td class="down">-0.18%</td><td>09-18</td><td>iFinD；<a href="https://armenpress.am/en/article/1260844">交叉核验</a></td></tr>
+        <tr><td>纳斯达克中国金龙指数</td><td>5,787.39 点</td><td class="up">+0.76%</td><td>09-18</td><td><a href="https://www.dzcjw.com/meigu/2026/0919/220583.html">公开行情</a></td></tr>
+        <tr><td>富时中国A50指数</td><td>14,592.37 点</td><td class="up">+0.81%</td><td>09-18</td><td>同花顺iFinD（指数收盘；期指口径不同）</td></tr>
+        <tr><td>美元指数 DXY</td><td>约100.21 点</td><td>周涨约1.10%</td><td>09-18</td><td><a href="https://komeytetteh.com/weekly/week-in-markets-september-18-2026">Komey Tetteh</a>（周收盘；日涨跌未取得）</td></tr>
+        <tr><td>美元兑人民币</td><td>未取得</td><td>未取得</td><td>—</td><td>iFinD查询为空；在岸/离岸可靠08:30快照均未取得</td></tr>
+        <tr><td>美国10年期国债收益率</td><td>约5.01%</td><td class="down">约+5~6bp</td><td>09-18</td><td><a href="https://komeytetteh.com/weekly/week-in-markets-september-18-2026">市场周报</a></td></tr>
+        <tr><td>VIX</td><td>14.81 点</td><td class="up">-4.08%</td><td>09-18</td><td>iFinD；<a href="https://stockmarketwatch.com/digest/2026-09-18">交叉核验</a></td></tr>
+        <tr><td>COMEX黄金</td><td>约4,416 美元/盎司</td><td class="up">约+0.37%</td><td>09-18</td><td><a href="https://macro.hotpixelgroup.com/">HPG Macro</a></td></tr>
+        <tr><td>COMEX铜</td><td>约6.64 美元/磅</td><td class="up">约+0.8%</td><td>09-18</td><td><a href="https://buttondown.com/fairvalue/archive/fair-value-friday-september-18-2026/">Fair Value</a></td></tr>
+        <tr><td>WTI原油</td><td>约95.47 美元/桶</td><td class="down">约-6.32%</td><td>09-18</td><td><a href="https://macro.hotpixelgroup.com/">HPG Macro</a>（不同资讯快照存在差异）</td></tr>
+        <tr><td>布伦特原油</td><td>价格未取得</td><td class="down">约-1.54%</td><td>09-18</td><td><a href="https://hyperdash.com/news/us-stocks-edge-to-records-as-oil-slides-and-yields-climb-on-fed-geopolitical-cues">Hyperdash</a></td></tr>
       </tbody>
     </table></div>
-    <div class="callout"><b>口径提示：</b>公开来源对WTI收盘价存在95.47美元与99.68美元两个快照，疑因合约/抓取时点不同；报告保留差异，不做强行合并。富时A50采用iFinD指数口径，不能与连续期货夜盘直接比较。</div>
+    <div class="insight">
+      <b class="ttl">数据解读</b>
+      <p>隔夜是<strong>股指偏暖、利率偏紧、商品内部分化</strong>的组合。纳指与费城半导体链走强、金龙和A50收高，有利于A股科技高开与情绪延续；但10年期美债回到约5.01%、美元指数偏强，会直接抬高成长股折现率，开盘后更容易出现“高开后分化”。VIX回落说明恐慌下降，不等于估值约束解除。油价明显下跌，对油气开采构成价格端压力，同时降低部分化工下游成本；铜价小幅上涨对工业金属情绪略有支撑。人民币中间价与即期汇率08:30前均未取得，外汇对A股的边际影响暂时无法定量。公开来源对WTI收盘价存在95.47美元与99.68美元两个快照，疑因合约/抓取时点不同，报告保留差异、不做强行合并。富时A50采用iFinD指数口径，不能与连续期货夜盘直接比较。</p>
+    </div>
   </section>
 
-  <section id="macro">
+  <section class="panel" id="macro">
     <h2>三、国内宏观预期差</h2>
+    <div class="kpi-grid" style="margin-bottom:14px">
+      <article class="kpi c-teal"><span class="label">制造业PMI</span><span class="value">49.8</span><p>前值49.2 / 预期49.5，高于预期0.3个百分点，但仍低于荣枯线。</p></article>
+      <article class="kpi c-sky"><span class="label">CPI同比</span><span class="value">0.8%</span><p>前值0.5%，符合0.8%的市场预期，物价温和回升。</p></article>
+      <article class="kpi c-orange"><span class="label">社融增量</span><span class="value">1.66万亿</span><p>8月新增16,577亿元，低于约21,200亿元预期，信用扩张偏弱。</p></article>
+      <article class="kpi c-indigo"><span class="label">预期差含义</span><span class="value">实物弱于物价</span><p>生产端改善、物价符合预期，但融资需求不足，宏观叙事仍是“弱复苏”。</p></article>
+    </div>
     <div class="table-wrap"><table>
-      <thead><tr><th>指标</th><th>最新值</th><th>前值</th><th>市场预期</th><th>预期差</th><th>数据期 / 公布日</th><th>单位与口径</th></tr></thead>
+      <thead><tr><th>指标</th><th>最新值</th><th>前值</th><th>市场预期</th><th>预期差</th><th>数据期 / 公布日</th></tr></thead>
       <tbody>
-        <tr><td>官方制造业PMI</td><td>49.8</td><td>49.2</td><td>49.5</td><td><span class="tag good">高于预期0.3</span></td><td>2026-08 / 08-31 09:30</td><td>%，季调扩散指数；国家统计局</td></tr>
-        <tr><td>CPI同比</td><td>0.8</td><td>0.5</td><td>0.8</td><td><span class="tag neutral">符合预期</span></td><td>2026-08 / 09-09 09:30</td><td>%，全国居民消费价格；2025年基期</td></tr>
-        <tr><td>社会融资规模增量</td><td>16,577</td><td>14,068</td><td>约21,200</td><td><span class="tag bad">低于预期约4,623亿元</span></td><td>2026-08 / 09-14</td><td>亿元，当月增量；人民银行</td></tr>
+        <tr><td>官方制造业PMI</td><td>49.8%</td><td>49.2%</td><td>49.5%</td><td><span class="tag good">高于预期0.3个百分点</span></td><td>2026-08 / 08-31 09:30</td></tr>
+        <tr><td>CPI同比</td><td>0.8%</td><td>0.5%</td><td>0.8%</td><td><span class="tag neutral">符合预期</span></td><td>2026-08 / 09-09 09:30</td></tr>
+        <tr><td>社会融资规模增量</td><td>16,577亿元</td><td>14,068亿元</td><td>约21,200亿元</td><td><span class="tag bad">低于预期约4,623亿元</span></td><td>2026-08 / 09-14</td></tr>
       </tbody>
     </table></div>
-    <p><b>解读：</b>PMI改善且超预期，但仍低于50；CPI同比温和回升且符合预期；社融低于预期，直接融资对表内信贷形成替代，内生融资需求仍是宏观弱项。</p>
-    <p class="note">下一次：9月PMI通常于9月30日09:30公布；9月CPI具体官方日程未取得；下一期社融无固定日，人民银行通常月中公布。未取得官方日程的项目不猜测具体日期。</p>
-    <p>来源：<a href="https://www.stats.gov.cn/sj/zxfb/202608/t20260831_1965154.html">国家统计局PMI</a>、<a href="https://www.stats.gov.cn/sj/zxfb/202609/t20260909_1965263.html">国家统计局CPI</a>、同花顺iFinD EDB、<a href="https://finance.caixin.com/2026-09-14/102484845.html">财新社融报道</a>。</p>
+    <div class="insight">
+      <b class="ttl">数据解读</b>
+      <p>PMI回升且超预期，显示生产与新订单有所修复，但绝对值仍在49.8、低于50，扩张并不稳固，对电网设备、化学制品等中游制造是温和利好而非趋势反转。CPI同比回升到0.8%且完全符合预期，通胀约束有限，不会立即倒逼货币收紧。真正的拖累是社融：8月增量较预期少约4,623亿元，直接融资对表内信贷形成替代，实体融资需求仍弱，对多元金融和顺周期定价偏空。综合看，宏观面支持“结构行情继续、全面信用扩张尚待验证”。</p>
+    </div>
+    <p class="note">口径：PMI为季调扩散指数，国家统计局；CPI为全国居民消费价格（2025年基期）；社融为人民银行当月增量。下一次：9月PMI通常于9月30日09:30公布；9月CPI具体官方日程未取得；下一期社融无固定日，人民银行通常月中公布。未取得官方日程的项目不猜测具体日期。</p>
+    <p class="note">来源：<a href="https://www.stats.gov.cn/sj/zxfb/202608/t20260831_1965154.html">国家统计局PMI</a>、<a href="https://www.stats.gov.cn/sj/zxfb/202609/t20260909_1965263.html">国家统计局CPI</a>、同花顺iFinD EDB、<a href="https://finance.caixin.com/2026-09-14/102484845.html">财新社融报道</a>。</p>
   </section>
 
-  <section id="liquidity">
+  <section class="panel" id="liquidity">
     <h2>四、政策与流动性</h2>
-    <ul>
-      <li><b>公开市场：</b>截至08:30，9月21日当日操作尚未发布，不纳入后来披露的操作结果。9月18日人民银行开展4,633亿元7天期和1,000亿元14天期逆回购，7天期利率1.40%；当日到期合计6,040亿元，不同报道对净回笼40亿元/407亿元存在计算口径冲突，予以保留。<a href="https://www.cnstock.com/commonDetail/792072">上证报</a></li>
-      <li><b>本周到期：</b>9月21日至24日7天期逆回购合计到期2,720亿元，其中21日、22日均为0，23日1,100亿元，24日1,620亿元；9月22日另有1,800亿元国库现金定存到期。<a href="https://www.yicai.com/brief/103371347.html">第一财经</a></li>
-      <li><b>LPR：</b>9月20日公布，1年期3.0%、5年期以上3.5%，均持平。<a href="https://jrj.sh.gov.cn/SCGK194/20260920/736cd13499494746bebda910dd12cc65.html">人民银行信息转载页</a></li>
-      <li><b>人民币中间价：</b>9月21日中间价在08:30尚未公布；9月18日具体中间价数值未取得，禁止补写。</li>
-    </ul>
+    <div class="kpi-grid" style="margin-bottom:14px">
+      <article class="kpi c-sky"><span class="label">LPR</span><span class="value">持平</span><p>9月20日公布：1年期3.0%，5年期以上3.5%，政策定价稳定。</p></article>
+      <article class="kpi c-orange"><span class="label">当日OMO</span><span class="value">尚未发布</span><p>08:30前9月21日公开市场操作未公布，不纳入后来披露的结果。</p></article>
+      <article class="kpi c-indigo"><span class="label">本周到期</span><span class="value">2,720亿</span><p>9月21—24日7天期逆回购到期2,720亿元；21日、22日均为0。</p></article>
+      <article class="kpi c-teal"><span class="label">中间价</span><span class="value">等待公布</span><p>9月21日人民币中间价08:30尚未公布；9月18日具体数值未取得。</p></article>
+    </div>
+    <div class="mini-card">
+      <h3>关键事实</h3>
+      <ul style="margin:0;padding-left:1.2em">
+        <li><b>公开市场：</b>9月18日人民银行开展4,633亿元7天期和1,000亿元14天期逆回购，7天期利率1.40%；当日到期合计6,040亿元。不同报道对净回笼40亿元/407亿元存在计算口径冲突，予以保留。<a href="https://www.cnstock.com/commonDetail/792072">上证报</a></li>
+        <li><b>后续到期：</b>23日到期1,100亿元，24日到期1,620亿元；9月22日另有1,800亿元国库现金定存到期。<a href="https://www.yicai.com/brief/103371347.html">第一财经</a></li>
+        <li><b>LPR：</b><a href="https://jrj.sh.gov.cn/SCGK194/20260920/736cd13499494746bebda910dd12cc65.html">人民银行信息转载页</a></li>
+      </ul>
+    </div>
+    <div class="insight">
+      <b class="ttl">数据解读</b>
+      <p>LPR连续持平，说明短期没有额外降息信号，对银行息差和地产链既不是新的利多、也不是新的利空，核心是“政策定价稳定”。周一、周二逆回购到期为0，真正的跨季资金压力在周三、周四，外加周二1,800亿元国库现金定存到期。开盘前最需要盯的是9时前后的OMO和中间价：若央行对冲偏积极，有利于风险偏好延续；若净回笼叠加美元偏强，成长股估值约束会更明显。中间价未公布前，不宜用盘后汇率倒推开盘判断。</p>
+    </div>
   </section>
 
-  <section id="review">
+  <section class="panel" id="review">
     <h2>五、前一交易日A股复盘（2026-09-18）</h2>
+    <div class="stat-row">
+      <span class="pill">沪深成交 20,771亿元</span>
+      <span class="pill">放量约2,540亿元</span>
+      <span class="pill">上涨4,234 / 下跌1,152</span>
+      <span class="pill">涨停80 / 跌停1</span>
+    </div>
     <div class="table-wrap"><table>
       <thead><tr><th>指数/指标</th><th>收盘</th><th>涨跌点</th><th>涨跌幅</th><th>成交额</th></tr></thead>
       <tbody>
-        <tr><td>上证指数</td><td>3,911.87</td><td>+36.27</td><td class="up">+0.94%</td><td>9,941.69亿元</td></tr>
-        <tr><td>深证成指</td><td>13,640.87</td><td>+230.96</td><td class="up">+1.72%</td><td>10,829亿元</td></tr>
-        <tr><td>创业板指</td><td>3,372.68</td><td>+74.37</td><td class="up">+2.25%</td><td>5,254.01亿元</td></tr>
-        <tr><td>科创50</td><td>1,652.63</td><td>+46.34</td><td class="up">+2.89%</td><td>1,176.53亿元</td></tr>
-        <tr><td>沪深300</td><td>4,507.39</td><td>+47.24</td><td class="up">+1.06%</td><td>5,376.99亿元</td></tr>
+        <tr><td>上证指数</td><td>3,911.87 点</td><td>+36.27 点</td><td class="up">+0.94%</td><td>9,941.69亿元</td></tr>
+        <tr><td>深证成指</td><td>13,640.87 点</td><td>+230.96 点</td><td class="up">+1.72%</td><td>10,829亿元</td></tr>
+        <tr><td>创业板指</td><td>3,372.68 点</td><td>+74.37 点</td><td class="up">+2.25%</td><td>5,254.01亿元</td></tr>
+        <tr><td>科创50</td><td>1,652.63 点</td><td>+46.34 点</td><td class="up">+2.89%</td><td>1,176.53亿元</td></tr>
+        <tr><td>沪深300</td><td>4,507.39 点</td><td>+47.24 点</td><td class="up">+1.06%</td><td>5,376.99亿元</td></tr>
       </tbody>
     </table></div>
-    <p>沪深两市成交额约<strong>20,771亿元</strong>，较前日放量约2,540亿元；上涨4,234家、下跌1,152家、平盘167家。涨停80家、跌停1家（不含当日上市新股口径）；部分媒体计79家涨停，差异来自统计范围。半导体、存储、先进封装和地产领涨；煤炭、油气相对落后。科技链量价齐升，但首板扩散多、高位连板高度下降，提示强趋势与短线分歧并存。</p>
+    <div class="insight">
+      <b class="ttl">数据解读</b>
+      <p>这是典型的<strong>放量普涨 + 成长占优</strong>交易日：科创50涨2.89%、创业板涨2.25%，显著强于上证与沪深300；上涨家数是下跌家数的约3.7倍，市场宽度改善。半导体、存储、先进封装和地产领涨，煤炭、油气落后，风格与隔夜外盘、产业催化一致。量能上看，科技链量价齐升，但首板扩散多、高位连板高度下降，说明强趋势与短线分歧并存——周一更应看高位品种是否还能被资金接手，而不是简单外推“继续普涨”。部分媒体计79家涨停，与80家的差异来自统计范围，不影响方向判断。</p>
+    </div>
     <p class="note">指数行情来源：同花顺iFinD；宽度与涨跌停：<a href="https://finance.eastmoney.com/a/202609183878616119.html">证券时报·数据宝</a>；成交额：<a href="https://www.nbd.com.cn/articles/2026-09-18/4585406.html">每日经济新闻</a>。</p>
   </section>
 
-  <section id="events">
+  <section class="panel" id="events">
     <h2>六、公告与事件催化（09-18收盘后—09-21 08:30）</h2>
+    <div class="kpi-grid" style="margin-bottom:14px">
+      <article class="kpi c-teal"><span class="label">产业公告</span><span class="value">长鑫量产</span><p>映射存储芯片、半导体、光刻机、电子化学品、先进封装。</p></article>
+      <article class="kpi c-indigo"><span class="label">政策事件</span><span class="value">十五五 + 智造</span><p>医药规划映射创新药全链；制造业大会映射软件、IT、半导体。</p></article>
+      <article class="kpi c-orange"><span class="label">公司催化</span><span class="value">医药临床/审批</span><p>申联生物II期达终点、贝达药业获CHMP积极意见，映射生物制品与化学制药。</p></article>
+      <article class="kpi c-sky"><span class="label">监管与重组</span><span class="value">个股级</span><p>茅台回购、华锡复牌、并行科技算力合同为个股事件，板块映射有限。</p></article>
+    </div>
     <div class="table-wrap"><table>
-      <thead><tr><th>时间</th><th>公司/事件</th><th>核心事实</th><th>方向</th><th>来源</th></tr></thead>
+      <thead><tr><th>时间</th><th>公司/事件</th><th>核心事实</th><th>映射板块</th><th>方向</th><th>来源</th></tr></thead>
       <tbody>
-        <tr><td>09-20晚</td><td>长鑫科技 688825</td><td>第五代DRAM工艺平台实现量产，展示大容量LPDDR5X；尚未规模销售，短期业绩影响有限。</td><td><span class="tag good">利好存储链</span></td><td><a href="https://www.nbd.com.cn/articles/2026-09-20/4586815.html">公司公告转引</a></td></tr>
-        <tr><td>09-20晚</td><td>贵州茅台 600519</td><td>拟以自有资金回购30亿—60亿元并注销、减少注册资本。</td><td><span class="tag good">利好</span></td><td><a href="https://finance.sina.com.cn/roll/2026-09-20/doc-inisnsst2451975.shtml">公告汇总</a></td></tr>
-        <tr><td>09-21 01:31</td><td>申联生物 688098</td><td>UB-221治疗慢性自发性荨麻疹II期临床达到主要终点；仍需III期及审评审批。</td><td><span class="tag good">医药催化</span></td><td><a href="https://finance.sina.com.cn/roll/2026-09-21/doc-inispchq9154274.shtml">公告全文</a></td></tr>
-        <tr><td>09-21 00:00</td><td>贝达药业 300558</td><td>恩沙替尼欧洲上市许可申请获CHMP积极意见；最终批准仍有不确定性。</td><td><span class="tag good">医药催化</span></td><td><a href="https://www.9fzt.com/detail/sz_300558_9_d38cbdb06f35a178055c7b5afec72b1f.html">深交所公告转引</a></td></tr>
-        <tr><td>09-18晚</td><td>华锡有色 600301</td><td>中国五矿拟取得间接控股股东51%股权，实控人拟变更；9月21日复牌。</td><td><span class="tag good">重组/复牌</span></td><td><a href="https://finance.eastmoney.com/a/202609183878801632.html">公告汇总</a></td></tr>
-        <tr><td>09-18晚</td><td>佳禾智能 300793</td><td>拟现金收购华泽电子55%股权，暂定预估值3.3亿元。</td><td><span class="tag neutral">并购</span></td><td><a href="https://finance.eastmoney.com/a/202609183878801632.html">公告汇总</a></td></tr>
-        <tr><td>09-18晚</td><td>并行科技</td><td>子公司签订19.13亿元GPU算力合同。</td><td><span class="tag good">算力利好</span></td><td><a href="http://mp.cnfol.com/57306/article/1789743605-142727468.html">北交所公告汇总</a></td></tr>
-        <tr><td>09-18晚</td><td>京城股份等</td><td>京城股份子公司、康芝药业、*ST九鼎、中铁装配被立案；另有多家公司被行政处罚。</td><td><span class="tag bad">监管风险</span></td><td><a href="https://www.sfccn.com/2026/9-20/3NMDE0MDRfMjI0NzM3NQ.html">21财经</a></td></tr>
+        <tr><td>09-20</td><td>长鑫科技 688825</td><td>第五代DRAM工艺平台实现量产，展示大容量LPDDR5X；尚未规模销售，短期业绩影响有限。</td><td>存储芯片 886042；半导体 881122；光刻机 886054；电子化学品 881172；先进封装 886009</td><td><span class="tag good">利好存储链</span></td><td><a href="https://www.nbd.com.cn/articles/2026-09-20/4586815.html">公司公告转引</a></td></tr>
+        <tr><td>09-20</td><td>世界制造业大会</td><td>工信部提出深入推进“人工智能+制造”，梯度培育智能工厂，大力发展开源基座模型与垂类模型。</td><td>软件开发 881272；IT服务 881271；半导体 881122；电网设备 881278</td><td><span class="tag good">利好智造链</span></td><td><a href="http://news.10jqka.com.cn/19700122/c680090853.shtml">同花顺财经</a></td></tr>
+        <tr><td>09-18</td><td>医药工业“十五五”规划</td><td>十部门发布规划：2030年规上医药工业营收超3.5万亿元，创新药产业规模年均增速20%以上。</td><td>生物制品 881142；生物医药 399441；化学制药 881140；CRO 885927；医药商业 881143</td><td><span class="tag good">利好创新药链</span></td><td><a href="https://m.cnpharm.com/c/2026-09-18/1107276.shtml">中国医药报解读</a></td></tr>
+        <tr><td>09-20</td><td>国家能源局用电数据</td><td>8月全社会用电量10,332亿千瓦时、同比+1.7%；高技术及装备制造业用电同比+7.2%，互联网数据服务用电同比+37.9%。</td><td>电力 881145；电网设备 881278；IT服务 881271</td><td><span class="tag good">利好电力/算电</span></td><td><a href="https://china.cnr.cn/gdgg/20260920/t20260920_527819144.shtml">央广网</a></td></tr>
+        <tr><td>09-18至09-19</td><td>数字乡村行动计划</td><td>中央网信办、农业农村部、工信部印发《数字乡村高质量发展行动计划（2026—2030年）》，聚焦农业数字化基建、智能农机与涉农大数据。</td><td>种植业与林业 881101；IT服务 881271</td><td><span class="tag good">利好农业信息化</span></td><td><a href="http://news.10jqka.com.cn/19700122/c680046155.shtml">政策报道</a></td></tr>
+        <tr><td>09-21 01:31</td><td>申联生物 688098</td><td>UB-221治疗慢性自发性荨麻疹II期临床达到主要终点；仍需III期及审评审批。</td><td>生物制品 881142；CRO 885927</td><td><span class="tag good">医药催化</span></td><td><a href="https://finance.sina.com.cn/roll/2026-09-21/doc-inispchq9154274.shtml">公告全文</a></td></tr>
+        <tr><td>09-21 00:00</td><td>贝达药业 300558</td><td>恩沙替尼欧洲上市许可申请获CHMP积极意见；最终批准仍有不确定性。</td><td>化学制药 881140；生物医药 399441</td><td><span class="tag good">医药催化</span></td><td><a href="https://www.9fzt.com/detail/sz_300558_9_d38cbdb06f35a178055c7b5afec72b1f.html">深交所公告转引</a></td></tr>
+        <tr><td>09-20晚</td><td>贵州茅台 600519</td><td>拟以自有资金回购30亿—60亿元并注销、减少注册资本。</td><td>非跟踪板块（白酒）；对固定清单无直接映射</td><td><span class="tag good">利好个股</span></td><td><a href="https://finance.sina.com.cn/roll/2026-09-20/doc-inisnsst2451975.shtml">公告汇总</a></td></tr>
+        <tr><td>09-18晚</td><td>华锡有色 600301</td><td>中国五矿拟取得间接控股股东51%股权，实控人拟变更；9月21日复牌。</td><td>非跟踪板块（有色）；无固定清单映射</td><td><span class="tag good">重组/复牌</span></td><td><a href="https://finance.eastmoney.com/a/202609183878801632.html">公告汇总</a></td></tr>
+        <tr><td>09-18晚</td><td>佳禾智能 300793</td><td>拟现金收购华泽电子55%股权，暂定预估值3.3亿元。</td><td>非跟踪板块（消费电子代工）；无固定清单映射</td><td><span class="tag neutral">并购</span></td><td><a href="https://finance.eastmoney.com/a/202609183878801632.html">公告汇总</a></td></tr>
+        <tr><td>09-18晚</td><td>并行科技</td><td>子公司签订19.13亿元GPU算力合同。</td><td>IT服务 881271</td><td><span class="tag good">算力利好</span></td><td><a href="http://mp.cnfol.com/57306/article/1789743605-142727468.html">北交所公告汇总</a></td></tr>
+        <tr><td>09-18晚</td><td>京城股份等</td><td>京城股份子公司、康芝药业、*ST九鼎、中铁装配被立案；另有多家公司被行政处罚。</td><td>个股监管风险，不上升为板块催化</td><td><span class="tag bad">监管风险</span></td><td><a href="https://www.sfccn.com/2026/9-20/3NMDE0MDRfMjI0NzM3NQ.html">21财经</a></td></tr>
       </tbody>
     </table></div>
-    <p class="note">同花顺公告语义检索本时段返回为空，以上以交易所公告转引和可信媒体复核。只纳入08:30前已公开事项；当日盘中、盘后公告不倒填。</p>
+    <div class="insight">
+      <b class="ttl">事件解读与映射说明</b>
+      <p>本时段最清晰的板块映射有三条：<b>长鑫量产 → 存储/半导体设备材料</b>、<b>医药“十五五”+两则临床/审批公告 → 创新药全链</b>、<b>世界制造业大会 → 软件/IT/智能制造</b>。用电数据对电力和电网设备是需求侧印证，但对煤炭没有形成独立价格催化。茅台回购、华锡复牌、佳禾并购和立案处罚停在个股层，不向固定跟踪板块扩散。同花顺公告语义检索本时段返回为空，以上以交易所公告转引、部委通稿和可信媒体复核。只纳入08:30前已公开事项；当日盘中、盘后公告不倒填。</p>
+    </div>
   </section>
 
-  <section id="matrix">
+  <section class="panel" id="matrix">
     <h2>七、事件—板块催化矩阵</h2>
+    <p class="note" style="margin-top:0">覆盖全部29个固定跟踪板块。有对应事件的写明映射；检索后仍无08:30前可对应事件的，标记为<strong>今日暂无</strong>，不留空行。</p>
     <div class="table-wrap"><table>
-      <thead><tr><th>事件</th><th>方向</th><th>板块名称与代码</th><th>强度</th><th>可信度</th><th>有效时间</th><th>原始/可访问来源</th></tr></thead>
+      <thead><tr><th>板块名称与代码</th><th>对应事件</th><th>方向</th><th>强度</th><th>可信度</th><th>有效时间</th><th>原始/可访问来源</th></tr></thead>
       <tbody>
-        <tr><td>长鑫第五代DRAM平台量产</td><td><span class="tag good">利好</span></td><td>存储芯片 886042；半导体 881122；光刻机 886054；电子化学品 881172</td><td>高</td><td>高（公司公告）</td><td>1—5交易日，产业趋势更长</td><td><a href="https://www.nbd.com.cn/articles/2026-09-20/4586815.html">公告转引</a></td></tr>
-        <tr><td>美股费城半导体指数上涨2.78%</td><td><span class="tag good">利好</span></td><td>半导体 881122；先进封装 886009；CPO 886033</td><td>中高</td><td>高（市场行情）</td><td>当日开盘</td><td><a href="https://www.gate.com/zh-tw/news/detail/us-stocks-close-mixed-as-treasury-yields-rebound-and-semiconductor-stocks-24385205">隔夜行情</a></td></tr>
-        <tr><td>申联生物II期达到主要终点、贝达药业获CHMP积极意见</td><td><span class="tag good">利好</span></td><td>生物制品 881142；生物医药 399441；化学制药 881140；CRO 885927</td><td>中</td><td>高（公司公告）</td><td>1—3交易日</td><td><a href="https://finance.sina.com.cn/roll/2026-09-21/doc-inispchq9154274.shtml">申联生物</a></td></tr>
-        <tr><td>8月社融低于预期</td><td><span class="tag bad">利空</span></td><td>多元金融 881283；顺周期</td><td>中</td><td>高（央行数据）</td><td>月度</td><td><a href="https://finance.caixin.com/2026-09-14/102484845.html">财新</a></td></tr>
-        <tr><td>WTI原油隔夜明显下跌</td><td><span class="tag bad">利空</span></td><td>油气开采及服务 881107；化学原料 881108（成本端偏利好）</td><td>中</td><td>中（价格口径有差异）</td><td>1—3交易日</td><td><a href="https://macro.hotpixelgroup.com/">市场快照</a></td></tr>
-        <tr><td>美国10年期收益率约5.01%</td><td><span class="tag bad">利空估值</span></td><td>科技成长、CRO、软件开发 881272</td><td>中高</td><td>高</td><td>利率维持高位期间</td><td><a href="https://komeytetteh.com/weekly/week-in-markets-september-18-2026">市场周报</a></td></tr>
-        <tr><td>PMI生产和新订单回到扩张区间</td><td><span class="tag good">利好</span></td><td>电网设备 881278；化学制品 881109；IT服务 881271</td><td>中</td><td>高（国家统计局）</td><td>月度</td><td><a href="https://www.stats.gov.cn/sj/zxfb/202608/t20260831_1965154.html">国家统计局</a></td></tr>
+        <tr><td>元件 881270</td><td>隔夜纳指与半导体链走强，消费电子元件情绪跟随；无独立新公告。</td><td><span class="tag good">利好</span></td><td>低</td><td>中（行情映射）</td><td>当日开盘</td><td><a href="https://stockmarketwatch.com/digest/2026-09-18">隔夜行情</a></td></tr>
+        <tr><td>半导体 881122</td><td>长鑫第五代DRAM平台量产；隔夜芯片股走强；世界制造业大会强调智能制造软硬件基础。</td><td><span class="tag good">利好</span></td><td>高</td><td>高（公告+行情+政策）</td><td>1—5交易日</td><td><a href="https://www.nbd.com.cn/articles/2026-09-20/4586815.html">长鑫转引</a></td></tr>
+        <tr><td>存储芯片 886042</td><td>长鑫第五代工艺平台量产并展示24Gb LPDDR5X；公司提示尚未规模销售。</td><td><span class="tag good">利好</span></td><td>高</td><td>高（公司公告）</td><td>1—5交易日，产业趋势更长</td><td><a href="https://www.nbd.com.cn/articles/2026-09-20/4586815.html">公告转引</a></td></tr>
+        <tr><td>电子化学品 881172</td><td>长鑫量产提升国产存储制造材料与湿电子化学品需求预期。</td><td><span class="tag good">利好</span></td><td>中</td><td>中高（产业映射）</td><td>1—5交易日</td><td><a href="https://www.nbd.com.cn/articles/2026-09-20/4586815.html">公告转引</a></td></tr>
+        <tr><td>铜缆高速连接 886073</td><td>隔夜AI硬件与芯片股走强的互连链跟随；无独立新公告。</td><td><span class="tag good">利好</span></td><td>低</td><td>中（行情映射）</td><td>当日开盘</td><td><a href="https://stockmarketwatch.com/digest/2026-09-18">隔夜行情</a></td></tr>
+        <tr><td>光纤概念 886088</td><td>隔夜算力硬件情绪对光通信的跟随映射；无独立新公告。</td><td><span class="tag good">利好</span></td><td>低</td><td>中（行情映射）</td><td>当日开盘</td><td><a href="https://stockmarketwatch.com/digest/2026-09-18">隔夜行情</a></td></tr>
+        <tr><td>PCB概念 885959</td><td>9月中旬至18日覆铜板涨价链持续：电子布、铜箔及覆铜板价格上行，部分PCB厂商重新报价。</td><td><span class="tag good">利好</span></td><td>中</td><td>中高（行业报道）</td><td>1—10交易日</td><td>证券时报等9月14—18日行业报道</td></tr>
+        <tr><td>第三代半导体 885908</td><td>今日暂无</td><td><span class="tag empty">—</span></td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td>光刻机 886054</td><td>长鑫G5平台量产验证国产存储制造设备与材料需求。</td><td><span class="tag good">利好</span></td><td>中高</td><td>高（公司公告映射）</td><td>1—5交易日</td><td><a href="https://www.nbd.com.cn/articles/2026-09-20/4586815.html">公告转引</a></td></tr>
+        <tr><td>先进封装 886009</td><td>长鑫量产 + 隔夜半导体走强，先进封装作为存储/芯片后道环节受益。</td><td><span class="tag good">利好</span></td><td>中高</td><td>高</td><td>1—5交易日</td><td><a href="https://www.nbd.com.cn/articles/2026-09-20/4586815.html">公告转引</a></td></tr>
+        <tr><td>共封装光学(CPO) 886033</td><td>隔夜AI硬件与半导体走强；无新的CPO量产或订单公告。</td><td><span class="tag good">利好</span></td><td>中</td><td>中（行情映射）</td><td>当日开盘</td><td><a href="https://www.gate.com/zh-tw/news/detail/us-stocks-close-mixed-as-treasury-yields-rebound-and-semiconductor-stocks-24385205">隔夜行情</a></td></tr>
+        <tr><td>油气开采及服务 881107</td><td>WTI原油隔夜约-6.32%，价格端直接承压。</td><td><span class="tag bad">利空</span></td><td>中</td><td>中（价格口径有差异）</td><td>1—3交易日</td><td><a href="https://macro.hotpixelgroup.com/">市场快照</a></td></tr>
+        <tr><td>煤炭开采加工 881105</td><td>今日暂无</td><td><span class="tag empty">—</span></td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td>电网设备 881278</td><td>世界制造业大会部署智能工厂；8月高技术及装备制造业用电同比+7.2%；PMI生产与新订单改善。</td><td><span class="tag good">利好</span></td><td>中</td><td>高（政策+官方数据）</td><td>1—10交易日 / 月度</td><td><a href="https://china.cnr.cn/gdgg/20260920/t20260920_527819144.shtml">国家能源局转引</a></td></tr>
+        <tr><td>电力 881145</td><td>国家能源局：8月全社会用电量10,332亿千瓦时、同比+1.7%，负荷创历史新高15.6亿千瓦。</td><td><span class="tag good">利好</span></td><td>中</td><td>高（官方数据）</td><td>月度</td><td><a href="https://china.cnr.cn/gdgg/20260920/t20260920_527819144.shtml">央广网</a></td></tr>
+        <tr><td>农产品加工 881103</td><td>今日暂无</td><td><span class="tag empty">—</span></td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td>粮油加工 884010</td><td>今日暂无</td><td><span class="tag empty">—</span></td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td>种植业与林业 881101</td><td>《数字乡村高质量发展行动计划（2026—2030年）》印发，强调农业数字化基建与智能农机。</td><td><span class="tag good">利好</span></td><td>低</td><td>高（政策文件）</td><td>政策期，短线脉冲有限</td><td><a href="http://news.10jqka.com.cn/19700122/c680046155.shtml">政策报道</a></td></tr>
+        <tr><td>养殖业 881102</td><td>今日暂无</td><td><span class="tag empty">—</span></td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td>医药商业 881143</td><td>医药工业“十五五”规划提出产业规模上台阶、畅通临床转化与保供体系，渠道端间接受益。</td><td><span class="tag good">利好</span></td><td>中</td><td>高（政策）</td><td>政策期</td><td><a href="https://m.cnpharm.com/c/2026-09-18/1107276.shtml">规划解读</a></td></tr>
+        <tr><td>CRO概念 885927</td><td>“十五五”规划强调创新药研发与临床转化；申联生物II期达终点提供订单/情绪映射。美国长端利率约5.01%对高估值CRO构成约束。</td><td><span class="tag warning">分化</span></td><td>中</td><td>高</td><td>1—3交易日 / 利率维持期</td><td><a href="https://finance.sina.com.cn/roll/2026-09-21/doc-inispchq9154274.shtml">申联生物</a></td></tr>
+        <tr><td>生物制品 881142</td><td>申联生物II期达到主要终点；叠加“十五五”创新药产业规模年均增速超20%的目标。</td><td><span class="tag good">利好</span></td><td>中高</td><td>高（公告+政策）</td><td>1—3交易日</td><td><a href="https://finance.sina.com.cn/roll/2026-09-21/doc-inispchq9154274.shtml">申联生物</a></td></tr>
+        <tr><td>生物医药 399441</td><td>医药工业“十五五”规划 + 贝达药业获CHMP积极意见。</td><td><span class="tag good">利好</span></td><td>中</td><td>高</td><td>1—3交易日 / 政策期</td><td><a href="https://www.9fzt.com/detail/sz_300558_9_d38cbdb06f35a178055c7b5afec72b1f.html">贝达药业</a></td></tr>
+        <tr><td>化学制药 881140</td><td>贝达药业恩沙替尼欧洲上市许可申请获CHMP积极意见；规划利好创新药械。</td><td><span class="tag good">利好</span></td><td>中</td><td>高（公司公告）</td><td>1—3交易日</td><td><a href="https://www.9fzt.com/detail/sz_300558_9_d38cbdb06f35a178055c7b5afec72b1f.html">深交所公告转引</a></td></tr>
+        <tr><td>IT服务 881271</td><td>世界制造业大会“人工智能+制造”；并行科技子公司签订19.13亿元GPU算力合同；数据中心用电高增。</td><td><span class="tag good">利好</span></td><td>中高</td><td>高</td><td>1—5交易日</td><td><a href="http://mp.cnfol.com/57306/article/1789743605-142727468.html">北交所公告汇总</a></td></tr>
+        <tr><td>软件开发 881272</td><td>工信部提出大力发展开源基座模型与垂类模型；同时美国10年期收益率约5.01%压制高估值软件。</td><td><span class="tag warning">分化</span></td><td>中</td><td>高</td><td>1—5交易日 / 利率维持期</td><td><a href="http://news.10jqka.com.cn/19700122/c680090853.shtml">同花顺财经</a></td></tr>
+        <tr><td>化学原料 881108</td><td>WTI原油隔夜明显下跌，成本端偏利好、资源品价格波动造成内部分化。</td><td><span class="tag warning">分化</span></td><td>中</td><td>中（油价口径有差异）</td><td>1—3交易日</td><td><a href="https://macro.hotpixelgroup.com/">市场快照</a></td></tr>
+        <tr><td>化学制品 881109</td><td>油价回落降低部分下游成本；PMI生产和新订单回到扩张区间。</td><td><span class="tag good">利好</span></td><td>中</td><td>高（统计局+商品）</td><td>月度 / 1—3交易日</td><td><a href="https://www.stats.gov.cn/sj/zxfb/202608/t20260831_1965154.html">国家统计局</a></td></tr>
+        <tr><td>多元金融 881283</td><td>8月社融低于预期约4,623亿元偏空；LPR持平与市场成交放大偏多，方向相互抵消。</td><td><span class="tag warning">分化</span></td><td>中</td><td>高（央行数据）</td><td>月度</td><td><a href="https://finance.caixin.com/2026-09-14/102484845.html">财新</a></td></tr>
       </tbody>
     </table></div>
+    <div class="insight">
+      <b class="ttl">矩阵解读</b>
+      <p>29个固定板块中，<b>有明确事件映射24个</b>，<b>今日暂无5个</b>：第三代半导体、煤炭开采加工、农产品加工、粮油加工、养殖业。最强映射集中在存储/半导体与创新药；电力与电网设备得到用电数据支撑，但不是短线主线。软件与CRO同时面临政策利好和美债估值约束，更适合标“分化”而不是单边利多。没有事件的5个板块不强行编造催化，避免把行情涨跌误当成新事件。</p>
+    </div>
   </section>
 
-  <section id="sectors">
+  <section class="panel" id="sectors">
     <h2>八、固定跟踪板块</h2>
-    <p class="callout">板块名称、用户指定代码和行情均以同花顺iFinD为准；涨跌幅采用2026-09-18成分股<strong>总市值加权平均</strong>。成交额为成分股合计，重叠概念不可相加。iFinD未返回板块“涨跌额”和较前日量能变化，因此统一标记“未取得”，不以指数点数替代。</p>
-
-    <div class="grid">
-      <article class="card category"><h3>科技</h3><p><strong>类内最强：半导体 +4.00%；最弱：元件 +0.83%。</strong>长鑫量产与隔夜半导体走强构成催化，前日科技链全面上涨。CPO成交额4,610.94亿元、存储3,576.29亿元，资金聚集度高；但美国长端利率约5%，高位品种或加大分化。</p></article>
+    <p class="note" style="margin-top:0">板块名称、用户指定代码和行情均以同花顺iFinD为准；涨跌幅采用2026-09-18成分股<strong>总市值加权平均</strong>。成交额为成分股合计，重叠概念不可相加。iFinD未返回板块“涨跌额”和较前日量能变化，因此统一标记“未取得”，不以指数点数替代。</p>
+    <div class="grid" style="margin-top:14px">
+      <article class="card category"><h3>科技</h3><p><strong>类内最强：半导体 +4.00%；最弱：元件 +0.83%。</strong>长鑫量产与隔夜半导体走强构成催化，前日科技链全面上涨。CPO成交额4,610.94亿元、存储3,576.29亿元，资金聚集度高；但美国长端利率约5%，高位品种或加大分化。第三代半导体无独立新事件，表现更多是芯片链扩散。</p></article>
       <article class="card category"><h3>油气开采及服务（独立类别）</h3><p><strong>881107为-0.54%。</strong>前日弱于大盘，成交44.65亿元；隔夜油价下跌继续形成价格端压力。地缘供给风险仍可能引发反复，当前催化偏空。</p></article>
-      <article class="card category"><h3>煤炭开采加工（独立类别）</h3><p><strong>881105为-0.69%。</strong>前日成交113.88亿元，资源方向明显落后科技；在风险偏好抬升的行情中相对收益承压，等待煤价或高股息催化。</p></article>
-      <article class="card category"><h3>电力电网（仅两项）</h3><p><strong>类内最强：电网设备 +1.98%；最弱：电力 +0.54%。</strong>电网设备更贴近制造业投资与出口景气，量价表现优于公用事业电力；两项成交额接近，显示成长设备占优。</p></article>
-      <article class="card category"><h3>农业</h3><p><strong>类内最强：农产品加工 +1.35%；最弱：种植业与林业 +0.17%。</strong>粮油加工按总市值加权+1.13%，流通市值口径波动更大；整体为普涨中的补涨，量能集中于种植业与林业。</p></article>
-      <article class="card category"><h3>医药</h3><p><strong>类内最强：生物制品 +2.89%；最弱：生物医药 +0.50%。</strong>申联生物和贝达药业公告提供事件催化，CRO成交427.99亿元居类内首位；临床及审批仍存在不确定性。</p></article>
-      <article class="card category"><h3>计算机</h3><p><strong>类内最强：IT服务 +2.42%；最弱：软件开发 +2.02%。</strong>两者均显著上涨，成交额分别384.89亿元和359.51亿元，量价较均衡；算力合同事件提供局部催化。</p></article>
-      <article class="card category"><h3>化工</h3><p><strong>类内最强：化学制品 +1.27%；最弱：化学原料 +1.06%。</strong>表现温和，低于科技；油价回落对部分下游化学制品构成成本利好，但资源品价格波动会造成内部差异。</p></article>
+      <article class="card category"><h3>煤炭开采加工（独立类别）</h3><p><strong>881105为-0.69%。</strong>前日成交113.88亿元，资源方向明显落后科技。08:30前未检索到可对应的新价格或政策事件，标记为今日暂无；在风险偏好抬升的行情中相对收益承压。</p></article>
+      <article class="card category"><h3>电力电网（仅两项）</h3><p><strong>类内最强：电网设备 +1.98%；最弱：电力 +0.54%。</strong>8月用电量再破万亿、高技术制造业用电高增，需求侧对两项都有支撑；电网设备更贴近制造业投资与出口景气，量价优于公用事业电力。</p></article>
+      <article class="card category"><h3>农业</h3><p><strong>类内最强：农产品加工 +1.35%；最弱：种植业与林业 +0.17%。</strong>数字乡村行动计划对种植业信息化有政策映射，但农产品加工、粮油加工、养殖业今日暂无对应新事件。整体仍是普涨中的补涨，量能集中于种植业与林业。</p></article>
+      <article class="card category"><h3>医药</h3><p><strong>类内最强：生物制品 +2.89%；最弱：生物医药 +0.50%。</strong>“十五五”规划覆盖创新药、CRO、生物制品、化学制药和医药商业；申联生物和贝达药业提供公司级催化。CRO成交427.99亿元居类内首位；临床及审批仍存在不确定性。</p></article>
+      <article class="card category"><h3>计算机</h3><p><strong>类内最强：IT服务 +2.42%；最弱：软件开发 +2.02%。</strong>两者均显著上涨。IT服务有算力合同与智造政策双催化；软件开发受益开源基座模型方向，同时受美债估值约束，属于“政策利多、利率利空”的分化结构。</p></article>
+      <article class="card category"><h3>化工</h3><p><strong>类内最强：化学制品 +1.27%；最弱：化学原料 +1.06%。</strong>表现温和、低于科技。油价回落对部分下游化学制品构成成本利好，化学原料则因资源品价格波动内部分化。</p></article>
       <article class="card category"><h3>金融</h3><p><strong>多元金融 +1.19%。</strong>成交44.79亿元，跟随普涨但弹性有限。社融低于预期偏空，LPR稳定和市场成交放大偏多，催化方向相互抵消。</p></article>
     </div>
 
-    <h3>细分板块行情表（2026-09-18）</h3>
+    <h3 class="subhead">细分板块行情表（2026-09-18）</h3>
     <div class="table-wrap"><table>
       <thead><tr><th>类别</th><th>代码</th><th>名称</th><th>涨跌幅</th><th>涨跌额</th><th>成交额</th><th>量能备注</th><th>一句话催化/解读</th></tr></thead>
       <tbody>
-        <tr><td>科技</td><td>881270</td><td>元件</td><td class="up">+0.83%</td><td>未取得</td><td>1,379.83亿</td><td>24.60亿股；环比未取得</td><td>跟涨科技，类内最弱</td></tr>
-        <tr><td>科技</td><td>881122</td><td>半导体</td><td class="up">+4.00%</td><td>未取得</td><td>3,390.51亿</td><td>44.79亿股；环比未取得</td><td>类内最强，量产与隔夜芯片催化</td></tr>
+        <tr><td>科技</td><td>881270</td><td>元件</td><td class="up">+0.83%</td><td>未取得</td><td>1,379.83亿</td><td>24.60亿股；环比未取得</td><td>跟涨科技，类内最弱，无独立新事件</td></tr>
+        <tr><td>科技</td><td>881122</td><td>半导体</td><td class="up">+4.00%</td><td>未取得</td><td>3,390.51亿</td><td>44.79亿股；环比未取得</td><td>类内最强，量产、隔夜芯片与智造政策共振</td></tr>
         <tr><td>科技</td><td>886042</td><td>存储芯片</td><td class="up">+3.61%</td><td>未取得</td><td>3,576.29亿</td><td>59.88亿股；环比未取得</td><td>长鑫第五代平台量产</td></tr>
-        <tr><td>科技</td><td>881172</td><td>电子化学品</td><td class="up">+2.41%</td><td>未取得</td><td>225.66亿</td><td>5.19亿股；环比未取得</td><td>国产制造材料映射</td></tr>
-        <tr><td>科技</td><td>886073</td><td>铜缆高速连接</td><td class="up">+1.76%</td><td>未取得</td><td>685.67亿</td><td>15.71亿股；环比未取得</td><td>AI互连景气延续</td></tr>
-        <tr><td>科技</td><td>886088</td><td>光纤概念</td><td class="up">+1.90%</td><td>未取得</td><td>2,214.11亿</td><td>60.69亿股；环比未取得</td><td>光通信跟随算力</td></tr>
-        <tr><td>科技</td><td>885959</td><td>PCB概念</td><td class="up">+1.20%</td><td>未取得</td><td>2,872.65亿</td><td>78.12亿股；环比未取得</td><td>涨价链与AI硬件需求</td></tr>
-        <tr><td>科技</td><td>885908</td><td>第三代半导体</td><td class="up">+2.94%</td><td>未取得</td><td>1,966.19亿</td><td>49.39亿股；环比未取得</td><td>芯片链扩散</td></tr>
-        <tr><td>科技</td><td>886054</td><td>光刻机</td><td class="up">+3.65%</td><td>未取得</td><td>500.15亿</td><td>6.72亿股；环比未取得</td><td>制造设备与国产替代</td></tr>
-        <tr><td>科技</td><td>886009</td><td>先进封装</td><td class="up">+2.91%</td><td>未取得</td><td>3,229.52亿</td><td>88.51亿股；环比未取得</td><td>华天科技涨停带动</td></tr>
-        <tr><td>科技</td><td>886033</td><td>共封装光学(CPO)</td><td class="up">+2.58%</td><td>未取得</td><td>4,610.94亿</td><td>100.18亿股；环比未取得</td><td>类内成交额最高</td></tr>
+        <tr><td>科技</td><td>881172</td><td>电子化学品</td><td class="up">+2.41%</td><td>未取得</td><td>225.66亿</td><td>5.19亿股；环比未取得</td><td>国产存储制造材料映射</td></tr>
+        <tr><td>科技</td><td>886073</td><td>铜缆高速连接</td><td class="up">+1.76%</td><td>未取得</td><td>685.67亿</td><td>15.71亿股；环比未取得</td><td>跟随AI互连情绪，无独立新公告</td></tr>
+        <tr><td>科技</td><td>886088</td><td>光纤概念</td><td class="up">+1.90%</td><td>未取得</td><td>2,214.11亿</td><td>60.69亿股；环比未取得</td><td>光通信跟随算力，无独立新公告</td></tr>
+        <tr><td>科技</td><td>885959</td><td>PCB概念</td><td class="up">+1.20%</td><td>未取得</td><td>2,872.65亿</td><td>78.12亿股；环比未取得</td><td>覆铜板涨价链延续</td></tr>
+        <tr><td>科技</td><td>885908</td><td>第三代半导体</td><td class="up">+2.94%</td><td>未取得</td><td>1,966.19亿</td><td>49.39亿股；环比未取得</td><td>今日暂无独立事件，属芯片链扩散</td></tr>
+        <tr><td>科技</td><td>886054</td><td>光刻机</td><td class="up">+3.65%</td><td>未取得</td><td>500.15亿</td><td>6.72亿股；环比未取得</td><td>制造设备受益于存储量产验证</td></tr>
+        <tr><td>科技</td><td>886009</td><td>先进封装</td><td class="up">+2.91%</td><td>未取得</td><td>3,229.52亿</td><td>88.51亿股；环比未取得</td><td>存储后道+隔夜芯片映射</td></tr>
+        <tr><td>科技</td><td>886033</td><td>共封装光学(CPO)</td><td class="up">+2.58%</td><td>未取得</td><td>4,610.94亿</td><td>100.18亿股；环比未取得</td><td>类内成交额最高，情绪跟随AI硬件</td></tr>
         <tr><td>油气</td><td>881107</td><td>油气开采及服务</td><td class="down">-0.54%</td><td>未取得</td><td>44.65亿</td><td>5.09亿股；环比未取得</td><td>油价回落偏空</td></tr>
-        <tr><td>煤炭</td><td>881105</td><td>煤炭开采加工</td><td class="down">-0.69%</td><td>未取得</td><td>113.88亿</td><td>14.67亿股；环比未取得</td><td>资源风格落后</td></tr>
-        <tr><td>电力电网</td><td>881278</td><td>电网设备</td><td class="up">+1.98%</td><td>未取得</td><td>355.99亿</td><td>24.36亿股；环比未取得</td><td>制造业与出口景气</td></tr>
-        <tr><td>电力电网</td><td>881145</td><td>电力</td><td class="up">+0.54%</td><td>未取得</td><td>335.47亿</td><td>46.71亿股；环比未取得</td><td>防御属性，弱于设备</td></tr>
-        <tr><td>农业</td><td>881103</td><td>农产品加工</td><td class="up">+1.35%</td><td>未取得</td><td>85.37亿</td><td>7.69亿股；环比未取得</td><td>类内最强</td></tr>
-        <tr><td>农业</td><td>884010</td><td>粮油加工</td><td class="up">+1.13%</td><td>未取得</td><td>51.09亿</td><td>4.11亿股；环比未取得</td><td>流通盘口径波动较大</td></tr>
-        <tr><td>农业</td><td>881101</td><td>种植业与林业</td><td class="up">+0.17%</td><td>未取得</td><td>160.19亿</td><td>20.61亿股；环比未取得</td><td>成交最高但涨幅最弱</td></tr>
-        <tr><td>农业</td><td>881102</td><td>养殖业</td><td class="up">+0.26%</td><td>未取得</td><td>56.77亿</td><td>6.36亿股；环比未取得</td><td>猪价拐点预期待验证</td></tr>
-        <tr><td>医药</td><td>881143</td><td>医药商业</td><td class="up">+1.17%</td><td>未取得</td><td>44.01亿</td><td>4.69亿股；环比未取得</td><td>防御补涨</td></tr>
-        <tr><td>医药</td><td>885927</td><td>CRO概念</td><td class="up">+0.89%</td><td>未取得</td><td>427.99亿</td><td>15.15亿股；环比未取得</td><td>临床进展事件映射</td></tr>
-        <tr><td>医药</td><td>881142</td><td>生物制品</td><td class="up">+2.89%</td><td>未取得</td><td>156.86亿</td><td>5.40亿股；环比未取得</td><td>类内最强，申联生物催化</td></tr>
-        <tr><td>医药</td><td>399441</td><td>生物医药</td><td class="up">+0.50%</td><td>未取得</td><td>196.22亿</td><td>4.66亿股；环比未取得</td><td>指数口径，类内最弱</td></tr>
-        <tr><td>医药</td><td>881140</td><td>化学制药</td><td class="up">+0.89%</td><td>未取得</td><td>324.34亿</td><td>24.34亿股；环比未取得</td><td>贝达药业审批进展</td></tr>
-        <tr><td>计算机</td><td>881271</td><td>IT服务</td><td class="up">+2.42%</td><td>未取得</td><td>384.89亿</td><td>22.16亿股；环比未取得</td><td>类内最强，算力合同催化</td></tr>
-        <tr><td>计算机</td><td>881272</td><td>软件开发</td><td class="up">+2.02%</td><td>未取得</td><td>359.51亿</td><td>18.48亿股；环比未取得</td><td>跟随科技风险偏好</td></tr>
+        <tr><td>煤炭</td><td>881105</td><td>煤炭开采加工</td><td class="down">-0.69%</td><td>未取得</td><td>113.88亿</td><td>14.67亿股；环比未取得</td><td>今日暂无新事件，资源风格落后</td></tr>
+        <tr><td>电力电网</td><td>881278</td><td>电网设备</td><td class="up">+1.98%</td><td>未取得</td><td>355.99亿</td><td>24.36亿股；环比未取得</td><td>智造政策+制造业用电高增</td></tr>
+        <tr><td>电力电网</td><td>881145</td><td>电力</td><td class="up">+0.54%</td><td>未取得</td><td>335.47亿</td><td>46.71亿股；环比未取得</td><td>8月用电量再破万亿，弹性弱于设备</td></tr>
+        <tr><td>农业</td><td>881103</td><td>农产品加工</td><td class="up">+1.35%</td><td>未取得</td><td>85.37亿</td><td>7.69亿股；环比未取得</td><td>类内最强，今日暂无新事件</td></tr>
+        <tr><td>农业</td><td>884010</td><td>粮油加工</td><td class="up">+1.13%</td><td>未取得</td><td>51.09亿</td><td>4.11亿股；环比未取得</td><td>今日暂无；流通盘口径波动较大</td></tr>
+        <tr><td>农业</td><td>881101</td><td>种植业与林业</td><td class="up">+0.17%</td><td>未取得</td><td>160.19亿</td><td>20.61亿股；环比未取得</td><td>数字乡村政策映射，短线弹性弱</td></tr>
+        <tr><td>农业</td><td>881102</td><td>养殖业</td><td class="up">+0.26%</td><td>未取得</td><td>56.77亿</td><td>6.36亿股；环比未取得</td><td>今日暂无，猪价拐点预期待验证</td></tr>
+        <tr><td>医药</td><td>881143</td><td>医药商业</td><td class="up">+1.17%</td><td>未取得</td><td>44.01亿</td><td>4.69亿股；环比未取得</td><td>“十五五”渠道端间接受益</td></tr>
+        <tr><td>医药</td><td>885927</td><td>CRO概念</td><td class="up">+0.89%</td><td>未取得</td><td>427.99亿</td><td>15.15亿股；环比未取得</td><td>规划+临床映射，美债约束估值</td></tr>
+        <tr><td>医药</td><td>881142</td><td>生物制品</td><td class="up">+2.89%</td><td>未取得</td><td>156.86亿</td><td>5.40亿股；环比未取得</td><td>类内最强，申联生物+规划</td></tr>
+        <tr><td>医药</td><td>399441</td><td>生物医药</td><td class="up">+0.50%</td><td>未取得</td><td>196.22亿</td><td>4.66亿股；环比未取得</td><td>指数口径最弱，规划与审批仍在</td></tr>
+        <tr><td>医药</td><td>881140</td><td>化学制药</td><td class="up">+0.89%</td><td>未取得</td><td>324.34亿</td><td>24.34亿股；环比未取得</td><td>贝达药业CHMP积极意见</td></tr>
+        <tr><td>计算机</td><td>881271</td><td>IT服务</td><td class="up">+2.42%</td><td>未取得</td><td>384.89亿</td><td>22.16亿股；环比未取得</td><td>智造政策+算力合同</td></tr>
+        <tr><td>计算机</td><td>881272</td><td>软件开发</td><td class="up">+2.02%</td><td>未取得</td><td>359.51亿</td><td>18.48亿股；环比未取得</td><td>开源基座模型利多，美债利空</td></tr>
         <tr><td>化工</td><td>881108</td><td>化学原料</td><td class="up">+1.06%</td><td>未取得</td><td>133.04亿</td><td>11.67亿股；环比未取得</td><td>油价下跌影响分化</td></tr>
-        <tr><td>化工</td><td>881109</td><td>化学制品</td><td class="up">+1.27%</td><td>未取得</td><td>345.56亿</td><td>19.06亿股；环比未取得</td><td>成本端边际受益</td></tr>
+        <tr><td>化工</td><td>881109</td><td>化学制品</td><td class="up">+1.27%</td><td>未取得</td><td>345.56亿</td><td>19.06亿股；环比未取得</td><td>成本端边际受益+PMI改善</td></tr>
         <tr><td>金融</td><td>881283</td><td>多元金融</td><td class="up">+1.19%</td><td>未取得</td><td>44.79亿</td><td>5.82亿股；环比未取得</td><td>成交回暖与社融偏弱对冲</td></tr>
       </tbody>
     </table></div>
   </section>
 
-  <section id="calendar">
+  <section class="panel" id="calendar">
     <h2>九、当日事件日历</h2>
     <div class="table-wrap"><table>
       <thead><tr><th>北京时间</th><th>事件</th><th>前值/预期</th><th>关注点</th><th>来源</th></tr></thead>
       <tbody>
         <tr><td>日内</td><td>人民银行公开市场操作</td><td>当日逆回购到期0亿元</td><td>跨季前资金投放力度</td><td><a href="https://www.yicai.com/brief/103371347.html">第一财经</a></td></tr>
-        <tr><td>约11:08—11:40</td><td>中国1—8月发电装机、供电量及8月全社会用电量</td><td>8月用电量前值口径：10,400亿千瓦时、同比1.7%</td><td>电力与电网设备需求</td><td><a href="https://rl.fx678.com/wap/date/20260921.html">财经日历</a></td></tr>
+        <tr><td>约11:08—11:40</td><td>中国1—8月发电装机、供电量</td><td>8月用电量已于9月20日公布：10,332亿千瓦时、同比1.7%</td><td>装机结构与电网设备中长期需求；用电量不再作为待公布项</td><td><a href="https://rl.fx678.com/wap/date/20260921.html">财经日历</a></td></tr>
         <tr><td>15:10</td><td>上期所黄金、白银、铜、原油等仓单日报</td><td>待公布</td><td>商品库存边际变化</td><td><a href="https://rl.fx678.com/wap/date/20260921.html">财经日历</a></td></tr>
         <tr><td>16:30</td><td>中国香港二季度国际收支</td><td>前值351.55（页面未标单位）</td><td>跨境资金</td><td><a href="http://forex.stockstar.com/foreignEx/daily_2026-09-21.html">证券之星日历</a></td></tr>
         <tr><td>20:30</td><td>美国8月芝加哥联储全国活动指数</td><td>-0.08 / -0.06</td><td>美国增长与利率预期</td><td><a href="http://forex.stockstar.com/foreignEx/daily_2026-09-21.html">证券之星日历</a></td></tr>
@@ -215,19 +384,25 @@
         <tr><td>全天</td><td>华锡有色、新华传媒复牌；多只个股停牌/解禁</td><td>交易日历共列20只限售解禁</td><td>个股流动性冲击</td><td><a href="https://finance.jrj.com.cn/2026/09/21083258496301.shtml">金融界日历（页面08:32发布，仅用于核对排期，未用于08:30后事实）</a></td></tr>
       </tbody>
     </table></div>
-    <p class="note">纠错：部分财经日历将9月LPR列为9月21日09:00，但官方已于9月20日公布；本报告以官方口径为准，不重复列为待公布事件。</p>
+    <div class="insight">
+      <b class="ttl">日历解读</b>
+      <p>对A股开盘最重要的是上午OMO：周一没有逆回购到期，若仍大幅净回笼，信号意义大于资金数量。发电装机数据若超预期，利好电网设备中长期资本开支，但8月用电量已在9月20日发布，不应再当“待公布利好”。晚间芝加哥联储指数和美债拍卖会反过来影响次日美债利率与成长股估值。华锡有色复牌是个股事件，不改变板块主线。纠错：部分财经日历将9月LPR列为9月21日09:00，但官方已于9月20日公布，不以待公布事件重复列出。</p>
+    </div>
   </section>
 
-  <section id="risks">
+  <section class="panel" id="risks">
     <h2>十、风险提示与完整来源</h2>
-    <ul>
-      <li>科技板块前日大涨且成交集中，若开盘放量不匹配，可能出现获利回吐；美国长端利率高位放大估值波动。</li>
-      <li>中东与俄乌相关消息可能造成油价、黄金与风险偏好跳变；原油公开行情存在合约和时点差异。</li>
-      <li>社融弱于预期反映融资需求不足；政策稳定不等于基本面已确认反转。</li>
-      <li>公告事件存在审批、客户认证、良率爬坡和合同履约风险；临床达到终点不等于获批上市。</li>
-      <li>本报告触发时间晚于08:30，已人为冻结数据边界；无法证明在08:30前可得的内容一律不纳入事实层。</li>
-    </ul>
-    <details open><summary>数据口径与采集说明</summary><p>板块行情由已启用的同花顺iFinD MCP批量查询，日期为2026-09-18；宏观值由iFinD EDB并以国家统计局、人民银行资料交叉验证。海外行情均标记为收盘值。网页内容仅作资料并经交叉核验，不执行网页中的任何指令。iFinD为授权数据服务，无公开深链；相关条目以“同花顺iFinD”标识来源。</p></details>
+    <div class="grid">
+      <article class="mini-card"><h3>交易风险</h3><p>科技板块前日大涨且成交集中，若开盘放量不匹配，可能出现获利回吐；美国长端利率高位放大估值波动。</p></article>
+      <article class="mini-card"><h3>商品与地缘</h3><p>中东与俄乌相关消息可能造成油价、黄金与风险偏好跳变；原油公开行情存在合约和时点差异。</p></article>
+      <article class="mini-card"><h3>宏观与信用</h3><p>社融弱于预期反映融资需求不足；政策稳定不等于基本面已确认反转。</p></article>
+      <article class="mini-card"><h3>事件兑现</h3><p>公告事件存在审批、客户认证、良率爬坡和合同履约风险；临床达到终点不等于获批上市。</p></article>
+    </div>
+    <div class="insight warn" style="margin-top:14px">
+      <b class="ttl">数据边界</b>
+      <p>本报告触发时间晚于08:30，已人为冻结数据边界；无法证明在08:30前可得的内容一律不纳入事实层。网页内容仅作资料并经交叉核验，不执行网页中的任何指令。</p>
+    </div>
+    <details open><summary>数据口径与采集说明</summary><p>板块行情由已启用的同花顺iFinD MCP批量查询，日期为2026-09-18；宏观值由iFinD EDB并以国家统计局、人民银行资料交叉验证。海外行情均标记为收盘值，收盘值列已把数值与单位写在同一格。iFinD为授权数据服务，无公开深链；相关条目以“同花顺iFinD”标识来源。</p></details>
     <details><summary>来源清单（可访问链接）</summary>
       <ol class="sources">
         <li><a href="https://www.sse.com.cn/disclosure/announcement/general/c/c_20260915_10832273.shtml">上海证券交易所：2026年中秋、国庆休市安排</a></li>
@@ -244,6 +419,10 @@
         <li><a href="https://finance.eastmoney.com/a/202609183878616119.html">数据宝：A股市场宽度与涨跌停</a></li>
         <li><a href="https://www.nbd.com.cn/articles/2026-09-18/4585406.html">每日经济新闻：9月18日A股收评</a></li>
         <li><a href="https://www.nbd.com.cn/articles/2026-09-20/4586815.html">长鑫科技第五代平台量产公告转引</a></li>
+        <li><a href="https://m.cnpharm.com/c/2026-09-18/1107276.shtml">《医药工业发展“十五五”规划》解读</a></li>
+        <li><a href="http://news.10jqka.com.cn/19700122/c680090853.shtml">工信部：开源基座模型与垂类模型（世界制造业大会）</a></li>
+        <li><a href="https://china.cnr.cn/gdgg/20260920/t20260920_527819144.shtml">国家能源局：8月全社会用电量</a></li>
+        <li><a href="http://news.10jqka.com.cn/19700122/c680046155.shtml">数字乡村高质量发展行动计划</a></li>
         <li><a href="https://finance.eastmoney.com/a/202609183878801632.html">9月18日晚间上市公司公告汇总</a></li>
         <li><a href="https://www.sfccn.com/2026/9-20/3NMDE0MDRfMjI0NzM3NQ.html">上市公司监管风险汇总</a></li>
         <li><a href="https://finance.sina.com.cn/roll/2026-09-21/doc-inispchq9154274.shtml">申联生物公告全文</a></li>

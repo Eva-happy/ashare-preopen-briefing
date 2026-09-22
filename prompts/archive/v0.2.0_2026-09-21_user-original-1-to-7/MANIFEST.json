@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "date": "2026-09-21",
+  "slug": "user-original-1-to-7",
+  "notes": "用户从自动任务贴出的原文一至七条冻结件",
+  "immutable": true,
+  "files": [
+    "ashare-preopen-briefing.md",
+    "automation-dashboard-prompt.md"
+  ],
+  "git": "527a530",
+  "role": "frozen_original"
+}
