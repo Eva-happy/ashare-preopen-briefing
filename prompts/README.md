@@ -3,6 +3,15 @@
 自动任务仪表盘**只保存当前一份 Prompt**，改完就盖掉，这里读不到正文，也没有仪表盘历史。  
 真正能留住旧版的是 **Git 提交** 和 **`prompts/archive/` 冻结件**。
 
+收盘报告是另一条自动任务、另一份提示词，不要写进早报版本号：
+
+| 文件 | 角色 |
+| --- | --- |
+| `prompts/ashare-close-briefing.md` | 收盘报告完整规范（与早报一至九条对齐） |
+| `prompts/close-automation-dashboard-prompt.md` | 粘贴进自动任务「A股收盘报告」 |
+| `prompts/close-VERSION` | 收盘提示词版本 |
+| `prompts/archive/close-v*/` | 收盘提示词冻结快照 |
+
 ## 三份角色，不要混用
 
 | 文件 | 角色 |

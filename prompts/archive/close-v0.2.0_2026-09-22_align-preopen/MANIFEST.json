@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "date": "2026-09-22",
+  "slug": "align-preopen",
+  "notes": "与A股开盘前多源晨报对齐的收盘报告提示词（一至九条）",
+  "immutable": true,
+  "kind": "close",
+  "files": [
+    "ashare-close-briefing.md",
+    "close-automation-dashboard-prompt.md"
+  ]
+}
