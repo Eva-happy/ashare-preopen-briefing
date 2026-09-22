@@ -18,6 +18,7 @@ VERSION_FILE = PROMPTS / "VERSION"
 CHANGELOG = PROMPTS / "CHANGELOG.md"
 CANONICAL = "ashare-preopen-briefing.md"
 DASHBOARD = "automation-dashboard-prompt.md"
+CLOSE = "ashare-close-briefing.md"
 TZ = dt.timezone(dt.timedelta(hours=8))
 
 
@@ -95,14 +96,15 @@ def snapshot(version: str, slug: str, notes: str, date: str | None = None) -> Pa
     dest = ARCHIVE / f"v{version}_{date}_{slug}"
     if dest.exists():
         raise SystemExit(f"拒绝覆盖已有归档：{dest.relative_to(ROOT)}")
-    for name in (CANONICAL, DASHBOARD):
+    files = (CANONICAL, DASHBOARD, CLOSE)
+    for name in files:
         src = PROMPTS / name
         if not src.exists():
             raise SystemExit(f"缺少当前文件：{src}")
     stamp_version(PROMPTS / CANONICAL, version, date)
     stamp_version(PROMPTS / DASHBOARD, version, date)
     dest.mkdir(parents=True, exist_ok=False)
-    for name in (CANONICAL, DASHBOARD):
+    for name in files:
         shutil.copy2(PROMPTS / name, dest / name)
     manifest = {
         "version": version,
@@ -110,7 +112,7 @@ def snapshot(version: str, slug: str, notes: str, date: str | None = None) -> Pa
         "slug": slug,
         "notes": notes,
         "immutable": True,
-        "files": [CANONICAL, DASHBOARD],
+        "files": list(files),
     }
     (dest / "MANIFEST.json").write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"

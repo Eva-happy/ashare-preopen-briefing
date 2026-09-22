@@ -38,6 +38,7 @@ def parse_report(path: Path) -> dict:
     share_rel = f"r/{share_name}"
     archive_rel = path.relative_to(ROOT).as_posix()
     sort_key = f"{report_date}-{hhmm}-{archive_rel}"
+    kind = "close" if "收盘报告" in f"{path.name}{title}{h1}" else "preopen"
     return {
         "path": path,
         "archive_rel": archive_rel,
@@ -48,6 +49,7 @@ def parse_report(path: Path) -> dict:
         "h1": h1,
         "date": report_date,
         "time": report_time,
+        "kind": kind,
         "sort_key": sort_key,
         "share_url": f"{SITE}/{share_rel}",
         "mtime": datetime.fromtimestamp(path.stat().st_mtime).strftime("%Y-%m-%d"),
@@ -75,14 +77,22 @@ def sync_share_copies(reports: list[dict]) -> None:
 
 def render_index(reports: list[dict]) -> str:
     cards = []
-    for i, r in enumerate(reports):
-        badge = '<span class="badge">最新</span>' if i == 0 else ""
+    latest_preopen = next((r for r in reports if r["kind"] == "preopen"), None)
+    latest_close = next((r for r in reports if r["kind"] == "close"), None)
+    for r in reports:
+        if r is latest_preopen:
+            badge = '<span class="badge">最新早报</span>'
+        elif r is latest_close:
+            badge = '<span class="badge">最新收盘</span>'
+        else:
+            badge = ""
+        label = "收盘报告" if r["kind"] == "close" else "开盘前早报"
         meta_bits = [x for x in [r["date"], r["time"] and f"截止 {r['time']}", f"更新 {r['mtime']}"] if x]
         meta = " ｜ ".join(meta_bits)
         cards.append(
             f"""      <article class="card">
         <a class="card-main" href="{html.escape(r['href'])}">
-          <div class="card-top">{badge}<span class="label">开盘前早报</span></div>
+          <div class="card-top">{badge}<span class="label">{label}</span></div>
           <h2>{html.escape(r['h1'])}</h2>
           <p class="meta">{html.escape(meta)}</p>
           <p class="title">{html.escape(r['title'])}</p>
@@ -97,6 +107,7 @@ def render_index(reports: list[dict]) -> str:
         else '      <p class="empty">暂无报告。生成后放入 <code>archive/年/月/</code> 再运行 <code>python3 scripts/build_index.py</code>。</p>'
     )
     latest_url = f"{SITE}/latest.html"
+    latest_close_url = f"{SITE}/latest-close.html"
     return f"""<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -140,13 +151,13 @@ def render_index(reports: list[dict]) -> str:
     <h2>如何分享到其他 App</h2>
     <ol>
       <li>不要用 GitHub 文件页的「分享」——那是源码链接，微信里会显示代码。</li>
-      <li>复制本站链接（推荐最新一期）：<br><code>{html.escape(latest_url)}</code></li>
+      <li>复制本站链接：早报 <code>{html.escape(latest_url)}</code>；收盘报告 <code>{html.escape(latest_close_url)}</code></li>
       <li>粘贴到微信 / 备忘录 / 浏览器，对方点开就是排版好的 HTML 报告。</li>
     </ol>
     <div class="warn">仓库需设为 <b>Public</b> 并启用 GitHub Pages，别人才能打开这些链接。</div>
   </section>
 
-  <p class="hint">也可打开 <a href="latest.html">latest.html</a> 查看最新报告。</p>
+  <p class="hint">打开 <a href="latest.html">latest.html</a> 查看最新早报，或打开 <a href="latest-close.html">latest-close.html</a> 查看最新收盘报告。</p>
   <section class="list" aria-label="报告列表">
 {cards_html}
   </section>
@@ -160,11 +171,12 @@ def render_index(reports: list[dict]) -> str:
 """
 
 
-def render_latest(report: dict | None) -> str:
+def render_latest(report: dict | None, kind: str) -> str:
+    label = "收盘报告" if kind == "close" else "早报"
     if not report:
-        return """<!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><title>暂无报告</title></head>
-<body><p>暂无报告。请先生成 archive 下的 HTML 早报。</p></body></html>
+        return f"""<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><title>暂无{label}</title></head>
+<body><p>暂无{label}。请先生成 archive 下的对应 HTML 报告。</p></body></html>
 """
     href = html.escape(report["href"])
     title = html.escape(report["title"])
@@ -175,11 +187,11 @@ def render_latest(report: dict | None) -> str:
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="refresh" content="0; url={href}">
   <link rel="canonical" href="{href}">
-  <title>跳转到最新早报｜{title}</title>
+  <title>跳转到最新{label}｜{title}</title>
   <script>location.replace({report["href"]!r})</script>
 </head>
 <body>
-  <p>正在打开最新报告：<a href="{href}">{title}</a></p>
+  <p>正在打开最新{label}：<a href="{href}">{title}</a></p>
 </body>
 </html>
 """
@@ -193,7 +205,10 @@ def main() -> None:
     )
     sync_share_copies(reports)
     (ROOT / "index.html").write_text(render_index(reports), encoding="utf-8")
-    (ROOT / "latest.html").write_text(render_latest(reports[0] if reports else None), encoding="utf-8")
+    latest_preopen = next((r for r in reports if r["kind"] == "preopen"), None)
+    latest_close = next((r for r in reports if r["kind"] == "close"), None)
+    (ROOT / "latest.html").write_text(render_latest(latest_preopen, "preopen"), encoding="utf-8")
+    (ROOT / "latest-close.html").write_text(render_latest(latest_close, "close"), encoding="utf-8")
     print(f"indexed {len(reports)} report(s); share copies in r/")
     for r in reports[:5]:
         print(f" - {r['share_url']}")

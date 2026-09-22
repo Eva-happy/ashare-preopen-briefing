@@ -1,0 +1,12 @@
+{
+  "version": "0.4.0",
+  "date": "2026-09-22",
+  "slug": "morning-close-comparison",
+  "notes": "新增早报判断基线与收盘早晚对照总览，并修正知识星球复制框格式",
+  "immutable": true,
+  "files": [
+    "ashare-preopen-briefing.md",
+    "automation-dashboard-prompt.md",
+    "ashare-close-briefing.md"
+  ]
+}

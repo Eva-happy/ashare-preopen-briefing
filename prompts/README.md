@@ -9,6 +9,7 @@
 | --- | --- |
 | `prompts/ashare-preopen-briefing.md` | 当前完整规范（永远最新） |
 | `prompts/automation-dashboard-prompt.md` | 当前粘贴进自动任务的文本 |
+| `prompts/ashare-close-briefing.md` | 收盘自动任务叠加规范（早晚对照等） |
 | `prompts/archive/v*/` | 冻结快照，**禁止改内容** |
 | `prompts/archive/v0.2.0_2026-09-21_user-original-1-to-7/` | 你贴出来的原文一至七条，作为对照原件 |
 
@@ -22,7 +23,7 @@
 
 ## 以后改规则
 
-1. 只改当前两个 `prompts/*.md`，不要改 `archive/`。
+1. 只改当前 `prompts/*.md` 工作副本，不要改已有 `archive/`。
 2. 运行：
 
 ```bash
