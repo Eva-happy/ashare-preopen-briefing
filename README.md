@@ -52,7 +52,9 @@ https://cursor.com/automations/cbeb1ef9-b59d-11f1-bb68-864e54d14197
 
 自动任务对话必须额外输出一份**知识星球分享文案**（标题 + 正文，纯文本可复制）。星球里上传 HTML 文件，文案不要写链接。规则见提示词第九条。
 
-早报若只开了拉取请求，Pages 不会更新。`.github/workflows/merge-briefing.yml` 会把「标题含当天日期和早报、且只改报告文件」的拉取请求合并进 `main`，并触发 Pages 部署。
+早报若只开了拉取请求，Pages 不会更新。自动合并不在定时任务提示词里，而在仓库文件 `.github/workflows/merge-briefing.yml`：标题含当天日期和早报、且只改报告文件的拉取请求会被合并进 `main`，并触发 Pages 部署。
+
+定时任务的对话里必须贴出完整 HTML 源码代码块，方便一键复制，不能只写「已放入仓库」。规则见提示词第六条。
 
 新增报告后运行：
 
@@ -77,4 +79,4 @@ GitHub Pages 只发布 `main`。定时任务如果只开草稿拉取请求，短
 
 符合就标为可合并、Squash 合并进 `main`，再触发「Deploy GitHub Pages」。其他拉取请求不会动。
 
-这个工作流要先在 `main` 上，下一次早报才会自动合并。仓库 Actions 权限需要是 Read and write。
+这个工作流已经在 `main` 的 `.github/workflows/merge-briefing.yml`。它不是定时任务提示词的一部分。仓库 Actions 权限需要是 Read and write，自动合并才会成功。
