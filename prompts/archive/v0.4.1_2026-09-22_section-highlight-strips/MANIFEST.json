@@ -1,0 +1,12 @@
+{
+  "version": "0.4.1",
+  "date": "2026-09-22",
+  "slug": "section-highlight-strips",
+  "notes": "早盘与收盘各主题统一增加章节重点条，先结论后表格，并统一红绿橙蓝视觉语义",
+  "immutable": true,
+  "files": [
+    "ashare-preopen-briefing.md",
+    "automation-dashboard-prompt.md",
+    "ashare-close-briefing.md"
+  ]
+}
