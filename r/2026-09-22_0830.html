@@ -10,11 +10,11 @@
     :root{--ink:#172033;--muted:#667085;--line:#e5e9f0;--bg:#f5f7fb;--card:#fff;--up:#c62828;--down:#087f5b;--warn:#b45309;--blue:#1d4ed8}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
     a{color:var(--blue);overflow-wrap:anywhere}.wrap{width:min(1180px,100%);margin:auto;padding:18px}.hero{background:linear-gradient(135deg,#172554,#1e3a8a);color:#fff;padding:28px;border-radius:18px;box-shadow:0 12px 30px #17255422}
-    h1{font-size:clamp(25px,5vw,42px);line-height:1.15;margin:0 0 12px}h2{font-size:23px;margin:0 0 14px}h3{font-size:18px;margin:16px 0 8px}.meta{opacity:.88}.chips,.grid{display:grid;gap:12px}.chips{grid-template-columns:repeat(4,1fr);margin-top:20px}.chip,.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}.chip{color:var(--ink)}.chip b{display:block;font-size:21px}.grid{grid-template-columns:repeat(2,1fr)}
+    h1{font-size:clamp(25px,5vw,42px);line-height:1.15;margin:0 0 12px}h2{font-size:23px;margin:0 0 14px;display:flex;align-items:center;gap:9px}section.panel>h2:before{content:"";width:5px;height:24px;border-radius:5px;background:linear-gradient(#2563eb,#60a5fa);flex:none}h3{font-size:18px;margin:16px 0 8px}.meta{opacity:.88}.chips,.grid,.section-highlights{display:grid;gap:12px}.chips{grid-template-columns:repeat(4,1fr);margin-top:20px}.chip,.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}.chip{color:var(--ink)}.chip b{display:block;font-size:21px}.grid{grid-template-columns:repeat(2,1fr)}.section-highlights{grid-template-columns:repeat(4,minmax(0,1fr));margin:0 0 16px}.signal{border:1px solid var(--line);border-left:4px solid #3b82f6;border-radius:11px;padding:11px 12px;background:#eff6ff;min-width:0}.signal span{display:block;color:var(--muted);font-size:12px;font-weight:700}.signal b{display:block;margin:2px 0;font-size:18px;line-height:1.3;overflow-wrap:anywhere}.signal small{display:block;color:#475569;line-height:1.45}.signal.positive{border-left-color:var(--up);background:#fff1f2}.signal.negative{border-left-color:var(--down);background:#ecfdf5}.signal.watch{border-left-color:#d97706;background:#fffbeb}.signal.info{border-left-color:#2563eb;background:#eff6ff}
     nav{position:sticky;top:0;z-index:3;margin:14px 0;padding:10px 14px;background:#ffffffeb;border:1px solid var(--line);border-radius:12px;backdrop-filter:blur(8px);overflow:auto;white-space:nowrap}nav a{margin-right:16px;text-decoration:none}
     section.panel{margin:18px 0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 4px 18px #1725540b}.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:#fff}table{width:100%;border-collapse:collapse;min-width:760px}th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}th{background:#eef2ff;position:sticky;top:0}tr:last-child td{border-bottom:0}.up{color:var(--up);font-weight:700}.down{color:var(--down);font-weight:700}.tag{display:inline-block;padding:1px 7px;border-radius:999px;font-size:12px;font-weight:700}.good{background:#fee2e2;color:#991b1b}.bad{background:#d1fae5;color:#065f46}.neutral{background:#e5e7eb;color:#374151}.warning{background:#fef3c7;color:#92400e}.note{color:var(--muted);font-size:13px}.callout{border-left:4px solid var(--warn);padding:10px 14px;background:#fffbeb;border-radius:8px}.category{border-top:4px solid #93c5fd}.category strong{color:#1e40af}details{border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:700}.footer{margin:28px 0 8px;padding:20px;background:#172554;color:#fff;border-radius:14px;text-align:center}
-    @media(max-width:720px){.wrap{padding:10px}.hero,section.panel{padding:16px}.chips,.grid{grid-template-columns:1fr 1fr}.chip{padding:12px}th,td{padding:8px;font-size:13px}}
-    @media(max-width:430px){.chips,.grid{grid-template-columns:1fr}h2{font-size:20px}}
+    @media(max-width:720px){.wrap{padding:10px}.hero,section.panel{padding:16px}.chips,.grid,.section-highlights{grid-template-columns:1fr 1fr}.chip{padding:12px}th,td{padding:8px;font-size:13px}}
+    @media(max-width:430px){.chips,.grid,.section-highlights{grid-template-columns:1fr}h2{font-size:20px}}
     @media print{body{background:#fff}.wrap{max-width:none}.hero,.card,details,.table-wrap,section.panel{box-shadow:none;break-inside:avoid}nav{display:none}a{color:#111;text-decoration:none}.hero,.footer{background:#fff!important;color:#111;border:1px solid #aaa}}
   </style>
 </head>
@@ -48,6 +48,12 @@
   </section>
 
   <section class="panel" id="global"><h2>二、隔夜外盘</h2>
+    <div class="section-highlights" aria-label="隔夜外盘本节重点">
+      <div class="signal positive"><span>利多｜风险偏好</span><b>纳指 +2.26%</b><small>AI与高久期科技情绪回暖</small></div>
+      <div class="signal positive"><span>利多｜芯片映射</span><b>费半约 +4.3%</b><small>关注半导体能否放量承接</small></div>
+      <div class="signal negative"><span>利空｜能源</span><b>WTI -4.50%</b><small>油气前日强势面临回吐压力</small></div>
+      <div class="signal watch"><span>观察｜估值约束</span><b>美债10Y约4.95%</b><small>成长估值环境仅边际改善</small></div>
+    </div>
     <p class="note">美股、商品为2026-09-21完成交易日收盘/结算附近值，不是09-22盘中实时价；富时A50为iFinD日频收盘口径。获取时间09:05—09:12，边界冻结08:30。</p>
     <div class="table-wrap"><table><thead><tr><th>资产</th><th>数值（含单位）</th><th>涨跌</th><th>市场日期/口径</th><th>来源</th></tr></thead><tbody>
       <tr><td>标普500</td><td>7,764.70 点</td><td class="up">+1.49%</td><td>09-21收盘</td><td>同花顺iFinD；<a href="https://www.seattletimes.com/business/how-major-us-stock-indexes-fared-monday-9-21-2026/">AP</a></td></tr>
@@ -68,6 +74,11 @@
   </section>
 
   <section class="panel" id="macro"><h2>三、国内宏观预期差</h2>
+    <div class="section-highlights" aria-label="宏观本节重点">
+      <div class="signal watch"><span>观察｜景气度</span><b>PMI 49.8%</b><small>高于预期但仍低于荣枯线</small></div>
+      <div class="signal info"><span>事实｜物价</span><b>CPI同比 0.8%</b><small>符合预期，价格信号温和改善</small></div>
+      <div class="signal negative"><span>利空｜融资需求</span><b>社融低预期约4,623亿</b><small>全面顺周期基础仍偏弱</small></div>
+    </div>
     <div class="table-wrap"><table><thead><tr><th>指标</th><th>最新值</th><th>前值</th><th>市场预期</th><th>预期差</th><th>数据期/公布日</th><th>来源与口径</th></tr></thead><tbody>
       <tr><td>官方制造业PMI</td><td>49.8%</td><td>49.2%</td><td>49.5%</td><td><span class="tag good">高0.3个百分点</span></td><td>2026-08 / 08-31</td><td>国家统计局；季调扩散指数，iFinD EDB核验</td></tr>
       <tr><td>CPI同比</td><td>0.8%</td><td>0.5%</td><td>0.8%</td><td><span class="tag neutral">符合预期</span></td><td>2026-08 / 09-09 09:30</td><td><a href="https://www.stats.gov.cn/sj/zxfb/202609/t20260909_1965263.html">国家统计局</a>；2025年基期</td></tr>
@@ -78,6 +89,12 @@
   </section>
 
   <section class="panel" id="liquidity"><h2>四、政策与流动性</h2>
+    <div class="section-highlights" aria-label="流动性本节重点">
+      <div class="signal positive"><span>前日投放</span><b>净投放1,650亿元</b><small>央行提前呵护跨节跨季资金面</small></div>
+      <div class="signal watch"><span>当日到期</span><b>国库定存1,800亿元</b><small>工具口径不同，不机械合并</small></div>
+      <div class="signal info"><span>汇率信号</span><b>中间价6.7487</b><small>前日人民币中间价调升34点</small></div>
+      <div class="signal watch"><span>08:30状态</span><b>当日操作未公布</b><small>等待盘中公开市场操作落地</small></div>
+    </div>
     <ul>
       <li><b>公开市场：</b>9月21日央行开展1,650亿元7天期逆回购，利率1.40%，当日无到期，净投放1,650亿元。9月22日有1,800亿元国库现金定存到期；08:30前当日逆回购操作尚未发布。<a href="https://www.cnfin.com/hg-lb/detail/20260921/4472727_1.html">新华财经</a></li>
       <li><b>LPR：</b>9月21日市场报道确认1年期3.0%、5年期以上3.5%，连续16个月持平。利率稳定但没有新增降息刺激。</li>
@@ -88,6 +105,12 @@
   </section>
 
   <section class="panel" id="review"><h2>五、前一交易日A股复盘（2026-09-21）</h2>
+    <div class="section-highlights" aria-label="前一交易日复盘本节重点">
+      <div class="signal positive"><span>指数表现</span><b>上证 +0.97%</b><small>主要指数集体收涨</small></div>
+      <div class="signal info"><span>成交规模</span><b>2.0315万亿元</b><small>较前日缩量456亿元</small></div>
+      <div class="signal positive"><span>市场宽度</span><b>上涨4,536家</b><small>约82%个股上涨</small></div>
+      <div class="signal watch"><span>结构判断</span><b>普涨但缩量</b><small>修复扩散，增量资金仍待确认</small></div>
+    </div>
     <div class="table-wrap"><table><thead><tr><th>指数</th><th>收盘</th><th>涨跌点</th><th>涨跌幅</th><th>成交额</th></tr></thead><tbody>
       <tr><td>上证指数</td><td>3,949.91点</td><td>+38.04点</td><td class="up">+0.97%</td><td>9,468.19亿元</td></tr>
       <tr><td>深证成指</td><td>13,730.02点</td><td>+89.15点</td><td class="up">+0.65%</td><td>10,846.8亿元</td></tr>
@@ -100,6 +123,12 @@
   </section>
 
   <section class="panel" id="events"><h2>六、公告与事件催化（09-21收盘后—09-22 08:30）</h2>
+    <div class="section-highlights" aria-label="公告事件本节重点">
+      <div class="signal positive"><span>回购催化</span><b>江波龙约8亿元</b><small>映射存储芯片与半导体</small></div>
+      <div class="signal positive"><span>扩产催化</span><b>银河微电10.78亿元</b><small>高端核心器件项目拟落地</small></div>
+      <div class="signal watch"><span>并购观察</span><b>PCB标的估值8.4亿元</b><small>星帅尔停牌，交易仍待核</small></div>
+      <div class="signal negative"><span>监管风险</span><b>ST椰岛被立案</b><small>非固定跟踪板块个股风险</small></div>
+    </div>
     <div class="table-wrap"><table><thead><tr><th>时间</th><th>事件</th><th>核心事实</th><th>固定板块映射</th><th>方向/来源</th></tr></thead><tbody>
       <tr><td>09-21晚</td><td>江波龙 301308</td><td>回购实施完成，累计229.06万股、总额约8亿元，用于股权激励或员工持股。</td><td>存储芯片886042；半导体881122</td><td><span class="tag good">利多</span> <a href="http://www.nbd.com.cn/rss/xingye_zhengquan/articles/4587701.html">公司公告转引</a></td></tr>
       <tr><td>09-21晚</td><td>银河微电 688689</td><td>拟投10.78亿元建设高端核心器件产业化及创新能力项目，建设期3年。</td><td>半导体881122；第三代半导体885908</td><td><span class="tag good">利多</span> <a href="https://finance.eastmoney.com/a/202609213880195636.html">公告汇总</a></td></tr>
@@ -114,6 +143,12 @@
   </section>
 
   <section class="panel" id="matrix"><h2>七、事件—板块催化矩阵（固定板块全覆盖）</h2>
+    <div class="section-highlights" aria-label="催化矩阵本节重点">
+      <div class="signal positive"><span>高强度利多</span><b>医药规划</b><small>覆盖CRO、生物制品与化学制药</small></div>
+      <div class="signal positive"><span>科技催化</span><b>芯片 + 回购扩产</b><small>隔夜映射叠加公司级事件</small></div>
+      <div class="signal negative"><span>明确利空</span><b>隔夜油价急跌</b><small>油气开采面临高位回吐</small></div>
+      <div class="signal info"><span>覆盖状态</span><b>29板块全列示</b><small>无新增事件者标记今日暂无</small></div>
+    </div>
     <div class="table-wrap"><table><thead><tr><th>事件</th><th>方向</th><th>板块名称与代码</th><th>强度</th><th>可信度</th><th>有效时间</th><th>原始来源</th></tr></thead><tbody>
       <tr><td>AI/芯片美股大涨；江波龙回购完成</td><td><span class="tag good">利好</span></td><td>元件881270；半导体881122；存储芯片886042</td><td>中高</td><td>高</td><td>当日—3日</td><td>iFinD；江波龙公告转引</td></tr>
       <tr><td>银河微电扩产；隔夜芯片映射</td><td><span class="tag good">利好</span></td><td>电子化学品881172；第三代半导体885908；光刻机886054；先进封装886009</td><td>中</td><td>高</td><td>1—5日</td><td>公司公告；Reuters</td></tr>
@@ -131,6 +166,12 @@
   </section>
 
   <section class="panel" id="sectors"><h2>八、固定跟踪板块</h2>
+    <div class="section-highlights" aria-label="固定板块本节重点">
+      <div class="signal positive"><span>涨幅前三</span><b>生物制品 / CRO / 生物医药</b><small>+4.54% / +4.27% / +4.27%</small></div>
+      <div class="signal negative"><span>跌幅后三</span><b>光刻机 / 电子化学品 / 电力</b><small>-0.74% / -0.51% / -0.11%</small></div>
+      <div class="signal positive"><span>最大放量</span><b>医药商业 +39.6%</b><small>医药整体量价表现突出</small></div>
+      <div class="signal negative"><span>最大缩量</span><b>粮油加工 -28.5%</b><small>农业上涨缺少量能确认</small></div>
+    </div>
     <p class="callout">板块名称、用户代码及行情以同花顺iFinD为准；涨跌幅为2026-09-21成分股总市值加权平均。成交额为成分股合计，量能环比以09-18对比。iFinD未取得板块指数涨跌点数，故“涨跌额”如实标为未取得。</p>
     <div class="grid">
       <article class="card category"><h3>科技</h3><p><b>新闻：</b>江波龙回购、银河微电扩产，隔夜AI芯片走强。<b>涨跌：</b>元件+2.18%最强，光刻机-0.74%最弱。<b>异动：</b>硬件连接强于设备材料。<b>量能：</b>除元件外普遍缩量，半导体缩量19.4%。<strong>结论：科技上涨但内部轮动，隔夜映射能否带量是关键。</strong></p></article>
@@ -178,6 +219,12 @@
   </section>
 
   <section class="panel" id="calendar"><h2>九、当日事件日历</h2>
+    <div class="section-highlights" aria-label="事件日历本节重点">
+      <div class="signal watch"><span>盘中变量</span><b>央行公开市场操作</b><small>观察跨节跨季投放力度</small></div>
+      <div class="signal info"><span>15:10</span><b>上期所仓单日报</b><small>关注商品库存边际变化</small></div>
+      <div class="signal watch"><span>20:15—22:20</span><b>美国数据与官员讲话</b><small>影响美元、美债和成长估值</small></div>
+      <div class="signal negative"><span>次日04:30</span><b>API原油库存</b><small>油价与油气板块后续变量</small></div>
+    </div>
     <div class="table-wrap"><table><thead><tr><th>北京时间</th><th>事件</th><th>前值/预期</th><th>关注点</th><th>来源</th></tr></thead><tbody>
       <tr><td>日内</td><td>人民银行公开市场操作</td><td>09-22另有1,800亿元国库现金定存到期</td><td>跨节、跨季投放力度</td><td><a href="https://www.cnfin.com/hg-lb/detail/20260921/4472727_1.html">新华财经</a></td></tr>
       <tr><td>开市起</td><td>星帅尔停牌；7家公司限售股解禁</td><td>解禁2,376.35万股，约1.16亿元</td><td>个股流动性影响</td><td><a href="https://www.yicai.com/news/103373125.html">第一财经</a></td></tr>
@@ -192,6 +239,12 @@
   </section>
 
   <section class="panel" id="risks"><h2>十、风险提示与完整来源</h2>
+    <div class="section-highlights" aria-label="风险本节重点">
+      <div class="signal watch"><span>首要风险</span><b>普涨但缩量</b><small>高开后量能不足或引发快速分化</small></div>
+      <div class="signal negative"><span>能源风险</span><b>油价口径与地缘波动</b><small>油气、黄金可能盘中反向跳变</small></div>
+      <div class="signal watch"><span>估值约束</span><b>美债10Y近5%</b><small>高估值成长仍受折现率压制</small></div>
+      <div class="signal info"><span>数据口径</span><b>概念成交不可相加</b><small>重叠成分不代表市场总成交</small></div>
+    </div>
     <ul>
       <li>前日上涨家数占比高但成交缩量，若高开后量能不足，医药、科技可能快速分化。</li>
       <li>油价公开来源因合约和时点存在差异；地缘消息可令油气、黄金在盘中反向跳变。</li>
