@@ -23,12 +23,20 @@ def strip_tags(text: str) -> str:
     return re.sub(r"<[^>]+>", "", text).strip()
 
 
+def report_kind(path: Path, title: str) -> str:
+    blob = f"{path.name}\n{title}"
+    if "收盘" in blob:
+        return "close"
+    return "open"
+
+
 def parse_report(path: Path) -> dict:
     text = path.read_text(encoding="utf-8", errors="replace")
     title_m = TITLE_RE.search(text)
     h1_m = H1_RE.search(text)
     title = strip_tags(title_m.group(1)) if title_m else path.stem
     h1 = strip_tags(h1_m.group(1)) if h1_m else "A股开盘前早报"
+    kind = report_kind(path, title)
     date_m = DATE_RE.search(path.name) or DATE_RE.search(title)
     time_m = TIME_RE.search(path.name)
     report_date = date_m.group(1) if date_m else path.stem
@@ -46,6 +54,7 @@ def parse_report(path: Path) -> dict:
         "href": share_rel,
         "title": title,
         "h1": h1,
+        "kind": kind,
         "date": report_date,
         "time": report_time,
         "sort_key": sort_key,
@@ -73,16 +82,28 @@ def sync_share_copies(reports: list[dict]) -> None:
         shutil.copy2(r["path"], target)
 
 
+KIND_LABEL = {"open": "开盘前早报", "close": "收盘对照"}
+
+
 def render_index(reports: list[dict]) -> str:
+    latest_open = next((r for r in reports if r["kind"] == "open"), None)
+    latest_close = next((r for r in reports if r["kind"] == "close"), None)
     cards = []
-    for i, r in enumerate(reports):
-        badge = '<span class="badge">最新</span>' if i == 0 else ""
-        meta_bits = [x for x in [r["date"], r["time"] and f"截止 {r['time']}", f"更新 {r['mtime']}"] if x]
+    for r in reports:
+        badges = []
+        if latest_open and r["share_rel"] == latest_open["share_rel"]:
+            badges.append('<span class="badge">最新早报</span>')
+        if latest_close and r["share_rel"] == latest_close["share_rel"]:
+            badges.append('<span class="badge badge-close">最新收盘</span>')
+        badge = "".join(badges)
+        when = f"收盘 {r['time']}" if r["kind"] == "close" and r["time"] else (f"截止 {r['time']}" if r["time"] else "")
+        meta_bits = [x for x in [r["date"], when, f"更新 {r['mtime']}"] if x]
         meta = " ｜ ".join(meta_bits)
+        label = KIND_LABEL[r["kind"]]
         cards.append(
             f"""      <article class="card">
         <a class="card-main" href="{html.escape(r['href'])}">
-          <div class="card-top">{badge}<span class="label">开盘前早报</span></div>
+          <div class="card-top">{badge}<span class="label">{html.escape(label)}</span></div>
           <h2>{html.escape(r['h1'])}</h2>
           <p class="meta">{html.escape(meta)}</p>
           <p class="title">{html.escape(r['title'])}</p>
@@ -103,8 +124,8 @@ def render_index(reports: list[dict]) -> str:
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="color-scheme" content="light">
-  <meta name="description" content="A股开盘前早报索引。复制 Pages 链接即可在微信等 App 中以网页方式打开。">
-  <title>A股开盘前早报｜报告索引</title>
+  <meta name="description" content="A股开盘前早报与收盘对照索引。复制 Pages 链接即可在微信等 App 中以网页方式打开。">
+  <title>A股早报与收盘对照｜报告索引</title>
   <style>
     :root{{--ink:#172033;--muted:#667085;--line:#e5e9f0;--bg:#f5f7fb;--card:#fff;--blue:#1d4ed8}}
     *{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}}
@@ -119,7 +140,7 @@ def render_index(reports: list[dict]) -> str:
     .list{{display:grid;gap:12px;margin-top:8px}}.card{{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}}
     .card-main{{display:block}}.card-main:hover .cta,.card-main:focus-visible .cta{{text-decoration:underline}}
     .card-top{{display:flex;align-items:center;gap:8px;margin-bottom:8px}}.label{{color:var(--muted);font-size:13px}}
-    .badge{{display:inline-block;padding:2px 8px;border-radius:999px;background:#dbeafe;color:#1e40af;font-size:12px;font-weight:700}}
+    .badge{{display:inline-block;padding:2px 8px;border-radius:999px;background:#dbeafe;color:#1e40af;font-size:12px;font-weight:700}}.badge-close{{background:#ffedd5;color:#9a3412}}
     h2{{margin:0 0 6px;font-size:20px}}.meta{{margin:0;color:var(--muted);font-size:13px}}.title{{margin:8px 0 12px;color:#334155}}
     .cta{{color:var(--blue);font-weight:700}}.share-line{{margin:14px 0 0;padding-top:12px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}}
     .empty{{padding:20px;background:#fff;border:1px dashed var(--line);border-radius:12px;color:var(--muted)}}
@@ -131,9 +152,9 @@ def render_index(reports: list[dict]) -> str:
 <body>
 <main class="wrap">
   <header class="hero">
-    <p>A股开盘前研究</p>
-    <h1>早报索引</h1>
-    <p>网页版报告。复制下方链接，即可分享到微信等 App 直接打开（不是源码）。</p>
+    <p>A股开盘前研究 · 收盘对照</p>
+    <h1>报告索引</h1>
+    <p>网页版早报和收盘对照。复制下方链接，即可分享到微信等 App 直接打开（不是源码）。</p>
   </header>
 
   <section class="share-box" aria-label="如何分享">
@@ -146,7 +167,7 @@ def render_index(reports: list[dict]) -> str:
     <div class="warn">仓库需设为 <b>Public</b> 并启用 GitHub Pages，别人才能打开这些链接。</div>
   </section>
 
-  <p class="hint">也可打开 <a href="latest.html">latest.html</a> 查看最新报告。</p>
+  <p class="hint">最新早报：<a href="latest.html">latest.html</a>。最新收盘对照：<a href="latest-close.html">latest-close.html</a>。</p>
   <section class="list" aria-label="报告列表">
 {cards_html}
   </section>
@@ -160,11 +181,11 @@ def render_index(reports: list[dict]) -> str:
 """
 
 
-def render_latest(report: dict | None) -> str:
+def render_latest(report: dict | None, *, empty: str, jumping: str) -> str:
     if not report:
-        return """<!doctype html>
+        return f"""<!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><title>暂无报告</title></head>
-<body><p>暂无报告。请先生成 archive 下的 HTML 早报。</p></body></html>
+<body><p>{html.escape(empty)}</p></body></html>
 """
     href = html.escape(report["href"])
     title = html.escape(report["title"])
@@ -175,11 +196,11 @@ def render_latest(report: dict | None) -> str:
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="refresh" content="0; url={href}">
   <link rel="canonical" href="{href}">
-  <title>跳转到最新早报｜{title}</title>
+  <title>{html.escape(jumping)}｜{title}</title>
   <script>location.replace({report["href"]!r})</script>
 </head>
 <body>
-  <p>正在打开最新报告：<a href="{href}">{title}</a></p>
+  <p>正在打开：<a href="{href}">{title}</a></p>
 </body>
 </html>
 """
@@ -192,8 +213,17 @@ def main() -> None:
         reverse=True,
     )
     sync_share_copies(reports)
+    latest_open = next((r for r in reports if r["kind"] == "open"), None)
+    latest_close = next((r for r in reports if r["kind"] == "close"), None)
     (ROOT / "index.html").write_text(render_index(reports), encoding="utf-8")
-    (ROOT / "latest.html").write_text(render_latest(reports[0] if reports else None), encoding="utf-8")
+    (ROOT / "latest.html").write_text(
+        render_latest(latest_open, empty="暂无早报。请先生成 archive 下的 HTML 早报。", jumping="跳转到最新早报"),
+        encoding="utf-8",
+    )
+    (ROOT / "latest-close.html").write_text(
+        render_latest(latest_close, empty="暂无收盘对照。请先生成 archive 下的 HTML 收盘对照。", jumping="跳转到最新收盘对照"),
+        encoding="utf-8",
+    )
     print(f"indexed {len(reports)} report(s); share copies in r/")
     for r in reports[:5]:
         print(f" - {r['share_url']}")

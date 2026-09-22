@@ -83,22 +83,43 @@
 
 ```text
 archive/年/月/A股开盘前早报_YYYY-MM-DD_0830.html
+archive/年/月/A股收盘对照_YYYY-MM-DD_1510.html
 r/YYYY-MM-DD_0830.html
+r/YYYY-MM-DD_1510.html
 index.html
 latest.html
+latest-close.html
 ```
 
 生成或改完报告后运行 `python3 scripts/build_index.py`。
 
-Pages 只认 `main`。当天早报若开了拉取请求，标题含北京时间当天日期，以及「早报」或 `preopen briefing`，且改动只在上面四类文件里，`merge-briefing.yml` 会标为可合并、Squash 合并，再触发「Deploy GitHub Pages」。改提示词、README 的拉取请求不会被这个工作流合并。
+Pages 只认 `main`。当天早报或收盘对照若开了拉取请求，标题含北京时间当天日期，以及「早报」「收盘」或对应的英文 briefing 字样，且改动只在上面这些报告和索引文件里，`merge-briefing.yml` 会标为可合并、Squash 合并，再触发「Deploy GitHub Pages」。改提示词、README 的拉取请求不会被这个工作流合并。
 
 查看（给用户，不进星球帖）：
 
-- 最新：https://eva-happy.github.io/ashare-preopen-briefing/latest.html
+- 最新早报：https://eva-happy.github.io/ashare-preopen-briefing/latest.html
+- 最新收盘对照：https://eva-happy.github.io/ashare-preopen-briefing/latest-close.html
 - 目录：https://eva-happy.github.io/ashare-preopen-briefing/
 - 某一期：https://eva-happy.github.io/ashare-preopen-briefing/r/YYYY-MM-DD_0830.html
 
 `latest.html` 用跳转指向最新一期。浏览器若仍显示旧报告，在地址后加当天日期，例如 `latest.html?20260922`。源码页在 `github.com/.../blob/main/r/...html`，那个页面是代码，不是给读者打开的报告。
+
+## 收盘对照
+
+收盘报告用来核对同日早报，文件和自动任务都与早报分开。
+
+| 项 | 值 |
+| --- | --- |
+| 规范 | `prompts/ashare-close-briefing.md` |
+| 仪表盘粘贴文本 | `prompts/close-automation-dashboard-prompt.md` |
+| 版本 | `prompts/close-VERSION`（0.1.0） |
+| 文件名 | `archive/年/月/A股收盘对照_YYYY-MM-DD_1510.html` |
+| 数据截止 | 北京时间 15:10 |
+| 建议日程 | `20 7 * * 1-5`（北京时间工作日 15:20） |
+| 模型 | GPT |
+| 最新入口 | `latest-close.html`。`latest.html` 仍然只跳早报 |
+
+对照状态只用：兑现、部分兑现、未兑现、证伪、无法验证。早报对前一交易日的复盘不要改判成预测。29 个固定板块与早报相同。第一条收盘对照是 2026-09-21，因为该日已经收盘；9 月 22 日要等 15:10 之后再写。
 
 ## 已落在 main 上的报告（截至 2026-09-22）
 

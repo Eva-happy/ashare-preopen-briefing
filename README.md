@@ -7,7 +7,8 @@ A股开盘前早报（HTML）。目标：复制一条链接，在微信等 App �
 GitHub 仓库里点文件 →「分享」，发出去的是 **源码页**，其他 App 打开仍是代码。  
 要「像网页一样打开」，必须分享 **GitHub Pages 链接**（下面这种）：
 
-- 最新一期：https://eva-happy.github.io/ashare-preopen-briefing/latest.html
+- 最新早报：https://eva-happy.github.io/ashare-preopen-briefing/latest.html
+- 最新收盘对照：https://eva-happy.github.io/ashare-preopen-briefing/latest-close.html
 - 索引首页：https://eva-happy.github.io/ashare-preopen-briefing/
 - 某一期（英文短链，方便复制）：https://eva-happy.github.io/ashare-preopen-briefing/r/2026-09-21_0830.html
 
@@ -34,6 +35,12 @@ GitHub 仓库里点文件 →「分享」，发出去的是 **源码页**，其�
 ```text
 archive/年/月/A股开盘前早报_YYYY-MM-DD_HHMM.html
 ```
+
+## 收盘对照
+
+收盘报告和同日早报放在一起看：验证早报里指向当天的判断，并跟踪催化走到收盘时的进展。规范在 [`prompts/ashare-close-briefing.md`](prompts/ashare-close-briefing.md)，自动任务粘贴文本在 [`prompts/close-automation-dashboard-prompt.md`](prompts/close-automation-dashboard-prompt.md)。
+
+建议另建一条定时任务，日程 `20 7 * * 1-5`（北京时间工作日 15:20），模型用 GPT。`latest.html` 仍然只打开最新早报；收盘对照用 `latest-close.html`。
 
 ## 换账号后怎么接着做
 
@@ -68,8 +75,8 @@ python3 scripts/build_index.py
 
 会自动：
 
-- 更新 `index.html`（列表 + 每期分享链接）
-- 更新 `latest.html`（跳转最新一期）
+- 更新 `index.html`（列表 + 每期分享链接，区分早报和收盘对照）
+- 更新 `latest.html`（只跳最新早报）和 `latest-close.html`（只跳最新收盘对照）
 - 生成英文短链副本 `r/YYYY-MM-DD_HHMM.html`（方便分享，避免中文文件名在 App 里乱码）
 
 ## 早报自动进入 main
@@ -78,8 +85,8 @@ GitHub Pages 只发布 `main`。定时任务如果只开草稿拉取请求，短
 
 `.github/workflows/merge-briefing.yml` 会在拉取请求出现时检查：
 
-- 标题含北京时间当天日期，以及「早报」或 `preopen briefing`
-- 改动只在 `archive/*.html`、`r/*.html`、`index.html`、`latest.html`
+- 标题含北京时间当天日期，以及「早报」「收盘」或对应的英文 briefing 字样
+- 改动只在 `archive/*.html`、`r/*.html`、`index.html`、`latest.html`、`latest-close.html`
 
 符合就标为可合并、Squash 合并进 `main`，再触发「Deploy GitHub Pages」。其他拉取请求不会动。
 

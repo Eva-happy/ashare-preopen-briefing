@@ -12,3 +12,4 @@ alwaysApply: true
 - 日程 `30 0 * * 1-5`（北京时间工作日 08:30）。模型用 GPT。
 - 报告写入 `archive/` 与 `r/`，运行 `python3 scripts/build_index.py`，并进入 `main`。当日早报拉取请求由 `.github/workflows/merge-briefing.yml` 合并。
 - 对话交付顺序：不超过 500 字摘要、知识星球文案（不写链接）、仓库路径、从 `<!doctype html>` 到 `</html>` 的完整 HTML 代码块、附件。
+- 收盘对照读 `prompts/ashare-close-briefing.md`。它验证同日早报，数据截止 15:10，文件名含「收盘对照」。`latest.html` 只跳早报，收盘用 `latest-close.html`。

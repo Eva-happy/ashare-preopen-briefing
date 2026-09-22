@@ -2,6 +2,8 @@
 
 换账号延续定时任务的步骤、日程和 iFinD 数据源见 [`prompts/CONTINUITY.md`](CONTINUITY.md)。
 
+收盘对照是另一份提示词，不写进早报版本号：[`ashare-close-briefing.md`](ashare-close-briefing.md)，版本见 [`close-VERSION`](close-VERSION)。
+
 自动任务仪表盘**只保存当前一份 Prompt**，改完就盖掉，这里读不到正文，也没有仪表盘历史。  
 真正能留住旧版的是 **Git 提交** 和 **`prompts/archive/` 冻结件**。
 
