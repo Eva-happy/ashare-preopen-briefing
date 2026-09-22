@@ -47,6 +47,18 @@ archive/年/月/A股收盘报告_YYYY-MM-DD_1510.html
 
 建议新建自动任务，名称「A股收盘报告」，日程 `20 7 * * 1-5`（北京时间工作日 15:20），模型用 GPT，接上同花顺 iFinD。不要把收盘提示词贴进「A股开盘前多源晨报」。`latest.html` 仍然只打开最新早报；收盘报告用 `latest-close.html`。
 
+## 本机归档（早盘 / 收盘）
+
+Windows 本机目录：`D:\Eva-personal\A股开盘前早报归档`
+
+仓库里的工具箱：[`local-archive/`](local-archive/)。在仓库中双击 `local-archive/安装到本机归档目录.bat`，会：
+
+- 创建 `早盘\` 和 `收盘\`
+- 把已有早报 HTML 放进 `早盘\`
+- 复制三个 BAT：`整理归档.bat`、`生成早盘报告.bat`、`生成收盘报告.bat`
+
+之后在本机目录双击「生成收盘报告.bat」，会从 GitHub Pages 下载完整收盘 HTML 并打开。需要 Python 3。收盘自动任务 15:20 跑完并进入 `main` 之前，这个 BAT 不会编造报告。
+
 ## 自动任务提示词
 
 定时生成由 Cursor 自动任务 **「A股开盘前多源晨报」** 执行：
