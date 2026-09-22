@@ -1,0 +1,15 @@
+---
+description: 延续 A 股开盘前早报定时任务
+alwaysApply: true
+---
+
+# A股开盘前早报
+
+换账号或新会话延续定时任务时，先读 `prompts/CONTINUITY.md`，再严格执行 `prompts/ashare-preopen-briefing.md`。版本以 `prompts/VERSION` 为准。
+
+- 仪表盘 Prompt 使用 `prompts/automation-dashboard-prompt.md` 里「开始复制」到「结束复制」的全文。禁止修改 `prompts/archive/`。
+- 数据截止北京时间 08:30。板块名称、代码、行情以同花顺 iFinD 为准。取不到写「未取得」，禁止编造。
+- 日程 `30 0 * * 1-5`（北京时间工作日 08:30）。模型用 GPT。
+- 报告写入 `archive/` 与 `r/`，运行 `python3 scripts/build_index.py`，并进入 `main`。当日早报拉取请求由 `.github/workflows/merge-briefing.yml` 合并。
+- 对话交付顺序：不超过 500 字摘要、知识星球文案（不写链接）、仓库路径、从 `<!doctype html>` 到 `</html>` 的完整 HTML 代码块、附件。
+- 收盘对照读 `prompts/ashare-close-briefing.md`。它验证同日早报，数据截止 15:10，文件名含「收盘对照」。`latest.html` 只跳早报，收盘用 `latest-close.html`。

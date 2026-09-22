@@ -1,0 +1,11 @@
+{
+  "version": "0.3.3",
+  "date": "2026-09-22",
+  "slug": "chat-full-html",
+  "notes": "对话必须贴出完整 HTML 源码代码块，供一键复制，不能只用附件或仓库路径代替",
+  "immutable": true,
+  "files": [
+    "ashare-preopen-briefing.md",
+    "automation-dashboard-prompt.md"
+  ]
+}

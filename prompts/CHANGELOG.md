@@ -21,6 +21,11 @@
 - 归档：`prompts/archive/v0.4.0_2026-09-22_morning-close-comparison/`
 - 新增早报判断基线与收盘早晚对照总览，并修正知识星球复制框格式
 
+## 0.3.3 — 2026-09-22
+
+- 归档：`prompts/archive/v0.3.3_2026-09-22_chat-full-html/`
+- 对话必须贴出完整 HTML 源码代码块，供一键复制，不能只用附件或仓库路径代替
+
 ## 收盘 0.2.0 — 2026-09-22
 
 - 归档：`prompts/archive/close-v0.2.0_2026-09-22_align-preopen/`

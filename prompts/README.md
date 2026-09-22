@@ -1,5 +1,7 @@
 # 提示词怎么做版本管理
 
+换账号延续定时任务的步骤、日程和 iFinD 数据源见 [`prompts/CONTINUITY.md`](CONTINUITY.md)。
+
 自动任务仪表盘**只保存当前一份 Prompt**，改完就盖掉，这里读不到正文，也没有仪表盘历史。  
 真正能留住旧版的是 **Git 提交** 和 **`prompts/archive/` 冻结件**。
 
