@@ -46,3 +46,16 @@ python3 scripts/build_index.py
 - 更新 `index.html`（列表 + 每期分享链接）
 - 更新 `latest.html`（跳转最新一期）
 - 生成英文短链副本 `r/YYYY-MM-DD_HHMM.html`（方便分享，避免中文文件名在 App 里乱码）
+
+## 早报自动进入 main
+
+GitHub Pages 只发布 `main`。定时任务如果只开草稿拉取请求，短链会 404。
+
+`.github/workflows/merge-briefing.yml` 会在拉取请求出现时检查：
+
+- 标题含北京时间当天日期，以及「早报」或 `preopen briefing`
+- 改动只在 `archive/*.html`、`r/*.html`、`index.html`、`latest.html`
+
+符合就标为可合并、Squash 合并进 `main`，再触发「Deploy GitHub Pages」。其他拉取请求不会动。
+
+这个工作流要先在 `main` 上，下一次早报才会自动合并。仓库 Actions 权限需要是 Read and write。
