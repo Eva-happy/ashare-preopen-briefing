@@ -1,0 +1,12 @@
+{
+  "version": "0.4.2",
+  "date": "2026-09-22",
+  "slug": "multicolor-topic-labels",
+  "notes": "早盘与收盘的摘要卡和章节重点条使用青橙紫蓝文字色阶，区分主题并保留红涨绿跌语义",
+  "immutable": true,
+  "files": [
+    "ashare-preopen-briefing.md",
+    "automation-dashboard-prompt.md",
+    "ashare-close-briefing.md"
+  ]
+}
