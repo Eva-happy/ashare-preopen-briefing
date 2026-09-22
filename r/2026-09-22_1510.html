@@ -10,11 +10,11 @@
     :root{--ink:#172033;--muted:#667085;--line:#e5e9f0;--bg:#f5f7fb;--card:#fff;--up:#c62828;--down:#087f5b;--warn:#b45309;--blue:#1d4ed8}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
     a{color:var(--blue);overflow-wrap:anywhere}.wrap{width:min(1180px,100%);margin:auto;padding:18px}.hero{background:linear-gradient(135deg,#172554,#1e3a8a);color:#fff;padding:28px;border-radius:18px;box-shadow:0 12px 30px #17255422}
-    h1{font-size:clamp(25px,5vw,42px);line-height:1.15;margin:0 0 12px}h2{font-size:23px;margin:0 0 14px}h3{font-size:18px;margin:16px 0 8px}.meta{opacity:.88}.chips,.grid{display:grid;gap:12px}.chips{grid-template-columns:repeat(4,1fr);margin-top:20px}.chip,.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}.chip{color:var(--ink)}.chip b{display:block;font-size:20px}.grid{grid-template-columns:repeat(2,1fr)}
+    h1{font-size:clamp(25px,5vw,42px);line-height:1.15;margin:0 0 12px}h2{font-size:23px;margin:0 0 14px}h3{font-size:18px;margin:16px 0 8px}.meta{opacity:.88}.chips,.grid,.compare-grid{display:grid;gap:12px}.chips{grid-template-columns:repeat(4,1fr);margin-top:20px}.chip,.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}.chip{color:var(--ink)}.chip b{display:block;font-size:20px}.grid{grid-template-columns:repeat(2,1fr)}.compare-grid{grid-template-columns:repeat(3,1fr);margin-bottom:14px}.compare-grid .card{border-top:4px solid #93c5fd}.compare-grid .card:nth-child(2){border-top-color:#f59e0b}.compare-grid .card:nth-child(3){border-top-color:#8b5cf6}
     nav{position:sticky;top:0;z-index:3;margin:14px 0;padding:10px 14px;background:#ffffffeb;border:1px solid var(--line);border-radius:12px;backdrop-filter:blur(8px);overflow:auto;white-space:nowrap}nav a{margin-right:16px;text-decoration:none}
     section.panel{margin:18px 0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 4px 18px #1725540b}.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:#fff}table{width:100%;border-collapse:collapse;min-width:820px}th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}th{background:#eef2ff;position:sticky;top:0}tr:last-child td{border-bottom:0}.up{color:var(--up);font-weight:700}.down{color:var(--down);font-weight:700}.tag{display:inline-block;padding:1px 7px;border-radius:999px;font-size:12px;font-weight:700}.good{background:#fee2e2;color:#991b1b}.bad{background:#d1fae5;color:#065f46}.neutral{background:#e5e7eb;color:#374151}.warning{background:#fef3c7;color:#92400e}.note{color:var(--muted);font-size:13px}.callout{border-left:4px solid var(--warn);padding:10px 14px;background:#fffbeb;border-radius:8px}.category{border-top:4px solid #93c5fd}.category strong{color:#1e40af}details{border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:700}.footer{margin:28px 0 8px;padding:20px;background:#172554;color:#fff;border-radius:14px;text-align:center}
-    @media(max-width:720px){.wrap{padding:10px}.hero,section.panel{padding:16px}.chips,.grid{grid-template-columns:1fr 1fr}.chip{padding:12px}th,td{padding:8px;font-size:13px}}
-    @media(max-width:430px){.chips,.grid{grid-template-columns:1fr}h2{font-size:20px}}
+    @media(max-width:720px){.wrap{padding:10px}.hero,section.panel{padding:16px}.chips,.grid,.compare-grid{grid-template-columns:1fr 1fr}.chip{padding:12px}th,td{padding:8px;font-size:13px}}
+    @media(max-width:430px){.chips,.grid,.compare-grid{grid-template-columns:1fr}h2{font-size:20px}}
     @media print{body{background:#fff}.wrap{max-width:none}.hero,.card,details,.table-wrap,section.panel{box-shadow:none;break-inside:avoid}nav{display:none}a{color:#111;text-decoration:none}.hero,.footer{background:#fff!important;color:#111;border:1px solid #aaa}}
   </style>
 </head>
@@ -29,7 +29,7 @@
       <div class="chip"><span>沪深成交</span><b>2.1356 万亿元</b><small>较上日约放量5.1%</small></div>
     </div>
   </header>
-  <nav aria-label="目录"><a href="#summary">核心摘要</a><a href="#global">隔夜外盘</a><a href="#macro">宏观</a><a href="#liquidity">政策流动性</a><a href="#review">A股复盘</a><a href="#events">公告事件</a><a href="#matrix">催化矩阵</a><a href="#sectors">固定板块</a><a href="#calendar">日历</a><a href="#risks">风险来源</a></nav>
+  <nav aria-label="目录"><a href="#summary">核心摘要</a><a href="#comparison">早晚对照</a><a href="#global">隔夜外盘</a><a href="#macro">宏观</a><a href="#liquidity">政策流动性</a><a href="#review">A股复盘</a><a href="#events">公告事件</a><a href="#matrix">催化矩阵</a><a href="#sectors">固定板块</a><a href="#calendar">日历</a><a href="#risks">风险来源</a></nav>
 
   <section class="panel" id="summary"><h2>一、核心摘要</h2>
     <div class="grid">
@@ -45,6 +45,28 @@
       <li><span class="tag bad">利空</span> 隔夜油价急跌后油气开采及服务-1.37%、成交环比约-30.3%，早报提示的回吐风险兑现。</li>
       <li><span class="tag warning">风险</span> 双创盘中冲高后回落、主要指数近乎平收；放量未转化为指数涨幅，短线分歧上升。</li>
     </ol>
+  </section>
+
+  <section class="panel" id="comparison"><h2>早盘信息—收盘验证总览</h2>
+    <p class="callout"><b>对照来源：</b><code>archive/2026/09/A股开盘前早报_2026-09-22_0830.html</code>（早报信息截止08:30）｜<b>验证截止：</b>15:10。该早报尚未设置判断编号，以下按原文出现顺序补为P01—P05。这里只核验明确指向9月22日盘中的判断，不把9月21日复盘数据算成预测。</p>
+    <div class="compare-grid">
+      <article class="card"><h3>早报08:30基线</h3><p><b>风险温度：</b>63/100，中性偏暖。<br><b>风格原文：</b>“医药强势承接 ≈ AI科技映射 &gt; 化工/金融轮动；油气高波动。”<br><b>最关键观察：</b>医药承接、半导体/CPO能否放量，以及油气是否受油价急跌压制。</p></article>
+      <article class="card"><h3>收盘15:10答案</h3><p><b>风险温度：</b>57/100，中性。<br><b>实际风格：</b>计算机、生物制品、煤炭相对占优；油气、电网及部分科技硬件承压。<br><b>成交：</b>沪深2.1356万亿元，较上日约放量5.1%，指数近乎平收。</p></article>
+      <article class="card"><h3>主要偏差与结论</h3><p><b>最准确：</b>油价急跌压制油气，明确兑现。<br><b>最大偏差：</b>AI映射没有扩散到CPO、铜缆和先进封装，医药也从普涨转为分化。<br><b>总计：</b>1兑现、3部分兑现、0未兑现、0证伪、1无法验证。</p></article>
+    </div>
+    <div class="table-wrap"><table><thead><tr><th>编号</th><th>早报08:30原文 / 信息</th><th>早上在说什么</th><th>涉及板块</th><th>15:10收盘证据</th><th>状态</th><th>为什么这样判 / 后续含义</th></tr></thead><tbody>
+      <tr><td><b>P01</b></td><td>“医药强势承接 ≈ AI科技映射 &gt; 化工/金融轮动；油气高波动。”</td><td>预期医药和AI科技共同居前，化工、金融次之；油气波动最大。</td><td>医药五项；半导体881122、CPO 886033等；化工881108/881109；多元金融881283；油气881107</td><td>生物制品+1.20%、CRO+0.23%，但医药商业-0.53%；半导体+0.71%、IT服务+1.71%，但CPO-0.59%；化学原料-0.98%、多元金融-0.58%；油气-1.37%。</td><td><span class="tag warning">部分兑现</span></td><td>医药与AI各有强项，且总体强于化工/金融，但两条主线都未形成全面占优。后续应把“AI科技”拆成软件/芯片与互连硬件两组观察。</td></tr>
+      <tr><td><b>P02</b></td><td>“优先看医药高开后的成交承接。”</td><td>若医药高开后仍有量、有收盘涨幅，说明前日强势不是单日脉冲。</td><td>医药商业881143、CRO 885927、生物制品881142、生物医药399441、化学制药881140</td><td>生物制品+1.20%、成交环比+11.5%；CRO+0.23%、成交+2.2%；医药商业-0.53%，生物医药-0.51%，化学制药+0.30%但缩量。</td><td><span class="tag warning">部分兑现</span></td><td>承接只集中在生物制品，不能概括为医药整体延续。下一交易日应观察强势是否继续收窄。</td></tr>
+      <tr><td><b>P03</b></td><td>“半导体/CPO能否随隔夜外盘放量。”</td><td>检验隔夜美股芯片上涨能否同时带动A股芯片和光通信，并获得成交确认。</td><td>半导体881122；CPO 886033</td><td>半导体+0.71%、成交环比+16.2%；CPO-0.59%、成交环比+3.9%。两者均放量，但只有半导体收涨，且盘中涨幅回落。</td><td><span class="tag warning">部分兑现</span></td><td>量能验证，方向只验证一半；隔夜映射停留在芯片，未扩散至CPO。后续不能再把两者合并判断。</td></tr>
+      <tr><td><b>P04</b></td><td>“WTI、布伦特隔夜明显下跌；油气开采虽前日+3.64%，今日存在高位回吐风险。”</td><td>油价利空可能使前一日领涨的油气板块回落。</td><td>油气开采及服务881107</td><td>油气开采及服务-1.37%，成交41.98亿元、环比约-30.3%。</td><td><span class="tag good">兑现</span></td><td>方向与风险提示一致，且价跌量缩；但这只是一天行情验证，不代表中期趋势已经反转。</td></tr>
+      <tr><td><b>P05</b></td><td>“若指数高开而成交继续收缩，防止快速轮动。”</td><td>这是带两个前提的条件判断：指数高开且成交缩量时，才预警轮动加快。</td><td>全市场条件判断</td><td>指数高开，但沪深成交较上日增加约5.1%，没有满足“成交继续收缩”的前提；盘中虽有轮动，也不能据此给原条件打分。</td><td><span class="tag neutral">无法验证</span></td><td>触发条件未完整成立，不判兑现或证伪。后续继续保留“高开+缩量”组合，而不是简化成任何轮动都算正确。</td></tr>
+    </tbody></table></div>
+    <h3>不纳入兑现率、但需要知道的早报催化</h3>
+    <p>早报还列出江波龙回购、银河微电扩产、星帅尔筹划PCB并购、湖北宜化磷酸铁项目、服务器采购协议及益盛药业复产。这些事件在早报发布前已经发生，是<strong>催化资料</strong>而不是独立的当日方向预测。收盘只能看到半导体、PCB、医药、化工出现分化，无法用一天涨跌验证项目回报或业绩兑现，因此不计入上面的5条判断得分。</p>
+    <div class="grid">
+      <article class="card"><h3>应保留</h3><p>油价—油气的直接映射，以及用成交量确认板块承接的分析框架。</p></article>
+      <article class="card"><h3>应修正</h3><p>把“医药”“AI科技”进一步拆分；当日真正占优的是生物制品、IT服务和软件，不是整个医药或整个科技。</p></article>
+    </div>
   </section>
 
   <section class="panel" id="global"><h2>二、隔夜外盘与跨资产</h2>
@@ -97,12 +119,12 @@
     <p>沪深两市成交<strong>21,355.5亿元</strong>，较9月21日20,315亿元增加约1,040.5亿元（+5.1%）。iFinD指数成分口径：上证指数成分上涨1,021家、下跌1,259家、涨停30家、跌停3家；深证成指成分上涨1,280家、下跌1,571家、涨停32家、跌停2家；创业板指口径上涨732家、下跌646家、涨停3家、跌停0家；科创50为25涨、25跌。<b>全市场</b>涨跌家数与涨跌停家数截至15:10未取得，以上不得当作全市场宽度，也不得跨指数相加。</p>
     <p><b>轮动解读：</b>早盘AI应用、CPU与半导体走强，午后涨幅明显收敛；收盘固定跟踪板块中生物制品、IT服务、软件开发、煤炭较强，油气、电网、化学原料和光刻机偏弱。放量但指数平收，反映高位科技内部换手与医药、资源之间的快速轮动。</p>
     <h3>判断跟踪</h3>
-    <div class="table-wrap"><table><thead><tr><th>早报原意</th><th>收盘事实</th><th>状态</th></tr></thead><tbody>
-      <tr><td>“医药强势承接≈AI科技映射，强于化工/金融轮动”</td><td>生物制品+1.20%、CRO+0.23%，但医药商业、生物医药指数下跌；半导体+0.71%、软件+1.58%，化学原料与多元金融下跌。</td><td><span class="tag warning">部分兑现</span></td></tr>
-      <tr><td>观察医药高开后的成交承接</td><td>医药各子板块成交多数高于或接近上日，但收盘涨跌分化，生物制品强、医药商业弱。</td><td><span class="tag warning">部分兑现</span></td></tr>
-      <tr><td>观察半导体/CPO能否随隔夜外盘放量</td><td>半导体+0.71%、成交环比+16.2%；CPO-0.59%、成交环比+3.9%，量增但方向不同。</td><td><span class="tag warning">部分兑现</span></td></tr>
-      <tr><td>隔夜油价急跌，油气存在高位回吐风险</td><td>油气开采及服务-1.37%，成交额41.98亿元、环比约-30.3%。</td><td><span class="tag good">兑现</span></td></tr>
-      <tr><td>若指数高开而成交继续收缩，防止快速轮动</td><td>指数高开，但沪深成交反而较上日增加约5.1%，条件未同时成立。</td><td><span class="tag neutral">无法验证</span></td></tr>
+    <div class="table-wrap"><table><thead><tr><th>编号</th><th>早报原意</th><th>收盘事实</th><th>状态</th></tr></thead><tbody>
+      <tr><td>P01</td><td>“医药强势承接≈AI科技映射，强于化工/金融轮动”</td><td>生物制品+1.20%、CRO+0.23%，但医药商业、生物医药指数下跌；半导体+0.71%、软件+1.58%，化学原料与多元金融下跌。</td><td><span class="tag warning">部分兑现</span></td></tr>
+      <tr><td>P02</td><td>观察医药高开后的成交承接</td><td>医药各子板块成交多数高于或接近上日，但收盘涨跌分化，生物制品强、医药商业弱。</td><td><span class="tag warning">部分兑现</span></td></tr>
+      <tr><td>P03</td><td>观察半导体/CPO能否随隔夜外盘放量</td><td>半导体+0.71%、成交环比+16.2%；CPO-0.59%、成交环比+3.9%，量增但方向不同。</td><td><span class="tag warning">部分兑现</span></td></tr>
+      <tr><td>P04</td><td>隔夜油价急跌，油气存在高位回吐风险</td><td>油气开采及服务-1.37%，成交额41.98亿元、环比约-30.3%。</td><td><span class="tag good">兑现</span></td></tr>
+      <tr><td>P05</td><td>若指数高开而成交继续收缩，防止快速轮动</td><td>指数高开，但沪深成交反而较上日增加约5.1%，条件未同时成立。</td><td><span class="tag neutral">无法验证</span></td></tr>
     </tbody></table></div>
     <p class="note">指数日频值由同花顺iFinD于15:22取得；15:00收盘已完成。网页搜索曾返回9月21日数据并误配9月22日，已剔除。</p>
   </section>
