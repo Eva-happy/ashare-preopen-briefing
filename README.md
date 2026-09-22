@@ -52,6 +52,8 @@ https://cursor.com/automations/cbeb1ef9-b59d-11f1-bb68-864e54d14197
 
 自动任务对话必须额外输出一份**知识星球分享文案**（标题 + 正文，纯文本可复制）。星球里上传 HTML 文件，文案不要写链接。规则见提示词第九条。
 
+早报若只开了拉取请求，Pages 不会更新。`.github/workflows/merge-briefing.yml` 会把「标题含当天日期和早报、且只改报告文件」的拉取请求合并进 `main`，并触发 Pages 部署。
+
 新增报告后运行：
 
 ```bash

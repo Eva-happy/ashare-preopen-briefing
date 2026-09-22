@@ -1,0 +1,11 @@
+{
+  "version": "0.3.2",
+  "date": "2026-09-22",
+  "slug": "auto-merge-main",
+  "notes": "早报必须进入 main；草稿 PR 要在同一轮合并，并由 merge-briefing 工作流兜底",
+  "immutable": true,
+  "files": [
+    "ashare-preopen-briefing.md",
+    "automation-dashboard-prompt.md"
+  ]
+}

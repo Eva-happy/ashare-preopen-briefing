@@ -5,6 +5,11 @@
 
 接口读不到 Cursor 自动任务里正在运行的 Prompt 正文。仓库能保证的是：**凡提交过的提示词都还在**；仪表盘以你最后一次粘贴为准。
 
+## 0.3.2 — 2026-09-22
+
+- 归档：`prompts/archive/v0.3.2_2026-09-22_auto-merge-main/`
+- 早报必须进入 main；草稿 PR 要在同一轮合并，并由 merge-briefing 工作流兜底
+
 ## 0.3.1 — 2026-09-21
 
 - 归档：`prompts/archive/v0.3.1_2026-09-21_xingqiu-upload-html/`
