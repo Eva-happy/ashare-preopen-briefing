@@ -1,0 +1,55 @@
+name: Merge briefing into main
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+
+concurrency:
+  group: merge-briefing-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  merge:
+    if: github.event.pull_request.base.ref == 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Merge today's briefing pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR: ${{ github.event.pull_request.number }}
+          TITLE: ${{ github.event.pull_request.title }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          state=$(gh pr view "$PR" --repo "$REPO" --json state --jq .state)
+          if [ "$state" != "OPEN" ]; then
+            echo "pull request is $state"
+            exit 0
+          fi
+
+          mapfile -t files < <(gh api --paginate "repos/${REPO}/pulls/${PR}/files" --jq '.[].filename')
+          if [ "${#files[@]}" -eq 0 ]; then
+            echo "no files"
+            exit 0
+          fi
+
+          export REPORT_DATE
+          REPORT_DATE=$(TZ=Asia/Shanghai date +%Y-%m-%d)
+          if ! bash scripts/briefing_pr_eligible.sh "$TITLE" "${files[@]}"; then
+            echo "not an auto-merge briefing"
+            exit 0
+          fi
+
+          gh pr ready "$PR" --repo "$REPO" || true
+          gh pr merge "$PR" --repo "$REPO" --squash --delete-branch
+          gh workflow run "Deploy GitHub Pages" --repo "$REPO" --ref main
