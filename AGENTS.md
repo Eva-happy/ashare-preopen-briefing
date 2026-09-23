@@ -24,8 +24,8 @@ python3 scripts/snapshot_prompt.py --version 0.4.0 --slug short-name --notes "�
 
 必须先阅读并严格执行 `prompts/ashare-close-briefing.md`。不要把它和早报提示词混成一份，也不要贴进「A股开盘前多源晨报」。
 
-收盘提示词与早报对齐：同样是一至七条九段 + 第八条排版 + 第九条知识星球文案。数据截止北京时间 15:10。第五条写**当日**复盘，第六条检索窗是当日 08:30 至 15:10，并对照同日早报里指向当天的判断。
+收盘提示词与早报对齐：同样是一至七条九段 + 第八条排版 + 第九条知识星球文案。数据截止北京时间 17:30。第五条写**当日**复盘，第六条检索窗是当日 08:30 至 17:30，并对照同日早报里指向当天的判断。
 
-文件名：`archive/年/月/A股收盘报告_YYYY-MM-DD_1510.html`。仪表盘粘贴：`prompts/close-automation-dashboard-prompt.md`。版本见 `prompts/close-VERSION`。生成后同样运行 `python3 scripts/build_index.py`。`latest.html` 仍跳最新早报，收盘走 `latest-close.html`。建议日程 `20 7 * * 1-5`（北京时间工作日 15:20），模型用 GPT。
+文件名：`archive/年/月/A股收盘报告_YYYY-MM-DD_1730.html`。仪表盘粘贴：`prompts/close-automation-dashboard-prompt.md`。版本见 `prompts/close-VERSION`。生成后同样运行 `python3 scripts/build_index.py`。`latest.html` 仍跳最新早报，收盘走 `latest-close.html`。日程 `40 9 * * 1-5`（北京时间工作日 17:40），模型用 GPT。
 
 本机 Windows 归档目录是 `D:\Eva-personal\A股开盘前早报归档`，早盘和收盘分开放。工具在 `local-archive/`。双击 `生成收盘报告.bat` 会把最新收盘 HTML 存进 `收盘\`。

@@ -34,7 +34,7 @@ GitHub 仓库里点文件 →「分享」，发出去的是 **源码页**，其�
 
 ```text
 archive/年/月/A股开盘前早报_YYYY-MM-DD_HHMM.html
-archive/年/月/A股收盘报告_YYYY-MM-DD_1510.html
+archive/年/月/A股收盘报告_YYYY-MM-DD_1730.html
 ```
 
 ## 收盘报告
@@ -45,7 +45,7 @@ archive/年/月/A股收盘报告_YYYY-MM-DD_1510.html
 - 仪表盘粘贴文本：[`prompts/close-automation-dashboard-prompt.md`](prompts/close-automation-dashboard-prompt.md)
 - 版本：[`prompts/close-VERSION`](prompts/close-VERSION)
 
-建议新建自动任务，名称「A股收盘报告」，日程 `20 7 * * 1-5`（北京时间工作日 15:20），模型用 GPT，接上同花顺 iFinD。不要把收盘提示词贴进「A股开盘前多源晨报」。`latest.html` 仍然只打开最新早报；收盘报告用 `latest-close.html`。
+建议新建自动任务，名称「A股收盘报告」，日程 `40 9 * * 1-5`（北京时间工作日 17:40），模型用 GPT，接上同花顺 iFinD。数据截止 17:30。不要把收盘提示词贴进「A股开盘前多源晨报」。`latest.html` 仍然只打开最新早报；收盘报告用 `latest-close.html`。
 
 ## 本机归档（早盘 / 收盘）
 
@@ -57,7 +57,7 @@ Windows 本机目录：`D:\Eva-personal\A股开盘前早报归档`
 - 把已有早报 HTML 放进 `早盘\`
 - 复制三个 BAT：`整理归档.bat`、`生成早盘报告.bat`、`生成收盘报告.bat`
 
-之后在本机目录双击「生成收盘报告.bat」，会从 GitHub Pages 下载完整收盘 HTML 并打开。需要 Python 3。收盘自动任务 15:20 跑完并进入 `main` 之前，这个 BAT 不会编造报告。
+之后在本机目录双击「生成收盘报告.bat」，会从 GitHub Pages 下载完整收盘 HTML 并打开。需要 Python 3。收盘自动任务 17:40 跑完并进入 `main` 之前，这个 BAT 不会编造报告。
 
 ## 自动任务提示词
 
