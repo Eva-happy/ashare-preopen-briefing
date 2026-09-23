@@ -1,0 +1,12 @@
+{
+  "version": "0.2.3",
+  "date": "2026-09-23",
+  "slug": "ifind-lhb-fields",
+  "notes": "按iFinD实际返回的龙虎榜字段写报告，营业部名称取不到不编造",
+  "immutable": true,
+  "kind": "close",
+  "files": [
+    "ashare-close-briefing.md",
+    "close-automation-dashboard-prompt.md"
+  ]
+}
