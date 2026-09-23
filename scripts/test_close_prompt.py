@@ -87,11 +87,12 @@ def test_prompt_alignment() -> None:
     assert len(close_codes) == 29
 
     assert "08:30" in preopen
-    assert "17:30" in paste
-    assert "A股收盘报告_YYYY-MM-DD_1730.html" in paste
+    assert "17:10" in paste
+    assert "A股收盘报告_YYYY-MM-DD_1710.html" in paste
+    assert "龙虎榜" in paste
     assert "latest-close.html" in paste
     assert "当日A股复盘" in paste
-    assert "08:30至17:30" in paste
+    assert "08:30至17:10" in paste
     assert "不要把它贴进" in close or "不要把它贴进" in close[:800]
     assert "兑现" in paste and "证伪" in paste
     assert "知识星球分享文案" in paste

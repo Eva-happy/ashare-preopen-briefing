@@ -54,7 +54,7 @@ def report_kind(path: Path, title: str = "") -> str | None:
     time_m = TIME_RE.search(path.stem + ".html")
     if time_m:
         hhmm = time_m.group(1)
-        if hhmm in {"1510", "1730"}:
+        if hhmm in {"1510", "1710", "1730"}:
             return "close"
         if hhmm == "0830":
             return "open"
@@ -240,13 +240,13 @@ def fetch_kind(root: Path, kind: str, *, from_repo: Path | None = None) -> Path:
     except urllib.error.HTTPError as exc:
         if exc.code == 404:
             raise FileNotFoundError(
-                f"还没有发布{KIND_DIR[kind]}。收盘请等自动任务 17:40 跑完并进入 main。"
+                f"还没有发布{KIND_DIR[kind]}。收盘请等自动任务 17:10 跑完并进入 main。"
             ) from exc
         raise
     resolved = resolve_share(latest_html)
     if not resolved:
         raise FileNotFoundError(
-            f"还没有发布{KIND_DIR[kind]}。收盘请等自动任务 17:40 跑完并进入 main。"
+            f"还没有发布{KIND_DIR[kind]}。收盘请等自动任务 17:10 跑完并进入 main。"
         )
     report_date, hhmm = resolved
     share_url = f"{SITE}/r/{report_date}_{hhmm}.html"
