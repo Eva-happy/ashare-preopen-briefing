@@ -15,7 +15,11 @@ import build_index  # noqa: E402
 
 def main() -> None:
     reports = sorted(
-        (build_index.parse_report(p) for p in (ROOT / "archive").rglob("*.html")),
+        (
+            build_index.parse_report(p)
+            for p in (ROOT / "archive").rglob("*.html")
+            if build_index.is_indexed_ashare(p)
+        ),
         key=lambda r: r["sort_key"],
         reverse=True,
     )
