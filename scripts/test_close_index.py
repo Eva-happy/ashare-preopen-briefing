@@ -29,11 +29,24 @@ def main() -> None:
     assert text.count("<tr><td>科技</td>") + text.count("<tr><td>油气</td>") + text.count("<tr><td>煤炭</td>") + text.count("<tr><td>电力电网</td>") + text.count("<tr><td>农业</td>") + text.count("<tr><td>医药</td>") + text.count("<tr><td>计算机</td>") + text.count("<tr><td>化工</td>") + text.count("<tr><td>金融</td>") == 29, "sector rows must be 29"
 
     html_index = build_index.render_index(reports)
-    assert "收盘对照" in html_index
-    assert "收盘报告" in html_index
-    assert "最新早报" in html_index
-    assert "最新收盘" in html_index
-    assert "latest-close.html" in html_index
+    assert "A股" in html_index
+    assert "美股" in html_index
+    assert "全球市场报告" in html_index
+    assert "名人持仓雷达" in html_index
+    assert "ashare/" in html_index and "us/" in html_index and "global/" in html_index
+    assert "2026-09-21_0830" not in html_index
+    assert "<article" not in html_index
+    pages = build_index.render_section_pages(reports)
+    ashare = pages["ashare"]
+    assert "收盘对照" in ashare
+    assert "收盘报告" in ashare
+    assert "最新早报" in ashare
+    assert "最新收盘" in ashare
+    assert "latest-close.html" in ashare
+    assert "美股复盘" not in ashare
+    assert "美股复盘" in pages["us"] and "美股周报" in pages["us"]
+    assert "A股开盘前早报" not in pages["us"]
+    assert "这一类还没有报告" in pages["global"]
 
     latest_open = next(r for r in reports if r["kind"] == "open")
     assert latest_open["date"] == "2026-09-24"
@@ -41,7 +54,7 @@ def main() -> None:
     assert latest_close["date"] == "2026-09-24"
     latest_weekly = next(r for r in reports if r["kind"] == "weekly")
     assert latest_weekly["share_name"] == "2026-09-24_2000.html"
-    assert "latest-weekly.html" in html_index
+    assert "latest-weekly.html" in ashare
     page = build_index.render_latest(latest_open, empty="暂无早报", jumping="跳转到最新早报")
     assert "2026-09-24_0830.html" in page
     assert "2026-09-21_1510.html" not in page

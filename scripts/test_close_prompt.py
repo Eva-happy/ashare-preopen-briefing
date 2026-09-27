@@ -103,6 +103,10 @@ def test_index_kind_and_latest() -> None:
     assert build_index.report_kind(Path("A股收盘对照_2026-09-21_1510.html"), "对照") == "close"
     assert build_index.report_kind(Path("A股开盘前早报_2026-09-22_0830.html"), "A股开盘前早报") == "open"
     assert build_index.report_kind(Path("A股周度复盘_2026-09-24_2000.html"), "A股周度复盘") == "weekly"
+    assert build_index.report_kind(Path("美股复盘_2026-09-25.html"), "美股复盘") == "us"
+    assert build_index.report_kind(Path("美股周报_2026-09-25.html"), "美股周报") == "us"
+    assert build_index.report_kind(Path("全球市场报告_2026-09-25.html"), "全球市场早报") == "global"
+    assert build_index.report_kind(Path("美股潜力股与名人持仓雷达_2026-09-27.html"), "持仓雷达") == "radar"
 
     reports = sorted(
         (build_index.parse_report(p) for p in (ROOT / "archive").rglob("*.html")),
@@ -115,10 +119,15 @@ def test_index_kind_and_latest() -> None:
     assert opens, "archive 里应有早报"
     assert closes, "archive 里应有收盘报告"
     html_index = build_index.render_index(reports)
-    assert "latest-close.html" in html_index
-    assert "收盘报告" in html_index
-    assert "最新收盘" in html_index
-    assert "最新早报" in html_index
+    assert "ashare/" in html_index and "名人持仓雷达" in html_index
+    assert "<article" not in html_index
+    pages = build_index.render_section_pages(reports)
+    assert "latest-close.html" in pages["ashare"]
+    assert "收盘报告" in pages["ashare"]
+    assert "最新收盘" in pages["ashare"]
+    assert "最新早报" in pages["ashare"]
+    assert "美股复盘" in pages["us"]
+    assert "A股开盘前早报" not in pages["us"]
     latest_open = opens[0]
     latest_close = closes[0]
     page = build_index.render_latest(latest_open, empty="暂无早报", jumping="跳转到最新早报")
