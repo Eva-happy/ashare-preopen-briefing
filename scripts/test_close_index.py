@@ -36,11 +36,14 @@ def main() -> None:
     assert "latest-close.html" in html_index
 
     latest_open = next(r for r in reports if r["kind"] == "open")
-    assert latest_open["date"] == "2026-09-22"
+    assert latest_open["date"] == "2026-09-24"
     latest_close = next(r for r in reports if r["kind"] == "close")
-    assert latest_close["date"] == "2026-09-22"
+    assert latest_close["date"] == "2026-09-24"
+    latest_weekly = next(r for r in reports if r["kind"] == "weekly")
+    assert latest_weekly["share_name"] == "2026-09-24_2000.html"
+    assert "latest-weekly.html" in html_index
     page = build_index.render_latest(latest_open, empty="暂无早报", jumping="跳转到最新早报")
-    assert "2026-09-22_0830.html" in page
+    assert "2026-09-24_0830.html" in page
     assert "2026-09-21_1510.html" not in page
 
     script = ROOT / "scripts" / "briefing_pr_eligible.sh"

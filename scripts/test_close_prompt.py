@@ -102,6 +102,7 @@ def test_index_kind_and_latest() -> None:
     assert build_index.report_kind(Path("A股收盘报告_2026-09-22_1510.html"), "A股收盘报告") == "close"
     assert build_index.report_kind(Path("A股收盘对照_2026-09-21_1510.html"), "对照") == "close"
     assert build_index.report_kind(Path("A股开盘前早报_2026-09-22_0830.html"), "A股开盘前早报") == "open"
+    assert build_index.report_kind(Path("A股周度复盘_2026-09-24_2000.html"), "A股周度复盘") == "weekly"
 
     reports = sorted(
         (build_index.parse_report(p) for p in (ROOT / "archive").rglob("*.html")),
@@ -129,8 +130,10 @@ def test_index_kind_and_latest() -> None:
 
     latest_html = (ROOT / "latest.html").read_text(encoding="utf-8")
     latest_close_html = (ROOT / "latest-close.html").read_text(encoding="utf-8")
-    assert "2026-09-22_0830.html" in latest_html
-    assert "2026-09-22_1510.html" in latest_close_html
+    latest_weekly_html = (ROOT / "latest-weekly.html").read_text(encoding="utf-8")
+    assert "2026-09-24_0830.html" in latest_html
+    assert "2026-09-24_1710.html" in latest_close_html
+    assert "2026-09-24_2000.html" in latest_weekly_html
     assert "<<<<<<<" not in (ROOT / "index.html").read_text(encoding="utf-8")
 
 

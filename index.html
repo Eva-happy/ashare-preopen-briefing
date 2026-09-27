@@ -20,7 +20,7 @@
     .list{display:grid;gap:12px;margin-top:8px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
     .card-main{display:block}.card-main:hover .cta,.card-main:focus-visible .cta{text-decoration:underline}
     .card-top{display:flex;align-items:center;gap:8px;margin-bottom:8px}.label{color:var(--muted);font-size:13px}
-    .badge{display:inline-block;padding:2px 8px;border-radius:999px;background:#dbeafe;color:#1e40af;font-size:12px;font-weight:700}.badge-close{background:#ffedd5;color:#9a3412}
+    .badge{display:inline-block;padding:2px 8px;border-radius:999px;background:#dbeafe;color:#1e40af;font-size:12px;font-weight:700}.badge-close{background:#ffedd5;color:#9a3412}.badge-weekly{background:#ede9fe;color:#5b21b6}
     h2{margin:0 0 6px;font-size:20px}.meta{margin:0;color:var(--muted);font-size:13px}.title{margin:8px 0 12px;color:#334155}
     .cta{color:var(--blue);font-weight:700}.share-line{margin:14px 0 0;padding-top:12px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
     .empty{padding:20px;background:#fff;border:1px dashed var(--line);border-radius:12px;color:var(--muted)}
@@ -41,19 +41,49 @@
     <h2>如何分享到其他 App</h2>
     <ol>
       <li>不要用 GitHub 文件页的「分享」——那是源码链接，微信里会显示代码。</li>
-      <li>复制本站链接：早报 <code>https://eva-happy.github.io/ashare-preopen-briefing/latest.html</code>；收盘报告 <code>https://eva-happy.github.io/ashare-preopen-briefing/latest-close.html</code></li>
+      <li>复制本站链接：早报 <code>https://eva-happy.github.io/ashare-preopen-briefing/latest.html</code>；收盘报告 <code>https://eva-happy.github.io/ashare-preopen-briefing/latest-close.html</code>；周度复盘 <code>https://eva-happy.github.io/ashare-preopen-briefing/latest-weekly.html</code></li>
       <li>粘贴到微信 / 备忘录 / 浏览器，对方点开就是排版好的 HTML 报告。</li>
     </ol>
     <div class="warn">仓库需设为 <b>Public</b> 并启用 GitHub Pages，别人才能打开这些链接。</div>
   </section>
 
-  <p class="hint">最新早报：<a href="latest.html">latest.html</a>。最新收盘报告：<a href="latest-close.html">latest-close.html</a>。</p>
+  <p class="hint">最新早报：<a href="latest.html">latest.html</a>。最新收盘报告：<a href="latest-close.html">latest-close.html</a>。最新周度复盘：<a href="latest-weekly.html">latest-weekly.html</a>。</p>
   <section class="list" aria-label="报告列表">
+      <article class="card">
+        <a class="card-main" href="r/2026-09-25.html">
+          <div class="card-top"><span class="label">美股报告</span></div>
+          <h2>2026年9月25日 周五收盘</h2>
+          <p class="meta">2026-09-25 ｜ 更新 2026-09-27</p>
+          <p class="title">美股复盘 2026-09-25</p>
+          <span class="cta">打开报告 →</span>
+        </a>
+        <p class="share-line">分享链接（复制到微信等 App）：<br><code>https://eva-happy.github.io/ashare-preopen-briefing/r/2026-09-25.html</code></p>
+      </article>
+      <article class="card">
+        <a class="card-main" href="r/2026-09-25_1.html">
+          <div class="card-top"><span class="label">美股报告</span></div>
+          <h2>截止 2026年9月25日 的这一周</h2>
+          <p class="meta">2026-09-25 ｜ 更新 2026-09-27</p>
+          <p class="title">美股周报 2026-09-25</p>
+          <span class="cta">打开报告 →</span>
+        </a>
+        <p class="share-line">分享链接（复制到微信等 App）：<br><code>https://eva-happy.github.io/ashare-preopen-briefing/r/2026-09-25_1.html</code></p>
+      </article>
+      <article class="card">
+        <a class="card-main" href="r/2026-09-24_2000.html">
+          <div class="card-top"><span class="badge badge-weekly">最新周报</span><span class="label">周度复盘</span></div>
+          <h2>A股周度复盘</h2>
+          <p class="meta">2026-09-24 ｜ 周报 20:00 ｜ 更新 2026-09-27</p>
+          <p class="title">A股周度复盘｜2026-09-21至2026-09-24</p>
+          <span class="cta">打开报告 →</span>
+        </a>
+        <p class="share-line">分享链接（复制到微信等 App）：<br><code>https://eva-happy.github.io/ashare-preopen-briefing/r/2026-09-24_2000.html</code></p>
+      </article>
       <article class="card">
         <a class="card-main" href="r/2026-09-24_1710.html">
           <div class="card-top"><span class="badge badge-close">最新收盘</span><span class="label">收盘报告</span></div>
           <h2>A股收盘报告</h2>
-          <p class="meta">2026-09-24 ｜ 收盘 17:10 ｜ 更新 2026-09-24</p>
+          <p class="meta">2026-09-24 ｜ 收盘 17:10 ｜ 更新 2026-09-27</p>
           <p class="title">A股收盘报告｜2026-09-24 17:10</p>
           <span class="cta">打开报告 →</span>
         </a>
@@ -63,7 +93,7 @@
         <a class="card-main" href="r/2026-09-24_0830.html">
           <div class="card-top"><span class="badge">最新早报</span><span class="label">开盘前早报</span></div>
           <h2>A股开盘前早报</h2>
-          <p class="meta">2026-09-24 ｜ 截止 08:30 ｜ 更新 2026-09-24</p>
+          <p class="meta">2026-09-24 ｜ 截止 08:30 ｜ 更新 2026-09-27</p>
           <p class="title">A股开盘前早报｜2026-09-24 08:30</p>
           <span class="cta">打开报告 →</span>
         </a>
@@ -73,7 +103,7 @@
         <a class="card-main" href="r/2026-09-23_1710.html">
           <div class="card-top"><span class="label">收盘报告</span></div>
           <h2>A股收盘报告</h2>
-          <p class="meta">2026-09-23 ｜ 收盘 17:10 ｜ 更新 2026-09-24</p>
+          <p class="meta">2026-09-23 ｜ 收盘 17:10 ｜ 更新 2026-09-27</p>
           <p class="title">A股收盘报告｜2026-09-23 17:10</p>
           <span class="cta">打开报告 →</span>
         </a>
@@ -83,7 +113,7 @@
         <a class="card-main" href="r/2026-09-23_0830.html">
           <div class="card-top"><span class="label">开盘前早报</span></div>
           <h2>A股开盘前早报</h2>
-          <p class="meta">2026-09-23 ｜ 截止 08:30 ｜ 更新 2026-09-24</p>
+          <p class="meta">2026-09-23 ｜ 截止 08:30 ｜ 更新 2026-09-27</p>
           <p class="title">A股开盘前早报｜2026-09-23 08:30</p>
           <span class="cta">打开报告 →</span>
         </a>
@@ -93,7 +123,7 @@
         <a class="card-main" href="r/2026-09-22_1510.html">
           <div class="card-top"><span class="label">收盘报告</span></div>
           <h2>A股收盘报告</h2>
-          <p class="meta">2026-09-22 ｜ 收盘 15:10 ｜ 更新 2026-09-24</p>
+          <p class="meta">2026-09-22 ｜ 收盘 15:10 ｜ 更新 2026-09-27</p>
           <p class="title">A股收盘报告｜2026-09-22 15:10</p>
           <span class="cta">打开报告 →</span>
         </a>
@@ -103,7 +133,7 @@
         <a class="card-main" href="r/2026-09-22_0830.html">
           <div class="card-top"><span class="label">开盘前早报</span></div>
           <h2>A股开盘前早报</h2>
-          <p class="meta">2026-09-22 ｜ 截止 08:30 ｜ 更新 2026-09-24</p>
+          <p class="meta">2026-09-22 ｜ 截止 08:30 ｜ 更新 2026-09-27</p>
           <p class="title">A股开盘前早报｜2026-09-22 08:30</p>
           <span class="cta">打开报告 →</span>
         </a>
@@ -113,7 +143,7 @@
         <a class="card-main" href="r/2026-09-21_1510.html">
           <div class="card-top"><span class="label">收盘报告</span></div>
           <h2>早报验证 · 2026-09-21</h2>
-          <p class="meta">2026-09-21 ｜ 收盘 15:10 ｜ 更新 2026-09-24</p>
+          <p class="meta">2026-09-21 ｜ 收盘 15:10 ｜ 更新 2026-09-27</p>
           <p class="title">A股收盘对照｜2026-09-21 15:10</p>
           <span class="cta">打开报告 →</span>
         </a>
@@ -123,7 +153,7 @@
         <a class="card-main" href="r/2026-09-21_0830.html">
           <div class="card-top"><span class="label">开盘前早报</span></div>
           <h2>A股开盘前早报</h2>
-          <p class="meta">2026-09-21 ｜ 截止 08:30 ｜ 更新 2026-09-22</p>
+          <p class="meta">2026-09-21 ｜ 截止 08:30 ｜ 更新 2026-09-27</p>
           <p class="title">A股开盘前早报｜2026-09-21 08:30</p>
           <span class="cta">打开报告 →</span>
         </a>

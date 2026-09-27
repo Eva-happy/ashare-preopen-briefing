@@ -25,9 +25,15 @@ def strip_tags(text: str) -> str:
 
 def report_kind(path: Path, title: str) -> str:
     blob = f"{path.name}\n{title}"
+    if "美股" in blob:
+        return "us"
+    if "A股周度" in blob or "周度复盘" in blob:
+        return "weekly"
     if "收盘" in blob:
         return "close"
-    return "open"
+    if "开盘" in blob or "早报" in blob:
+        return "open"
+    return "other"
 
 
 def parse_report(path: Path) -> dict:
@@ -82,12 +88,19 @@ def sync_share_copies(reports: list[dict]) -> None:
         shutil.copy2(r["path"], target)
 
 
-KIND_LABEL = {"open": "开盘前早报", "close": "收盘报告"}
+KIND_LABEL = {
+    "open": "开盘前早报",
+    "close": "收盘报告",
+    "weekly": "周度复盘",
+    "us": "美股报告",
+    "other": "其他报告",
+}
 
 
 def render_index(reports: list[dict]) -> str:
     latest_open = next((r for r in reports if r["kind"] == "open"), None)
     latest_close = next((r for r in reports if r["kind"] == "close"), None)
+    latest_weekly = next((r for r in reports if r["kind"] == "weekly"), None)
     cards = []
     for r in reports:
         badges = []
@@ -95,11 +108,17 @@ def render_index(reports: list[dict]) -> str:
             badges.append('<span class="badge">最新早报</span>')
         if latest_close and r["share_rel"] == latest_close["share_rel"]:
             badges.append('<span class="badge badge-close">最新收盘</span>')
+        if latest_weekly and r["share_rel"] == latest_weekly["share_rel"]:
+            badges.append('<span class="badge badge-weekly">最新周报</span>')
         badge = "".join(badges)
         when = (
             f"收盘 {r['time']}"
             if r["kind"] == "close" and r["time"]
-            else (f"截止 {r['time']}" if r["time"] else "")
+            else (
+                f"周报 {r['time']}"
+                if r["kind"] == "weekly" and r["time"]
+                else (f"截止 {r['time']}" if r["time"] else "")
+            )
         )
         meta_bits = [x for x in [r["date"], when, f"更新 {r['mtime']}"] if x]
         meta = " ｜ ".join(meta_bits)
@@ -123,6 +142,7 @@ def render_index(reports: list[dict]) -> str:
     )
     latest_url = f"{SITE}/latest.html"
     latest_close_url = f"{SITE}/latest-close.html"
+    latest_weekly_url = f"{SITE}/latest-weekly.html"
     return f"""<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -145,7 +165,7 @@ def render_index(reports: list[dict]) -> str:
     .list{{display:grid;gap:12px;margin-top:8px}}.card{{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}}
     .card-main{{display:block}}.card-main:hover .cta,.card-main:focus-visible .cta{{text-decoration:underline}}
     .card-top{{display:flex;align-items:center;gap:8px;margin-bottom:8px}}.label{{color:var(--muted);font-size:13px}}
-    .badge{{display:inline-block;padding:2px 8px;border-radius:999px;background:#dbeafe;color:#1e40af;font-size:12px;font-weight:700}}.badge-close{{background:#ffedd5;color:#9a3412}}
+    .badge{{display:inline-block;padding:2px 8px;border-radius:999px;background:#dbeafe;color:#1e40af;font-size:12px;font-weight:700}}.badge-close{{background:#ffedd5;color:#9a3412}}.badge-weekly{{background:#ede9fe;color:#5b21b6}}
     h2{{margin:0 0 6px;font-size:20px}}.meta{{margin:0;color:var(--muted);font-size:13px}}.title{{margin:8px 0 12px;color:#334155}}
     .cta{{color:var(--blue);font-weight:700}}.share-line{{margin:14px 0 0;padding-top:12px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}}
     .empty{{padding:20px;background:#fff;border:1px dashed var(--line);border-radius:12px;color:var(--muted)}}
@@ -166,13 +186,13 @@ def render_index(reports: list[dict]) -> str:
     <h2>如何分享到其他 App</h2>
     <ol>
       <li>不要用 GitHub 文件页的「分享」——那是源码链接，微信里会显示代码。</li>
-      <li>复制本站链接：早报 <code>{html.escape(latest_url)}</code>；收盘报告 <code>{html.escape(latest_close_url)}</code></li>
+      <li>复制本站链接：早报 <code>{html.escape(latest_url)}</code>；收盘报告 <code>{html.escape(latest_close_url)}</code>；周度复盘 <code>{html.escape(latest_weekly_url)}</code></li>
       <li>粘贴到微信 / 备忘录 / 浏览器，对方点开就是排版好的 HTML 报告。</li>
     </ol>
     <div class="warn">仓库需设为 <b>Public</b> 并启用 GitHub Pages，别人才能打开这些链接。</div>
   </section>
 
-  <p class="hint">最新早报：<a href="latest.html">latest.html</a>。最新收盘报告：<a href="latest-close.html">latest-close.html</a>。</p>
+  <p class="hint">最新早报：<a href="latest.html">latest.html</a>。最新收盘报告：<a href="latest-close.html">latest-close.html</a>。最新周度复盘：<a href="latest-weekly.html">latest-weekly.html</a>。</p>
   <section class="list" aria-label="报告列表">
 {cards_html}
   </section>
@@ -220,6 +240,7 @@ def main() -> None:
     sync_share_copies(reports)
     latest_open = next((r for r in reports if r["kind"] == "open"), None)
     latest_close = next((r for r in reports if r["kind"] == "close"), None)
+    latest_weekly = next((r for r in reports if r["kind"] == "weekly"), None)
     (ROOT / "index.html").write_text(render_index(reports), encoding="utf-8")
     (ROOT / "latest.html").write_text(
         render_latest(latest_open, empty="暂无早报。请先生成 archive 下的 HTML 早报。", jumping="跳转到最新早报"),
@@ -230,6 +251,14 @@ def main() -> None:
             latest_close,
             empty="暂无收盘报告。请先生成 archive 下的 HTML 收盘报告。",
             jumping="跳转到最新收盘报告",
+        ),
+        encoding="utf-8",
+    )
+    (ROOT / "latest-weekly.html").write_text(
+        render_latest(
+            latest_weekly,
+            empty="暂无周度复盘。请先生成 archive 下的 HTML 周报。",
+            jumping="跳转到最新周度复盘",
         ),
         encoding="utf-8",
     )
