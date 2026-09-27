@@ -15,10 +15,17 @@ import build_index  # noqa: E402
 
 def main() -> None:
     reports = sorted(
-        (build_index.parse_report(p) for p in (ROOT / "archive").rglob("*.html")),
+        (
+            build_index.parse_report(p)
+            for p in (ROOT / "archive").rglob("*.html")
+            if build_index.is_indexed_ashare(p)
+        ),
         key=lambda r: r["sort_key"],
         reverse=True,
     )
+    assert build_index.is_indexed_ashare(Path("archive/global/2026/09/全球市场复盘_2026-09-27_0830.html")) is False
+    assert build_index.is_indexed_ashare(Path("archive/2026/09/美股复盘_2026-09-25.html")) is False
+    assert build_index.is_indexed_ashare(Path("archive/2026/09/A股开盘前早报_2026-09-24_0830.html")) is True
     kinds = {(r["date"], r["kind"]) for r in reports}
     assert ("2026-09-21", "close") in kinds, kinds
     assert ("2026-09-22", "open") in kinds, kinds
@@ -36,11 +43,11 @@ def main() -> None:
     assert "latest-close.html" in html_index
 
     latest_open = next(r for r in reports if r["kind"] == "open")
-    assert latest_open["date"] == "2026-09-22"
+    assert latest_open["date"] == "2026-09-24"
     latest_close = next(r for r in reports if r["kind"] == "close")
-    assert latest_close["date"] == "2026-09-22"
+    assert latest_close["date"] == "2026-09-24"
     page = build_index.render_latest(latest_open, empty="暂无早报", jumping="跳转到最新早报")
-    assert "2026-09-22_0830.html" in page
+    assert "2026-09-24_0830.html" in page
     assert "2026-09-21_1510.html" not in page
 
     script = ROOT / "scripts" / "briefing_pr_eligible.sh"

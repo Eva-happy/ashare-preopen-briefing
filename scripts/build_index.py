@@ -23,6 +23,16 @@ def strip_tags(text: str) -> str:
     return re.sub(r"<[^>]+>", "", text).strip()
 
 
+def is_indexed_ashare(path: Path) -> bool:
+    """Only A-share morning and close HTML belong in latest.html."""
+    if "global" in path.parts:
+        return False
+    name = path.name
+    if "全球市场" in name or name.startswith("global-") or "美股" in name:
+        return False
+    return ("早报" in name) or ("收盘" in name)
+
+
 def report_kind(path: Path, title: str) -> str:
     blob = f"{path.name}\n{title}"
     if "收盘" in blob:
@@ -213,7 +223,7 @@ def render_latest(report: dict | None, *, empty: str, jumping: str) -> str:
 
 def main() -> None:
     reports = sorted(
-        (parse_report(p) for p in ARCHIVE.rglob("*.html")),
+        (parse_report(p) for p in ARCHIVE.rglob("*.html") if is_indexed_ashare(p)),
         key=lambda r: r["sort_key"],
         reverse=True,
     )
