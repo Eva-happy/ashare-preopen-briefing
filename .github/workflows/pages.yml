@@ -30,6 +30,7 @@ jobs:
           cp index.html latest.html latest-close.html _site/
           cp -R archive _site/archive
           cp -R r _site/r
+          if [ -d us-radar ]; then cp -R us-radar _site/us-radar; fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
