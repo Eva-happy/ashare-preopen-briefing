@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="开盘前早报、收盘报告、周度复盘。">
+  <title>A股｜市场研究报告</title>
+  <style>
+
+    :root{--ink:#172033;--muted:#667085;--line:#e5e9f0;--bg:#f3f6fb;--card:#fff;--blue:#1d4ed8}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(960px,100%);margin:auto;padding:18px}
+    .hero{background:linear-gradient(135deg,#172554,#1e3a8a);color:#fff;padding:28px;border-radius:18px;box-shadow:0 12px 30px #17255422}
+    .hero.ashare{background:linear-gradient(135deg,#172554,#1e3a8a)}
+    .hero.us{background:linear-gradient(135deg,#042f2e,#0f766e)}
+    .hero.global{background:linear-gradient(135deg,#431407,#c2410c)}
+    .hero.radar{background:linear-gradient(135deg,#2e1065,#6d28d9)}
+    .hero.other{background:linear-gradient(135deg,#1f2937,#334155)}
+    h1{font-size:clamp(26px,5vw,40px);line-height:1.15;margin:0 0 8px}
+    .hero p{margin:0;opacity:.92}
+    .hero .kicker{margin:0 0 8px;opacity:.85}
+    .portal-card{transition:transform .15s ease,border-color .15s ease}
+    .kicker{display:block;margin-bottom:6px;font-size:12px;letter-spacing:.08em;font-weight:700;opacity:.8}
+    .portal{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+    .portal-card{display:flex;flex-direction:column;gap:8px;min-height:220px;padding:20px 20px 16px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 10px 24px #1720330d}
+    .portal-card:hover{transform:translateY(-2px);border-color:#cbd5e1}
+    .portal-card h2{margin:0;font-size:28px}
+    .portal-card .kicker{opacity:1}
+    .portal-card.ashare{border-top:5px solid #1d4ed8}.portal-card.ashare .kicker{color:#1d4ed8}
+    .portal-card.us{border-top:5px solid #0f766e}.portal-card.us .kicker{color:#0f766e}
+    .portal-card.global{border-top:5px solid #c2410c}.portal-card.global .kicker{color:#c2410c}
+    .portal-card.radar{border-top:5px solid #6d28d9}.portal-card.radar .kicker{color:#6d28d9}
+    .portal-card.other{border-top:5px solid #475569}.portal-card.other .kicker{color:#475569}
+    .blurb{margin:0;color:#334155}
+    .preview{margin:0;color:var(--muted);font-size:13px}
+    .foot{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:12px}
+    .count{color:var(--muted);font-size:13px}
+    .share-box{margin:16px 0;padding:14px 16px;background:#fff;border:1px solid var(--line);border-radius:14px}
+    .share-box h2{margin:0 0 8px;font-size:16px}
+    .share-box p{margin:0;color:#334155}
+    .share-box code,.share-line code{display:inline-block;margin-top:4px;padding:2px 6px;background:#eef2ff;border-radius:6px;font-size:12px;color:#1e3a8a;overflow-wrap:anywhere}
+    .warn{margin-top:10px;padding:10px 12px;background:#fffbeb;border-left:4px solid #b45309;border-radius:8px;color:#92400e;font-size:13px}
+    .switch{display:flex;gap:8px;overflow:auto;margin:14px 0;padding-bottom:2px}
+    .switch a{flex:0 0 auto;padding:6px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);color:#334155;font-size:13px;font-weight:700}
+    .switch a[aria-current="page"]{background:#172554;border-color:#172554;color:#fff}
+    .hint{margin:0 0 8px;color:var(--muted);font-size:13px}
+    .hint a{color:var(--blue);text-decoration:underline}
+    .list{display:grid;gap:12px;margin-top:8px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+    .card-main{display:block}
+    .card-main:hover .cta,.card-main:focus-visible .cta,.portal-card:hover .cta{text-decoration:underline}
+    .card-top{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+    .label{color:var(--muted);font-size:13px}
+    .badge{display:inline-block;padding:2px 8px;border-radius:999px;background:#dbeafe;color:#1e40af;font-size:12px;font-weight:700}
+    .badge-close{background:#ffedd5;color:#9a3412}
+    .badge-weekly{background:#ede9fe;color:#5b21b6}
+    .badge-us{background:#ccfbf1;color:#115e59}
+    .badge-global{background:#ffedd5;color:#9a3412}
+    .badge-radar{background:#fae8ff;color:#86198f}
+    h2{margin:0 0 6px;font-size:20px}
+    .meta{margin:0;color:var(--muted);font-size:13px}
+    .title{margin:8px 0 12px;color:#334155}
+    .cta{color:var(--blue);font-weight:700}
+    .portal-card.ashare .cta{color:#1d4ed8}
+    .portal-card.us .cta{color:#0f766e}
+    .portal-card.global .cta{color:#c2410c}
+    .portal-card.radar .cta{color:#6d28d9}
+    .share-line{margin:14px 0 0;padding-top:12px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+    .empty{padding:20px;background:#fff;border:1px dashed var(--line);border-radius:12px;color:var(--muted)}
+    footer{margin:28px 0 8px;padding:16px 18px;background:#172554;color:#fff;border-radius:14px;font-size:13px}
+    footer a{color:#fff;text-decoration:underline}
+    footer code{color:#fff;font-size:12px}
+    code{font-size:12px}
+    @media(max-width:720px){.portal{grid-template-columns:1fr}.wrap{padding:12px}.hero{padding:20px}.portal-card{min-height:0}}
+
+  </style>
+</head>
+<body>
+<main class="wrap">
+  <header class="hero ashare">
+    <p class="kicker">中国市场</p>
+    <h1>A股</h1>
+    <p>开盘前早报、收盘报告、周度复盘。</p>
+  </header>
+  <nav class="switch" aria-label="报告分类"><a href="../index.html">首页</a><a href="../ashare/" aria-current="page">A股</a><a href="../us/">美股</a><a href="../global/">全球市场报告</a><a href="../us-radar/">名人持仓雷达</a></nav>
+  <p class="hint">固定入口：<a href="../latest.html">最新早报</a> · <a href="../latest-close.html">最新收盘</a> · <a href="../latest-weekly.html">最新周报</a></p>
+  <section class="list" aria-label="A股报告列表">
+      <article class="card">
+        <a class="card-main" href="../r/2026-09-24_2000.html">
+          <div class="card-top"><span class="badge badge-weekly">最新周报</span><span class="label">周度复盘</span></div>
+          <h2>A股周度复盘</h2>
+          <p class="meta">2026-09-24 ｜ 周报 20:00 ｜ 更新 2026-09-27</p>
+          <p class="title">A股周度复盘｜2026-09-21至2026-09-24</p>
+          <span class="cta">打开报告 →</span>
+        </a>
+        <p class="share-line">分享链接（复制到微信等 App）：<br><code>https://eva-happy.github.io/ashare-preopen-briefing/r/2026-09-24_2000.html</code></p>
+      </article>
+      <article class="card">
+        <a class="card-main" href="../r/2026-09-24_1710.html">
+          <div class="card-top"><span class="badge badge-close">最新收盘</span><span class="label">收盘报告</span></div>
+          <h2>A股收盘报告</h2>
+          <p class="meta">2026-09-24 ｜ 收盘 17:10 ｜ 更新 2026-09-27</p>
+          <p class="title">A股收盘报告｜2026-09-24 17:10</p>
+          <span class="cta">打开报告 →</span>
+        </a>
+        <p class="share-line">分享链接（复制到微信等 App）：<br><code>https://eva-happy.github.io/ashare-preopen-briefing/r/2026-09-24_1710.html</code></p>
+      </article>
+      <article class="card">
+        <a class="card-main" href="../r/2026-09-24_0830.html">
+          <div class="card-top"><span class="badge">最新早报</span><span class="label">开盘前早报</span></div>
+          <h2>A股开盘前早报</h2>
+          <p class="meta">2026-09-24 ｜ 截止 08:30 ｜ 更新 2026-09-27</p>
+          <p class="title">A股开盘前早报｜2026-09-24 08:30</p>
+          <span class="cta">打开报告 →</span>
+        </a>
+        <p class="share-line">分享链接（复制到微信等 App）：<br><code>https://eva-happy.github.io/ashare-preopen-briefing/r/2026-09-24_0830.html</code></p>
+      </article>
+      <article class="card">
+        <a class="card-main" href="../r/2026-09-23_1710.html">
+          <div class="card-top"><span class="label">收盘报告</span></div>
+          <h2>A股收盘报告</h2>
+          <p class="meta">2026-09-23 ｜ 收盘 17:10 ｜ 更新 2026-09-27</p>
+          <p class="title">A股收盘报告｜2026-09-23 17:10</p>
+          <span class="cta">打开报告 →</span>
+        </a>
+        <p class="share-line">分享链接（复制到微信等 App）：<br><code>https://eva-happy.github.io/ashare-preopen-briefing/r/2026-09-23_1710.html</code></p>
+      </article>
+      <article class="card">
+        <a class="card-main" href="../r/2026-09-23_0830.html">
+          <div class="card-top"><span class="label">开盘前早报</span></div>
+          <h2>A股开盘前早报</h2>
+          <p class="meta">2026-09-23 ｜ 截止 08:30 ｜ 更新 2026-09-27</p>
+          <p class="title">A股开盘前早报｜2026-09-23 08:30</p>
+          <span class="cta">打开报告 →</span>
+        </a>
+        <p class="share-line">分享链接（复制到微信等 App）：<br><code>https://eva-happy.github.io/ashare-preopen-briefing/r/2026-09-23_0830.html</code></p>
+      </article>
+      <article class="card">
+        <a class="card-main" href="../r/2026-09-22_1510.html">
+          <div class="card-top"><span class="label">收盘报告</span></div>
+          <h2>A股收盘报告</h2>
+          <p class="meta">2026-09-22 ｜ 收盘 15:10 ｜ 更新 2026-09-27</p>
+          <p class="title">A股收盘报告｜2026-09-22 15:10</p>
+          <span class="cta">打开报告 →</span>
+        </a>
+        <p class="share-line">分享链接（复制到微信等 App）：<br><code>https://eva-happy.github.io/ashare-preopen-briefing/r/2026-09-22_1510.html</code></p>
+      </article>
+      <article class="card">
+        <a class="card-main" href="../r/2026-09-22_0830.html">
+          <div class="card-top"><span class="label">开盘前早报</span></div>
+          <h2>A股开盘前早报</h2>
+          <p class="meta">2026-09-22 ｜ 截止 08:30 ｜ 更新 2026-09-27</p>
+          <p class="title">A股开盘前早报｜2026-09-22 08:30</p>
+          <span class="cta">打开报告 →</span>
+        </a>
+        <p class="share-line">分享链接（复制到微信等 App）：<br><code>https://eva-happy.github.io/ashare-preopen-briefing/r/2026-09-22_0830.html</code></p>
+      </article>
+      <article class="card">
+        <a class="card-main" href="../r/2026-09-21_1510.html">
+          <div class="card-top"><span class="label">收盘报告</span></div>
+          <h2>早报验证 · 2026-09-21</h2>
+          <p class="meta">2026-09-21 ｜ 收盘 15:10 ｜ 更新 2026-09-27</p>
+          <p class="title">A股收盘对照｜2026-09-21 15:10</p>
+          <span class="cta">打开报告 →</span>
+        </a>
+        <p class="share-line">分享链接（复制到微信等 App）：<br><code>https://eva-happy.github.io/ashare-preopen-briefing/r/2026-09-21_1510.html</code></p>
+      </article>
+      <article class="card">
+        <a class="card-main" href="../r/2026-09-21_0830.html">
+          <div class="card-top"><span class="label">开盘前早报</span></div>
+          <h2>A股开盘前早报</h2>
+          <p class="meta">2026-09-21 ｜ 截止 08:30 ｜ 更新 2026-09-27</p>
+          <p class="title">A股开盘前早报｜2026-09-21 08:30</p>
+          <span class="cta">打开报告 →</span>
+        </a>
+        <p class="share-line">分享链接（复制到微信等 App）：<br><code>https://eva-happy.github.io/ashare-preopen-briefing/r/2026-09-21_0830.html</code></p>
+      </article>
+  </section>
+  <footer>
+    <a href="../index.html">返回分类首页</a><br>
+    <code>https://eva-happy.github.io/ashare-preopen-briefing/ashare/</code>
+  </footer>
+</main>
+</body>
+</html>

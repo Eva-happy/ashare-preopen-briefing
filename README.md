@@ -92,8 +92,8 @@ python3 scripts/build_index.py
 
 会自动：
 
-- 更新 `index.html`（列表 + 每期分享链接，区分早报和收盘报告）
-- 更新 `latest.html`（只跳最新早报）和 `latest-close.html`（只跳最新收盘报告）
+- 更新首页 `index.html`：只放四个入口（A股、美股、全球市场报告、名人持仓雷达），报告列表分别在 `ashare/`、`us/`、`global/`、`us-radar/`
+- 更新 `latest.html`（只跳最新早报）、`latest-close.html`（只跳最新收盘报告）、`latest-weekly.html`、`latest-us.html`
 - 生成英文短链副本 `r/YYYY-MM-DD_HHMM.html`（方便分享，避免中文文件名在 App 里乱码）
 
 ## 早报自动进入 main

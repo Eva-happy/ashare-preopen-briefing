@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="color-scheme" content="light">
-  <meta name="description" content="A股、美股、全球市场报告、名人持仓雷达分开展示。复制 Pages 链接即可在微信等 App 中打开。">
-  <title>市场研究报告｜分类入口</title>
+  <meta name="description" content="美股收盘复盘与周报。">
+  <title>美股｜市场研究报告</title>
   <style>
 
     :root{--ink:#172033;--muted:#667085;--line:#e5e9f0;--bg:#f3f6fb;--card:#fff;--blue:#1d4ed8}
@@ -80,49 +80,38 @@
 </head>
 <body>
 <main class="wrap">
-  <header class="hero">
-    <p class="kicker">市场研究报告</p>
-    <h1>按市场进入</h1>
-    <p>A股、美股、全球市场报告、名人持仓雷达分开展示。先选一类，再打开具体一期。</p>
+  <header class="hero us">
+    <p class="kicker">美国市场</p>
+    <h1>美股</h1>
+    <p>美股收盘复盘与周报。</p>
   </header>
-  <nav class="portal" aria-label="报告分类">
-    <a class="portal-card ashare" href="ashare/">
-      <span class="kicker">中国市场</span>
-      <h2>A股</h2>
-      <p class="blurb">开盘前早报、收盘报告、周度复盘。</p>
-      <p class="preview">最新：A股周度复盘｜2026-09-21至2026-09-24</p>
-      <span class="foot"><span class="count">共 9 份</span><span class="cta">进入 →</span></span>
-    </a>
-    <a class="portal-card us" href="us/">
-      <span class="kicker">美国市场</span>
-      <h2>美股</h2>
-      <p class="blurb">美股收盘复盘与周报。</p>
-      <p class="preview">最新：美股复盘 2026-09-25</p>
-      <span class="foot"><span class="count">共 2 份</span><span class="cta">进入 →</span></span>
-    </a>
-    <a class="portal-card global" href="global/">
-      <span class="kicker">跨市场</span>
-      <h2>全球市场报告</h2>
-      <p class="blurb">全球主要市场的跨区域报告。</p>
-      <p class="preview">最新：全球市场复盘｜2026-09-27 16:30下午</p>
-      <span class="foot"><span class="count">共 3 份</span><span class="cta">进入 →</span></span>
-    </a>
-    <a class="portal-card radar" href="us-radar/">
-      <span class="kicker">披露与持仓</span>
-      <h2>名人持仓雷达</h2>
-      <p class="blurb">名人、政客与机构的持仓和交易披露。</p>
-      <p class="preview">最新：美股潜力股与名人持仓雷达｜2026-09-27</p>
-      <span class="foot"><span class="count">共 1 份</span><span class="cta">进入 →</span></span>
-    </a>
-  </nav>
-  <section class="share-box" aria-label="如何分享">
-    <h2>如何分享</h2>
-    <p>进入对应分类，复制那一期卡片里的 Pages 链接，粘贴到微信、备忘录或浏览器。对方打开的是排版好的网页。</p>
-    <div class="warn">不要分享 GitHub 文件页。那是源码链接，微信里会显示代码。仓库需为 <b>Public</b> 并启用 GitHub Pages。</div>
+  <nav class="switch" aria-label="报告分类"><a href="../index.html">首页</a><a href="../ashare/">A股</a><a href="../us/" aria-current="page">美股</a><a href="../global/">全球市场报告</a><a href="../us-radar/">名人持仓雷达</a></nav>
+  <p class="hint">固定入口：<a href="../latest-us.html">最新美股报告</a></p>
+  <section class="list" aria-label="美股报告列表">
+      <article class="card">
+        <a class="card-main" href="../r/2026-09-25.html">
+          <div class="card-top"><span class="badge badge-us">最新</span><span class="label">美股复盘</span></div>
+          <h2>2026年9月25日 周五收盘</h2>
+          <p class="meta">2026-09-25 ｜ 更新 2026-09-27</p>
+          <p class="title">美股复盘 2026-09-25</p>
+          <span class="cta">打开报告 →</span>
+        </a>
+        <p class="share-line">分享链接（复制到微信等 App）：<br><code>https://eva-happy.github.io/ashare-preopen-briefing/r/2026-09-25.html</code></p>
+      </article>
+      <article class="card">
+        <a class="card-main" href="../r/2026-09-25_1.html">
+          <div class="card-top"><span class="badge badge-weekly">最新周报</span><span class="label">美股周报</span></div>
+          <h2>截止 2026年9月25日 的这一周</h2>
+          <p class="meta">2026-09-25 ｜ 更新 2026-09-27</p>
+          <p class="title">美股周报 2026-09-25</p>
+          <span class="cta">打开报告 →</span>
+        </a>
+        <p class="share-line">分享链接（复制到微信等 App）：<br><code>https://eva-happy.github.io/ashare-preopen-briefing/r/2026-09-25_1.html</code></p>
+      </article>
   </section>
   <footer>
-    站点地址<br>
-    <code>https://eva-happy.github.io/ashare-preopen-briefing/</code>
+    <a href="../index.html">返回分类首页</a><br>
+    <code>https://eva-happy.github.io/ashare-preopen-briefing/us/</code>
   </footer>
 </main>
 </body>
