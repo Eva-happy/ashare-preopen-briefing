@@ -46,7 +46,10 @@ def main() -> None:
     assert "美股复盘" not in ashare
     assert "美股复盘" in pages["us"] and "美股周报" in pages["us"]
     assert "A股开盘前早报" not in pages["us"]
-    assert pages["global"].count("<article") == 3
+    assert pages["global"].count("<article") == 4
+    assert "全球市场复盘｜2026-09-27 23:30晚间" in pages["global"]
+    assert "global-2026-09-27_2330.html" in pages["global"]
+    assert "全球市场复盘_2026-09-27_2330.html" not in pages["global"]
     assert "全球市场复盘｜2026-09-27 16:30下午" in pages["global"]
     assert "global-2026-09-27_1630.html" in pages["global"]
     assert "全球市场复盘_2026-09-27_1630.html" not in pages["global"]
