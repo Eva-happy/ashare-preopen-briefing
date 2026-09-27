@@ -102,9 +102,16 @@ def test_index_kind_and_latest() -> None:
     assert build_index.report_kind(Path("A股收盘报告_2026-09-22_1510.html"), "A股收盘报告") == "close"
     assert build_index.report_kind(Path("A股收盘对照_2026-09-21_1510.html"), "对照") == "close"
     assert build_index.report_kind(Path("A股开盘前早报_2026-09-22_0830.html"), "A股开盘前早报") == "open"
+    assert build_index.is_indexed_ashare(Path("archive/global/2026/09/全球市场复盘_2026-09-27_0830.html")) is False
+    assert build_index.is_indexed_ashare(Path("archive/2026/09/美股复盘_2026-09-25.html")) is False
+    assert build_index.is_indexed_ashare(Path("archive/2026/09/A股开盘前早报_2026-09-24_0830.html")) is True
 
     reports = sorted(
-        (build_index.parse_report(p) for p in (ROOT / "archive").rglob("*.html")),
+        (
+            build_index.parse_report(p)
+            for p in (ROOT / "archive").rglob("*.html")
+            if build_index.is_indexed_ashare(p)
+        ),
         key=lambda r: r["sort_key"],
         reverse=True,
     )
@@ -129,8 +136,8 @@ def test_index_kind_and_latest() -> None:
 
     latest_html = (ROOT / "latest.html").read_text(encoding="utf-8")
     latest_close_html = (ROOT / "latest-close.html").read_text(encoding="utf-8")
-    assert "2026-09-22_0830.html" in latest_html
-    assert "2026-09-22_1510.html" in latest_close_html
+    assert "2026-09-24_0830.html" in latest_html
+    assert "2026-09-24_1710.html" in latest_close_html
     assert "<<<<<<<" not in (ROOT / "index.html").read_text(encoding="utf-8")
 
 
