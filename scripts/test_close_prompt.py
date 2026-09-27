@@ -107,12 +107,10 @@ def test_index_kind_and_latest() -> None:
     assert build_index.report_kind(Path("美股周报_2026-09-25.html"), "美股周报") == "us"
     assert build_index.report_kind(Path("全球市场报告_2026-09-25.html"), "全球市场早报") == "global"
     assert build_index.report_kind(Path("美股潜力股与名人持仓雷达_2026-09-27.html"), "持仓雷达") == "radar"
+    assert build_index.is_indexed_ashare(Path("archive/global/2026/09/全球市场复盘_2026-09-27_1630.html")) is False
+    assert build_index.is_indexed_ashare(Path("archive/2026/09/A股周度复盘_2026-09-24_2000.html")) is True
 
-    reports = sorted(
-        (build_index.parse_report(p) for p in (ROOT / "archive").rglob("*.html")),
-        key=lambda r: r["sort_key"],
-        reverse=True,
-    )
+    reports = build_index.load_archive_reports()
     assert reports
     opens = [r for r in reports if r["kind"] == "open"]
     closes = [r for r in reports if r["kind"] == "close"]

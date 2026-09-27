@@ -74,6 +74,9 @@ def test_kind_helpers() -> None:
     assert la.report_kind(Path("A股开盘前早报_2026-09-22_0830.html")) == "open"
     assert la.report_kind(Path("2026-09-22_1510.html")) == "close"
     assert la.report_kind(Path("latest-close.html")) is None
+    assert la.report_kind(Path("全球市场复盘_2026-09-27_0830.html")) is None
+    assert la.report_kind(Path("global-2026-09-27_0830.html")) is None
+    assert la.report_kind(Path("美股复盘_2026-09-25.html")) is None
 
 
 def main() -> None:

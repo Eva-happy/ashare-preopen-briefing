@@ -14,11 +14,11 @@ import build_index  # noqa: E402
 
 
 def main() -> None:
-    reports = sorted(
-        (build_index.parse_report(p) for p in (ROOT / "archive").rglob("*.html")),
-        key=lambda r: r["sort_key"],
-        reverse=True,
-    )
+    assert build_index.is_indexed_ashare(Path("archive/global/2026/09/全球市场复盘_2026-09-27_1630.html")) is False
+    assert build_index.is_indexed_ashare(Path("archive/2026/09/美股复盘_2026-09-25.html")) is False
+    assert build_index.is_indexed_ashare(Path("archive/2026/09/A股开盘前早报_2026-09-24_0830.html")) is True
+    assert build_index.is_indexed_ashare(Path("archive/2026/09/A股周度复盘_2026-09-24_2000.html")) is True
+    reports = build_index.load_archive_reports()
     kinds = {(r["date"], r["kind"]) for r in reports}
     assert ("2026-09-21", "close") in kinds, kinds
     assert ("2026-09-22", "open") in kinds, kinds
@@ -46,7 +46,11 @@ def main() -> None:
     assert "美股复盘" not in ashare
     assert "美股复盘" in pages["us"] and "美股周报" in pages["us"]
     assert "A股开盘前早报" not in pages["us"]
-    assert "这一类还没有报告" in pages["global"]
+    assert pages["global"].count("<article") == 3
+    assert "全球市场复盘｜2026-09-27 16:30下午" in pages["global"]
+    assert "global-2026-09-27_1630.html" in pages["global"]
+    assert "全球市场复盘_2026-09-27_1630.html" not in pages["global"]
+    assert "全球市场复盘" not in ashare
 
     latest_open = next(r for r in reports if r["kind"] == "open")
     assert latest_open["date"] == "2026-09-24"

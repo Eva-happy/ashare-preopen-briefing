@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import html
 import re
 import shutil
@@ -64,6 +65,52 @@ KIND_SECTION = {
 
 def strip_tags(text: str) -> str:
     return re.sub(r"<[^>]+>", "", text).strip()
+
+
+def is_indexed_ashare(path: Path) -> bool:
+    """A-share morning, close, and weekly HTML only.
+
+    Global and US files stay out of the A-share list and the latest.html jumps.
+    They still appear on their own category pages.
+    """
+    if "global" in path.parts:
+        return False
+    name = path.name
+    if "全球市场" in name or name.startswith("global-") or "美股" in name:
+        return False
+    return ("早报" in name) or ("收盘" in name) or ("周度" in name)
+
+
+def load_archive_reports() -> list[dict]:
+    """Index each archive HTML once.
+
+    ``global-*.html`` files are byte-identical ASCII aliases of the Chinese
+    ``全球市场复盘`` files. Keep one card and point it at the ASCII path so the
+    link does not take an A-share short URL such as ``r/YYYY-MM-DD_0830.html``.
+    """
+    groups: dict[str, list[Path]] = {}
+    for path in ARCHIVE.rglob("*.html"):
+        digest = hashlib.sha256(path.read_bytes()).hexdigest()
+        groups.setdefault(digest, []).append(path)
+    reports: list[dict] = []
+    for paths in groups.values():
+        aliases = [path for path in paths if path.name.startswith("global-")]
+        canonicals = [path for path in paths if not path.name.startswith("global-")]
+        if canonicals:
+            canonical = sorted(canonicals, key=lambda path: path.as_posix())[0]
+            alias = sorted(aliases, key=lambda path: path.as_posix())[0] if aliases else None
+        else:
+            canonical = sorted(aliases, key=lambda path: path.as_posix())[0]
+            alias = None
+        item = parse_report(canonical)
+        if alias is not None:
+            rel = alias.relative_to(ROOT).as_posix()
+            item["site_path"] = rel
+            item["share_url"] = abs_url(rel)
+            item["skip_share"] = True
+        reports.append(item)
+    reports.sort(key=lambda item: item["sort_key"], reverse=True)
+    return reports
 
 
 def report_kind(path: Path, title: str) -> str:
@@ -508,17 +555,13 @@ def render_latest(report: dict | None, *, empty: str, jumping: str) -> str:
 
 
 def main() -> None:
-    reports = sorted(
-        (parse_report(p) for p in ARCHIVE.rglob("*.html")),
-        key=lambda r: r["sort_key"],
-        reverse=True,
-    )
-    sync_share_copies(reports)
+    reports = load_archive_reports()
+    sync_share_copies([item for item in reports if not item.get("skip_share")])
     radar = load_radar_reports()
     grouped = group_reports(reports, radar)
-    latest_open = next((r for r in reports if r["kind"] == "open"), None)
-    latest_close = next((r for r in reports if r["kind"] == "close"), None)
-    latest_weekly = next((r for r in reports if r["kind"] == "weekly"), None)
+    latest_open = next((r for r in reports if r["kind"] == "open" and is_indexed_ashare(r["path"])), None)
+    latest_close = next((r for r in reports if r["kind"] == "close" and is_indexed_ashare(r["path"])), None)
+    latest_weekly = next((r for r in reports if r["kind"] == "weekly" and is_indexed_ashare(r["path"])), None)
     latest_us = next((r for r in grouped["us"] if r["kind"] == "us"), None)
     (ROOT / "index.html").write_text(render_hub(grouped), encoding="utf-8")
     write_section_pages(grouped)
