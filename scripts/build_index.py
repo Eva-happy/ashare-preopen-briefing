@@ -181,11 +181,17 @@ def sync_share_copies(reports: list[dict]) -> None:
         shutil.rmtree(SHARE_DIR)
     SHARE_DIR.mkdir(parents=True, exist_ok=True)
     used: set[str] = set()
+    dup_n: dict[str, int] = {}
     for r in reports:
         name = r["share_name"]
         if name in used:
             stem = Path(name).stem
-            name = f"{stem}_{used.__len__()}.html"
+            # Suffix follows how many times this stem collided, not how many
+            # other reports already exist. Otherwise a new morning report
+            # renames older short links such as r/2026-09-25_1.html.
+            while name in used:
+                dup_n[stem] = dup_n.get(stem, 0) + 1
+                name = f"{stem}_{dup_n[stem]}.html"
             r["share_name"] = name
             r["share_rel"] = f"r/{name}"
             r["href"] = r["share_rel"]
