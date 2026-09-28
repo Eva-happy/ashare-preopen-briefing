@@ -14,6 +14,15 @@ import build_index  # noqa: E402
 
 
 def main() -> None:
+    reports = sorted(
+        (
+            build_index.parse_report(p)
+            for p in (ROOT / "archive").rglob("*.html")
+            if build_index.is_indexed_ashare(p)
+        ),
+        key=lambda r: r["sort_key"],
+        reverse=True,
+    )
     assert build_index.is_indexed_ashare(Path("archive/global/2026/09/全球市场复盘_2026-09-27_1630.html")) is False
     assert build_index.is_indexed_ashare(Path("archive/2026/09/美股复盘_2026-09-25.html")) is False
     assert build_index.is_indexed_ashare(Path("archive/2026/09/A股开盘前早报_2026-09-24_0830.html")) is True
