@@ -47,6 +47,8 @@ def report_kind(path: Path, title: str = "") -> str | None:
     if name.lower() in SKIP_NAMES:
         return None
     blob = f"{name}\n{title}"
+    if "全球市场" in blob or name.startswith("global-") or "美股" in blob or "持仓雷达" in blob:
+        return None
     if "收盘" in blob:
         return "close"
     if "开盘" in blob or "早报" in blob:
