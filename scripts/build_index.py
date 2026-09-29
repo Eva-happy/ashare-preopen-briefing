@@ -68,12 +68,6 @@ def strip_tags(text: str) -> str:
 
 
 def is_indexed_ashare(path: Path) -> bool:
-    """A-share index only. Global recap HTML lives under archive/global and must not become latest.html."""
-    if "global" in path.parts:
-        return False
-    if "全球市场" in path.name:
-        return False
-    return True
     """A-share morning, close, and weekly HTML only.
 
     Global and US files stay out of the A-share list and the latest.html jumps.
@@ -567,15 +561,16 @@ def render_latest(report: dict | None, *, empty: str, jumping: str) -> str:
 
 
 def main() -> None:
-    reports = sorted(
-        (parse_report(p) for p in ARCHIVE.rglob("*.html") if is_indexed_ashare(p)),
-        key=lambda r: r["sort_key"],
-        reverse=True,
-    )
-    sync_share_copies(reports)
-    latest_open = next((r for r in reports if r["kind"] == "open"), None)
-    latest_close = next((r for r in reports if r["kind"] == "close"), None)
-    (ROOT / "index.html").write_text(render_index(reports), encoding="utf-8")
+    reports = load_archive_reports()
+    sync_share_copies([item for item in reports if not item.get("skip_share")])
+    radar = load_radar_reports()
+    grouped = group_reports(reports, radar)
+    latest_open = next((r for r in reports if r["kind"] == "open" and is_indexed_ashare(r["path"])), None)
+    latest_close = next((r for r in reports if r["kind"] == "close" and is_indexed_ashare(r["path"])), None)
+    latest_weekly = next((r for r in reports if r["kind"] == "weekly" and is_indexed_ashare(r["path"])), None)
+    latest_us = next((r for r in grouped["us"] if r["kind"] == "us"), None)
+    (ROOT / "index.html").write_text(render_hub(grouped), encoding="utf-8")
+    write_section_pages(grouped)
     (ROOT / "latest.html").write_text(
         render_latest(latest_open, empty="暂无早报。请先生成 archive 下的 HTML 早报。", jumping="跳转到最新早报"),
         encoding="utf-8",

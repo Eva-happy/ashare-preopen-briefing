@@ -55,7 +55,7 @@ def main() -> None:
     assert "美股复盘" not in ashare
     assert "美股复盘" in pages["us"] and "美股周报" in pages["us"]
     assert "A股开盘前早报" not in pages["us"]
-    assert pages["global"].count("<article") == 4
+    assert pages["global"].count("<article") == 6
     assert "全球市场复盘｜2026-09-27 23:30晚间" in pages["global"]
     assert "global-2026-09-27_2330.html" in pages["global"]
     assert "全球市场复盘_2026-09-27_2330.html" not in pages["global"]
@@ -65,14 +65,14 @@ def main() -> None:
     assert "全球市场复盘" not in ashare
 
     latest_open = next(r for r in reports if r["kind"] == "open")
-    assert latest_open["date"] == "2026-09-24"
+    assert latest_open["date"] == "2026-09-29"
     latest_close = next(r for r in reports if r["kind"] == "close")
-    assert latest_close["date"] == "2026-09-24"
+    assert latest_close["date"] == "2026-09-28"
     latest_weekly = next(r for r in reports if r["kind"] == "weekly")
     assert latest_weekly["share_name"] == "2026-09-24_2000.html"
     assert "latest-weekly.html" in ashare
     page = build_index.render_latest(latest_open, empty="暂无早报", jumping="跳转到最新早报")
-    assert "2026-09-24_0830.html" in page
+    assert "2026-09-29_0830.html" in page
     assert "2026-09-21_1510.html" not in page
 
     script = ROOT / "scripts" / "briefing_pr_eligible.sh"
