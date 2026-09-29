@@ -21,8 +21,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # A crash here used to cancel the whole deploy. The report files were
+      # already on main, but the site stayed on the previous successful
+      # publish, so the new short URL returned 404. Fall back to those files.
       - name: Rebuild index
-        run: python3 scripts/build_index.py
+        run: |
+          if python3 scripts/build_index.py; then
+            echo "index rebuilt"
+          else
+            echo "::warning::build_index.py failed. Publishing the HTML already committed on main so the new report is not left as a 404."
+            git checkout -- .
+            git clean -fd
+          fi
 
       - name: Assemble site
         run: |
