@@ -65,14 +65,14 @@ def main() -> None:
     assert "全球市场复盘" not in ashare
 
     latest_open = next(r for r in reports if r["kind"] == "open")
-    assert latest_open["date"] == "2026-09-29"
+    assert latest_open["date"] == "2026-09-30"
     latest_close = next(r for r in reports if r["kind"] == "close")
-    assert latest_close["date"] == "2026-09-29"
+    assert latest_close["date"] == "2026-09-30"
     latest_weekly = next(r for r in reports if r["kind"] == "weekly")
     assert latest_weekly["share_name"] == "2026-09-24_2000.html"
     assert "latest-weekly.html" in ashare
     page = build_index.render_latest(latest_open, empty="暂无早报", jumping="跳转到最新早报")
-    assert "2026-09-29_0830.html" in page
+    assert "2026-09-30_0830.html" in page
     assert "2026-09-21_1510.html" not in page
 
     script = ROOT / "scripts" / "briefing_pr_eligible.sh"
