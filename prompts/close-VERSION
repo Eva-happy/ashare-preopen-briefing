@@ -1,5 +1,5 @@
-version: 0.2.3
-date: 2026-09-22
+version: 0.2.4
+date: 2026-10-08
 canonical: prompts/ashare-close-briefing.md
 dashboard: prompts/close-automation-dashboard-prompt.md
 aligns_with: prompts/ashare-preopen-briefing.md
