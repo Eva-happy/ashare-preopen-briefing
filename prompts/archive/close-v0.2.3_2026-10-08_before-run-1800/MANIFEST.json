@@ -1,0 +1,12 @@
+{
+  "version": "0.2.3",
+  "date": "2026-10-08",
+  "slug": "before-run-1800",
+  "notes": "冻结改到18:00之前的现行收盘提示词。内部版本号仍是0.2.3（2026-09-22），截止15:10、日程北京时间工作日15:20（20 7 * * 1-5）、文件名后缀_1510，并包含第十条早盘验证总览与第十一条章节重点条。此后禁止修改本目录。",
+  "immutable": true,
+  "kind": "close",
+  "files": [
+    "ashare-close-briefing.md",
+    "close-automation-dashboard-prompt.md"
+  ]
+}
