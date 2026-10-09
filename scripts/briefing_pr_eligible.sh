@@ -22,14 +22,14 @@ if ! printf '%s' "$title" | grep -Fq "$date"; then
   exit 1
 fi
 
-if ! printf '%s' "$title" | grep -Eq '早报|收盘|preopen briefing|close briefing'; then
+if ! printf '%s' "$title" | grep -Eq '早报|收盘|周度|周报|preopen briefing|close briefing|weekly briefing'; then
   echo "skip: title is not a briefing"
   exit 1
 fi
 
 for file in "$@"; do
   case "$file" in
-    archive/*.html|r/*.html|index.html|latest.html|latest-close.html) ;;
+    archive/*.html|r/*.html|index.html|latest.html|latest-close.html|latest-weekly.html|latest-us.html|ashare/index.html|us/index.html|global/index.html|us-radar/index.html) ;;
     *)
       echo "skip: $file is outside the briefing allowlist"
       exit 1

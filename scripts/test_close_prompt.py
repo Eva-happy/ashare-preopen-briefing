@@ -150,9 +150,9 @@ def test_index_kind_and_latest() -> None:
     latest_html = (ROOT / "latest.html").read_text(encoding="utf-8")
     latest_close_html = (ROOT / "latest-close.html").read_text(encoding="utf-8")
     latest_weekly_html = (ROOT / "latest-weekly.html").read_text(encoding="utf-8")
-    assert "2026-09-29_0830.html" in latest_html
-    assert "2026-09-29_1710.html" in latest_close_html
-    assert "2026-09-24_2000.html" in latest_weekly_html
+    assert "2026-10-09_0830.html" in latest_html
+    assert "2026-10-09_1800.html" in latest_close_html
+    assert "2026-10-09_2000.html" in latest_weekly_html
     assert "<<<<<<<" not in (ROOT / "index.html").read_text(encoding="utf-8")
 
 
@@ -170,6 +170,7 @@ def test_merge_eligibility() -> None:
 
     assert eligible("docs: A股收盘报告 2026-09-22", "archive/2026/09/x.html", "latest-close.html") == 0
     assert eligible("docs: A股开盘前早报 2026-09-22", "archive/2026/09/x.html", "latest.html") == 0
+    assert eligible("docs: A股周度复盘 2026-09-22", "archive/2026/10/x.html", "latest-weekly.html", "ashare/index.html") == 0
     assert eligible("docs: A股收盘报告 2026-09-22", "README.md") == 1
     assert eligible("docs: 只改提示词 2026-09-22", "archive/2026/09/x.html") == 1
 
