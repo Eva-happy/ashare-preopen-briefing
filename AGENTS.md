@@ -26,7 +26,7 @@ python3 scripts/snapshot_prompt.py --version 0.4.0 --slug short-name --notes "�
 
 必须先阅读并严格执行 `prompts/ashare-close-briefing.md`。不要把它和早报提示词混成一份，也不要贴进「A股开盘前多源晨报」。
 
-收盘提示词与早报对齐：同样是一至七条九段 + 第八条排版 + 第九条知识星球文案。任务在北京时间 18:00 启动，数据截止 18:00。第五条写**当日**复盘，第六条检索窗是当日 08:30 至 18:00，并对照同日早报里指向当天的判断。
+收盘提示词与早报对齐：同样是一至七条九段 + 第八条排版 + 第九条知识星球文案。任务在北京时间 18:00 启动，数据截止 18:00。第五条写**当日**复盘，其中必须有「龙虎榜」栏目，取不到也要保留标题并写「未取得」。第六条检索窗是当日 08:30 至 18:00，并对照同日早报里指向当天的判断。
 
 文件名：`archive/年/月/A股收盘报告_YYYY-MM-DD_1800.html`。仪表盘粘贴：`prompts/close-automation-dashboard-prompt.md`。版本见 `prompts/close-VERSION`。生成后同样运行 `python3 scripts/build_index.py`。`latest.html` 仍跳最新早报，收盘走 `latest-close.html`。建议日程 `0 10 * * 1-5`（北京时间工作日 18:00），模型用 GPT。已生成的 `_1510`、`_1710` 报告不改名。
 

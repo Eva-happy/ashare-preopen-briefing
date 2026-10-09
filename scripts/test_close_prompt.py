@@ -95,6 +95,11 @@ def test_prompt_alignment() -> None:
     assert "A股收盘报告_YYYY-MM-DD_1800.html" in paste
     assert "latest-close.html" in paste
     assert "当日A股复盘" in paste
+    assert "还必须有「龙虎榜」" in paste
+    assert "栏目本身不得省略" in paste
+    assert "禁止编造席位" in paste
+    assert "当日复盘（含判断跟踪、龙虎榜）" in paste
+    assert "还必须有「龙虎榜」" in canonical
     assert "08:30至18:00" in paste
     assert "十、早盘信息—收盘验证总览" in paste
     assert "十一、早盘与收盘统一的章节重点条" in paste
