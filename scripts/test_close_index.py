@@ -67,7 +67,7 @@ def main() -> None:
     latest_open = next(r for r in reports if r["kind"] == "open")
     assert latest_open["date"] == "2026-10-12"
     latest_close = next(r for r in reports if r["kind"] == "close")
-    assert latest_close["date"] == "2026-10-12"
+    assert latest_close["date"] == "2026-10-13"
     latest_weekly = next(r for r in reports if r["kind"] == "weekly")
     assert latest_weekly["share_name"] == "2026-10-09_2000.html"
     assert "latest-weekly.html" in ashare
