@@ -150,7 +150,7 @@ def test_index_kind_and_latest() -> None:
     latest_html = (ROOT / "latest.html").read_text(encoding="utf-8")
     latest_close_html = (ROOT / "latest-close.html").read_text(encoding="utf-8")
     latest_weekly_html = (ROOT / "latest-weekly.html").read_text(encoding="utf-8")
-    assert "2026-10-14_0830.html" in latest_html
+    assert "2026-10-15_0830.html" in latest_html
     assert "2026-10-14_1800.html" in latest_close_html
     assert "2026-10-09_2000.html" in latest_weekly_html
     assert "<<<<<<<" not in (ROOT / "index.html").read_text(encoding="utf-8")
