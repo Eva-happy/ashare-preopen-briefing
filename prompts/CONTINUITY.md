@@ -83,9 +83,9 @@
 
 ```text
 archive/年/月/A股开盘前早报_YYYY-MM-DD_0830.html
-archive/年/月/A股收盘对照_YYYY-MM-DD_1510.html
+archive/年/月/A股收盘报告_YYYY-MM-DD_1800.html
 r/YYYY-MM-DD_0830.html
-r/YYYY-MM-DD_1510.html
+r/YYYY-MM-DD_1800.html
 index.html
 latest.html
 latest-close.html
@@ -112,10 +112,10 @@ Pages 只认 `main`。当天早报或收盘对照若开了拉取请求，标题�
 | --- | --- |
 | 规范 | `prompts/ashare-close-briefing.md` |
 | 仪表盘粘贴文本 | `prompts/close-automation-dashboard-prompt.md` |
-| 版本 | `prompts/close-VERSION`（0.1.0） |
-| 文件名 | `archive/年/月/A股收盘对照_YYYY-MM-DD_1510.html` |
-| 数据截止 | 北京时间 15:10 |
-| 建议日程 | `20 7 * * 1-5`（北京时间工作日 15:20） |
+| 版本 | `prompts/close-VERSION`（0.2.4） |
+| 文件名 | `archive/年/月/A股收盘报告_YYYY-MM-DD_1800.html` |
+| 数据截止 | 北京时间 18:00（任务 18:00 启动） |
+| 建议日程 | `0 10 * * 1-5`（北京时间工作日 18:00） |
 | 模型 | GPT |
 | 最新入口 | `latest-close.html`。`latest.html` 仍然只跳早报 |
 

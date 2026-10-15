@@ -1,0 +1,12 @@
+{
+  "version": "0.2.4",
+  "date": "2026-10-08",
+  "slug": "run-1800",
+  "notes": "收盘自动任务改为北京时间工作日18:00启动（cron 0 10 * * 1-5），数据截止18:00，公告检索窗当日08:30至18:00，新报告文件名后缀_1800。保留第十、十一节。已生成的_1510与_1710报告不改名。",
+  "immutable": true,
+  "kind": "close",
+  "files": [
+    "ashare-close-briefing.md",
+    "close-automation-dashboard-prompt.md"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "version": "0.2.5",
+  "date": "2026-10-09",
+  "slug": "require-lhb",
+  "notes": "在0.2.4（18:00启动、截止18:00）之上，把龙虎榜写成当日复盘的必出栏目。取不到写未取得，无相关上榜写今日固定板块无相关上榜，标题、表格和解读不得省略。禁止编造营业部席位。",
+  "immutable": true,
+  "kind": "close",
+  "files": [
+    "ashare-close-briefing.md",
+    "close-automation-dashboard-prompt.md"
+  ]
+}
